@@ -1,7 +1,7 @@
 /**
  * 
  */
-package es.juegopracticas.players;
+package es.juegojava.players;
 
 /**
  * @author pablo.fernandez
