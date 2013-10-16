@@ -6,13 +6,18 @@ package es.juegojava.inits;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonValue;
 
+import es.juegojava.mapa.Item;
 import es.juegojava.mapa.Room;
+
+import es.juegojava.common.ItemsType;
 
 
 
@@ -50,21 +55,51 @@ public class Bootstrap
 			}
 			
 			  									
-			//Crear conexiones entre habitaciones
+			//Crear conexiones entre habitaciones y items
 			
 			for(int i = 0; i < size; i++) {
 				Object[] connections = arrayData.getJsonObject(i).getJsonArray("connections").toArray();
 				
 				int sizeConnections = connections.length;
 				
+				//Current Room
+				Room r = rooms.get(arrayData.getJsonObject(i).getInt("id"));
+				
+				//Connections
 				
 				if(sizeConnections > 0) {
 					for(int j = 0; j < sizeConnections; j++) {
-						Room r = rooms.get(arrayData.getJsonObject(i).getInt("id"));
-						
 						r.getConnections().add(rooms.get(connections[j]));
 					}
 				}
+				
+				//Items
+				JsonArray itemsJson = arrayData.getJsonObject(i).getJsonArray("items");
+				
+				int sizeItems = itemsJson.size();
+				
+				if(sizeItems > 0) {
+					for(int j = 0; j < sizeItems; j++) {
+						Integer id = itemsJson.getJsonObject(j).getInt("id");
+						String name = itemsJson.getJsonObject(j).getString("name");
+						Integer typeInt = itemsJson.getJsonObject(j).getInt("type");
+						
+						ItemsType type = ItemsType.NINGUNO;
+						
+						switch(typeInt) {
+							case 1:
+								type = ItemsType.ARMA;
+							case 2:
+								type = ItemsType.ARMADURA;
+							case 3:
+								type = ItemsType.POCION;
+						}
+						
+						
+						r.getItems().add(new Item(name, id, type));
+					}
+				}
+				
 			}
 			
 			return rooms;

@@ -25,6 +25,7 @@ public class main {
 		HashMap<Integer, Room> rooms = bp.generateRooms();
 		
 		System.out.println(rooms.get(1).getNombre());
+		System.out.println(rooms.get(1).getItems().get(0).getNombre());
 		
 		
 		

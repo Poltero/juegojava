@@ -14,11 +14,20 @@ import java.util.*;
 public class Room extends Element
 {
 	List<Element> connections;
+	List<Item> items;
 	
 	public Room(Integer id, String nombre) {
 		super(id, nombre);
 		
 		connections = new ArrayList<Element>();
+		items = new ArrayList<Item>();
+	}
+
+	/**
+	 * @return the items
+	 */
+	public List<Item> getItems() {
+		return items;
 	}
 
 	/**
