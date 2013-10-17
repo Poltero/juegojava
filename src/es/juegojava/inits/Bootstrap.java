@@ -35,7 +35,7 @@ public class Bootstrap
 		loadJsonFile("E:/workspace/GamePracticas/mapa.json");
 	}
 	
-	public HashMap<Integer, Room> generateRooms() {
+	public HashMap<Integer, Room> loadRooms() {
 		try (JsonReader jsonReader = Json.createReader(new FileReader(jsonSource))) {
 			
 			HashMap<Integer, Room> rooms = new HashMap<Integer, Room>();

@@ -8,6 +8,11 @@
                 "id": 1,
                 "name": "Espada corta",
                 "type": 1
+            },
+			{
+                "id": 2,
+                "name": "Espada larga",
+                "type": 2
             }
         ]
     },

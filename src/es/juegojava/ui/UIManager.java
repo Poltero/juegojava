@@ -32,7 +32,7 @@ public class UIManager {
 	public UIManager() {
 		super();
 		pw = new PrintWriter(System.out, true);
-		sc = new Scanner(System.in);
+		
 	}
 	
 	public static void destruirUI(){
@@ -41,18 +41,18 @@ public class UIManager {
 		sc.close();
 	}
 	
-	public static void imprimirPorPantalla(String salida){
+	public void imprimirPorPantalla(String salida){
 		pw.println(salida);	
 	}
 	
-	public static void imprimirPorPantalla(int salida){
+	public void imprimirPorPantalla(int salida){
 		PrintWriter pw = new PrintWriter(System.out, true);
 		String cadena = "";
 		cadena += salida;
 		pw.println(cadena);
 	}
 	
-	public static int leerNumeroTeclado(){
+	public int leerNumeroTeclado(){
 		int salida = -1;
 		try{
 			salida = sc.nextInt();
@@ -63,7 +63,8 @@ public class UIManager {
 		return salida;
 	}
 	
-	public static String leerCadenaTeclado(){
+	public String leerCadenaTeclado(){
+		sc = new Scanner(System.in);
 		String salida = "";
 		
 		try{
