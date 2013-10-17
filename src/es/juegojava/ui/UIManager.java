@@ -3,8 +3,9 @@
  */
 package es.juegojava.ui;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -21,7 +22,95 @@ import es.juegojava.mapa.Room;
  */
 
 public class UIManager {
+	
+	static PrintWriter pw = null;
+	static Scanner sc = null;	
+	static File archivo = null;
+    static FileReader fr = null;
+    static BufferedReader br = null;
 
+	public UIManager() {
+		super();
+		pw = new PrintWriter(System.out, true);
+		sc = new Scanner(System.in);
+	}
+	
+	public static void destruirUI(){
+		pw.flush();
+		pw.close();
+		sc.close();
+	}
+	
+	public static void imprimirPorPantalla(String salida){
+		pw.println(salida);	
+	}
+	
+	public static void imprimirPorPantalla(int salida){
+		PrintWriter pw = new PrintWriter(System.out, true);
+		String cadena = "";
+		cadena += salida;
+		pw.println(cadena);
+	}
+	
+	public static int leerNumeroTeclado(){
+		int salida = -1;
+		try{
+			salida = sc.nextInt();
+		}catch(InputMismatchException e){
+			imprimirPorPantalla("El valor introducido no es un entero");
+			sc.nextLine();
+		}
+		return salida;
+	}
+	
+	public static String leerCadenaTeclado(){
+		String salida = "";
+		
+		try{
+			salida = sc.nextLine();
+		}catch(InputMismatchException e){
+			imprimirPorPantalla("El valor introducido no es una cadena");
+			sc.nextLine();
+		}
+		return salida;
+	}
+	
+	public static ArrayList<String> leerFichero(String path){
+		ArrayList<String> salida = new ArrayList<String>();
+		
+		try {
+			archivo = new File(path);
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			String linea;
+			while((linea=br.readLine())!=null)
+				salida.add(linea);
+		  	}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{                    
+				if( null != fr ){   
+					fr.close();     
+				}                  
+			}catch (Exception e2){ 
+				e2.printStackTrace();
+			}	
+		}
+		return salida;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void descripcion(Element elementoADescribir){
 		//Descripcion generica de cualquier elemento
 		//imprimimos el toString
@@ -56,66 +145,5 @@ public class UIManager {
 	
 	public void describirItem(Item itemADescribir){
 		//To-do
-	}
-	
-	public static void imprimirPorPantalla(String salida){
-		PrintWriter pw = new PrintWriter(System.out);
-		pw.println(salida);
-		pw.flush();
-		pw.close();		
-	}
-	
-	public static void imprimirPorPantalla(int salida){
-		PrintWriter pw = new PrintWriter(System.out);
-		String cadena = "";
-		cadena += salida;
-		pw.println(cadena);
-		pw.flush();
-		pw.close();	
-	}
-	
-	public static int leerNumeroTeclado(){
-		Scanner sc = new Scanner(System.in);
-		int salida = -1;
-		
-		try{
-			salida = sc.nextInt();
-		}catch(InputMismatchException e){
-			imprimirPorPantalla("El valor introducido no es un entero");
-			sc.nextLine();
-		}
-		sc.close();
-		return salida;
-	}
-	
-	public static String leerCadenaTeclado(){
-		Scanner sc = new Scanner(System.in);
-		String salida = "";
-		
-		try{
-			salida = sc.nextLine();
-		}catch(InputMismatchException e){
-			imprimirPorPantalla("El valor introducido no es una cadena");
-			sc.nextLine();
-		}
-		sc.close();
-		return salida;
-	}
-	
-	public ArrayList leerFichero(String path){
-		ArrayList salida = new ArrayList();
-		File fichero = new File(path);
-		Scanner sc;
-		try {
-			sc = new Scanner(fichero);
-			while (sc.hasNextLine()) {
-				String linea = sc.nextLine();
-				salida.add(linea);
-			}
-			sc.close();
-		} catch (FileNotFoundException e) {
-		   e.printStackTrace();
-		}
-		return salida;
 	}
 }

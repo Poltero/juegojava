@@ -16,6 +16,7 @@ public class Room extends Element
 {
 	List<Element> connections;
 	List<Item> items;
+
 	String descFilePath;
 	String descripcion;
 	
