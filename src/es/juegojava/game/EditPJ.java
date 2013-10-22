@@ -46,7 +46,7 @@ public class EditPJ
 			
 			int option = ui.leerNumeroTeclado();
 			
-			players.add(new Player(i+1, nombrePJ, razas[option-1]));
+			//players.add(new Player(i+1, nombrePJ, razas[option-1]));
 			
 		}
 	}

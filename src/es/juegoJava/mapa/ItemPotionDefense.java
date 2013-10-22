@@ -23,7 +23,6 @@ public class ItemPotionDefense extends Item implements Usable {
 
 	@Override
 	public void use(Player player) {
-		// TODO Auto-generated method stub
-		
+		player.setDefense(player.getDefense() + defensePoints);
 	}
 }
