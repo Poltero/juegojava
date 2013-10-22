@@ -30,6 +30,20 @@ public class Room extends Element
 	}
 
 	/**
+	 * @return the enemies
+	 */
+	public List<Enemy> getEnemies() {
+		return enemies;
+	}
+
+	/**
+	 * @param enemies the enemies to set
+	 */
+	public void setEnemies(List<Enemy> enemies) {
+		this.enemies = enemies;
+	}
+
+	/**
 	 * @return the items
 	 */
 	public List<Item> getItems() {
