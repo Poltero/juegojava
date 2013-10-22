@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 package es.juegoJava.logics;
 import es.juegojava.common.GameStatus;
+=======
+package es.juegojava.logics;
+>>>>>>> 1519246cc8109ddf303a766cd619f3e4f7243dbc
 import es.juegojava.mapa.Room;
 import es.juegojava.ui.*;
 
@@ -19,21 +23,6 @@ public class Logic {
 		desc = roomToDesc.toString();
 		ui.imprimirPorPantalla(desc);
 	}
-	
-	public void imprimirListaAcciones(Room currentRoom){
-		
-		String desc = "";
-		
-		if(currentRoom.enemies.size() != 0){
-			desc = "meter opciones 1 y 2";
-		}else{
-			desc = "meter resto acciones";
-		}
-		
-		
-		ui.imprimirPorPantalla(desc);
-	}
-	
 	
 	
 	
