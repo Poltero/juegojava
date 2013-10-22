@@ -4,6 +4,7 @@
 package es.juegojava.mapa;
 
 import es.juegojava.common.Element;
+import es.juegojava.players.Enemy;
 import es.juegojava.ui.UIManager;
 
 import java.util.*;
@@ -16,8 +17,8 @@ public class Room extends Element
 {
 	List<Element> connections;
 	List<Item> items;
+	List<Enemy> enemies;
 
-	String descFilePath;
 	String descripcion;
 	
 	public Room(Integer id, String nombre) {
@@ -25,10 +26,7 @@ public class Room extends Element
 		
 		connections = new ArrayList<Element>();
 		items = new ArrayList<Item>();
-		descFilePath = "Room" + id + "Desc.txt";
-		
-		//Cuando creamos la habitacion leemos su descripcion desde el fichero
-		//descripcion = leerFichero(descFilePath).toString();
+		enemies = new ArrayList<Enemy>();
 	}
 
 	/**
