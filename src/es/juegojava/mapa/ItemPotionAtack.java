@@ -24,7 +24,7 @@ public class ItemPotionAtack extends Item implements Usable {
 
 	@Override
 	public void use(Player player) {
-		// TODO Auto-generated method stub
+		//player.
 		
 	}
 }

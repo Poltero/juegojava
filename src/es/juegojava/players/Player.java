@@ -8,15 +8,18 @@ import java.util.List;
 
 import es.juegojava.common.Raza;
 import es.juegojava.mapa.Item;
+import es.juegojava.mapa.ItemArma;
+import es.juegojava.mapa.ItemArmadura;
 
 
 /**
  * @author pablo.fernandez
  *
  */
-public class Player extends Personaje 
+public class Player extends Personaje
 {
-	Item currentItem;
+	ItemArma currentWeapon;
+	ItemArmadura currentArmor;
 	List<Item> inventario;
 
 	public Player(Integer id, String nombre, Raza raza) {
