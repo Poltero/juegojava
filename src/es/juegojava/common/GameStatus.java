@@ -1,6 +1,6 @@
 package es.juegojava.common;
 
 public enum GameStatus {
-	PAUSA, COMBATE, 
+	INICIO, CREARPJ, DESCRIBIRESCENARIO, COMBATE, CONVERSACION, EXPLORAR, GAMEOVER, DESTRUIR, FIN  
 }
 
