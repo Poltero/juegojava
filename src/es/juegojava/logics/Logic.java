@@ -24,7 +24,7 @@ public class Logic {
 		
 		String desc = "";
 		
-		if(currentRoom.enemies.size() != 0){
+		if(currentRoom.getEnemies().size() != 0){
 			desc = "meter opciones 1 y 2";
 		}else{
 			desc = "meter resto acciones";
