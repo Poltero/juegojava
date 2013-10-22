@@ -4,12 +4,14 @@
 package es.juegojava.mapa;
 
 import es.juegojava.common.ItemsType;
+import es.juegojava.logics.Usable;
+import es.juegojava.players.Player;
 
 /**
  * @author pablo.fernandez
  *
  */
-public class ItemPotionLife extends Item {
+public class ItemPotionLife extends Item implements Usable {
 
 	private int lifePoints;
 	
@@ -17,6 +19,12 @@ public class ItemPotionLife extends Item {
 		super(nombre, id, ItemsType.POCION);
 		
 		this.lifePoints = lifePoints;
+		
+	}
+
+	@Override
+	public void use(Player player) {
+		// TODO Auto-generated method stub
 		
 	}
 	

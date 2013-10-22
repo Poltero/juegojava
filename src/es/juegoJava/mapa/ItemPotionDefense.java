@@ -11,15 +11,14 @@ import es.juegojava.players.Player;
  * @author pablo.fernandez
  *
  */
-public class ItemPotionAtack extends Item implements Usable {
+public class ItemPotionDefense extends Item implements Usable {
 	
-	private int atackPoints;
+	private int defensePoints;
 	
-	ItemPotionAtack(String nombre, int id, int atackPoints) {
-		super(nombre, id, ItemsType.POCION);
+	ItemPotionDefense(String nombre, int id, int defensePoints) {
+		super(nombre, id, ItemsType.ARMADURA);
 		
-		this.atackPoints = atackPoints;
-		
+		this.defensePoints = defensePoints;
 	}
 
 	@Override

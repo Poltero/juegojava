@@ -13,10 +13,10 @@ public class ItemArmadura extends Item {
 
 	private int defense;
 	
-	ItemArmadura(String nombre, int id, int defensePoints) {
+	ItemArmadura(String nombre, int id, int defense) {
 		super(nombre, id, ItemsType.ARMADURA);
 		
-		defense = defensePoints;
+		this.defense = defense;
 	}
 	
 }

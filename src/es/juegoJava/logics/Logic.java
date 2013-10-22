@@ -1,4 +1,4 @@
-package es.juegoJava.logics;
+package es.juegojava.logics;
 import es.juegojava.mapa.Room;
 import es.juegojava.ui.*;
 
