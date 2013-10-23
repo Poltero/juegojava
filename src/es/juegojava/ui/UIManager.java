@@ -104,19 +104,7 @@ public class UIManager {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void descripcion(Element elementoADescribir){
-		//Descripcion generica de cualquier elemento
-		//imprimimos el toString
-		//To-do
-	}
+
 		
 	
 	public void describirHabitacion(Room habitacionADescribir){
@@ -136,15 +124,5 @@ public class UIManager {
 		String contenidoHabitacion = "";
 		contenidoHabitacion = habitacionADescribir.getNombre();
 		*/
-	}
-	
-	public void imprimirMenuAcciones(){
-		//To-do
-	}
-	
-	
-	
-	public void describirItem(Item itemADescribir){
-		//To-do
 	}
 }
