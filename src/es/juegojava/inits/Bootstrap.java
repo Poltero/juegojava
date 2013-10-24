@@ -100,6 +100,31 @@ public class Bootstrap
 					}
 				}
 				
+				
+				//Enemies
+				itemsJson = arrayData.getJsonObject(i).getJsonArray("enemies");
+				
+				int sizeEnemies = itemsJson.size();
+				
+				if(sizeEnemies > 0) {
+					for(int j = 0; j < sizeEnemies; j++) {
+						Integer id = itemsJson.getJsonObject(j).getInt("id");
+						String name = itemsJson.getJsonObject(j).getString("name");
+						Integer razaInt = itemsJson.getJsonObject(j).getInt("raza");
+						Integer classInt = itemsJson.getJsonObject(j).getInt("class");
+						Integer attack = itemsJson.getJsonObject(j).getInt("attack");
+						Integer defense = itemsJson.getJsonObject(j).getInt("defense");
+						Integer life = itemsJson.getJsonObject(j).getInt("life");
+						Integer initiative = itemsJson.getJsonObject(j).getInt("initiative");
+						
+						//Drop item
+						JsonObject dropItem = itemsJson.getJsonObject(j).getJsonObject("dropItem");
+						
+						
+					}
+				}
+				
+				
 			}
 			
 			return rooms;

@@ -14,7 +14,39 @@
                 "name": "Espada larga",
                 "type": 2
             }
-        ]
+        ],
+		"enemies": [
+			{
+				"id": 1,
+				"name": "Bruto primero",
+				"raza": 1,
+				"class": 2,
+				"attack": 23,
+				"defense": 14,
+				"life": 100,
+				"initiative": 1,
+				"itemDrop": {
+					"id": 100,
+					"name": "Espada larga",
+					"type": 2
+				}
+			},
+			{
+				"id": 2,
+				"name": "Imbecil",
+				"raza": 2,
+				"class": 1,
+				"attack": 45,
+				"defense": 12,
+				"life": 100,
+				"initiative": 1,
+				"itemDrop": {
+					"id": 101,
+					"name": "Espada",
+					"type": 2
+				}
+			}
+		]
     },
 
     {
