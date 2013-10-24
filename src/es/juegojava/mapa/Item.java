@@ -31,7 +31,7 @@ public class Item extends Element
 	 */
 	@Override
 	public String toString() {
-		return ("Nombre: " + nombre + ", id: " + id + ", tipo: " + tipo);
+		return (nombre + " tipo: " + tipo);
 	}
 	
 	

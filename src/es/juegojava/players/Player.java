@@ -23,8 +23,8 @@ public class Player extends PjWithClass
 	ItemArmadura currentArmor;
 	List<Item> inventario;
 
-	public Player(Integer id, String nombre, Raza raza, ClassType classPj, int attack, int life, int initiative) {
-		super(id, nombre, raza, classPj, attack, life, initiative);
+	public Player(Integer id, String nombre, Raza raza, ClassType classPj, int attack, int defense,  int life, int initiative) {
+		super(id, nombre, raza, classPj, attack, defense, life, initiative);
 		
 		inventario = new ArrayList<Item>();
 	}

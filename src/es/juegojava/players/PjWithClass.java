@@ -18,6 +18,16 @@ public class PjWithClass extends Personaje {
 	protected int life;
 	protected int initiative;
 	
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return nombre + " [" + classPj + "] ("+ raza +"), Vida: "+ life;
+	}
+
 	/**
 	 * @return the defense
 	 */
@@ -88,11 +98,12 @@ public class PjWithClass extends Personaje {
 		this.initiative = initiative;
 	}
 
-	public PjWithClass(Integer id, String nombre, Raza raza, ClassType classPj, int attack, int life, int initiative) {
+	public PjWithClass(Integer id, String nombre, Raza raza, ClassType classPj, int attack, int defense, int life, int initiative) {
 		super(id, nombre, raza);
 		
-		this.attack = attack;
-		this.life = life;
+		this.attack = 20 + attack;
+		this.defense = 15 + defense;
+		this.life = 100 + life;
 		this.initiative = initiative;
 		this.classPj = classPj;
 	}

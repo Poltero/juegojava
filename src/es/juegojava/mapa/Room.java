@@ -5,6 +5,7 @@ package es.juegojava.mapa;
 
 import es.juegojava.common.Element;
 import es.juegojava.players.Enemy;
+import es.juegojava.players.PersonajeNeutro;
 import es.juegojava.ui.UIManager;
 
 import java.util.*;
@@ -18,6 +19,7 @@ public class Room extends Element
 	List<Element> connections;
 	List<Item> items;
 	List<Enemy> enemies;
+	List<PersonajeNeutro> pjns;
 
 	String descripcion;
 	
@@ -64,16 +66,8 @@ public class Room extends Element
 		this.connections = connections;
 	}
 	
-	public String toString(){
-		String descripcionFinal = "";
-		
-		String descContenido;
-		
-		descContenido = "Enemigos: " + "NUMEROENEMIGOS" + " NPCs: " + "NUMERONPC" + " Items: " + items.size() + " Puertas: " + connections.size() + "\n";
-		
-		
-		
-		return descripcionFinal;
+	public String toString() {
+		return "Nombre: "+ nombre +" ["+ descripcion +"] \nEnemigos: " + enemies.size() + " NPCs: " + pjns.size() + " Items: " + items.size() + " Puertas: " + connections.size() + "\n";
 	}
 	
 }

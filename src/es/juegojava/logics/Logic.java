@@ -1,6 +1,11 @@
 package es.juegojava.logics;
+import java.util.Iterator;
+import java.util.List;
+
 import es.juegojava.common.GameStatus;
+import es.juegojava.mapa.Item;
 import es.juegojava.mapa.Room;
+import es.juegojava.players.Enemy;
 import es.juegojava.players.PersonajeNeutro;
 import es.juegojava.ui.*;
 
@@ -42,6 +47,30 @@ public class Logic {
 	
 	public void imprimirDialogo(PersonajeNeutro npc, int numeroDeFrase){
 		ui.imprimirPorPantalla(npc.toString(numeroDeFrase));
+	}
+	
+	public void showItemsFromRoom(List<Item> items) {
+		Iterator<Item> it = items.iterator();
+		
+		int count = 1;
+		
+		while(it.hasNext()) {
+			ui.imprimirPorPantalla("[" + count + " ]" +  it.next().toString() + "\n");
+			
+			count++;
+		}
+	}
+	
+	public void showEnemiesFromRoom(List<Enemy> enemies) {
+		Iterator<Enemy> it = enemies.iterator();
+		
+		int count = 1;
+		
+		while(it.hasNext()) {
+			ui.imprimirPorPantalla("[" + count + " ]" +  it.next().toString() + "\n");
+			
+			count++;
+		}
 	}
 	
 	public void explorarHabitacion(Room habitacionAExplorar){
