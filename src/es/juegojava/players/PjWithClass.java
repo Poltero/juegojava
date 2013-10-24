@@ -5,6 +5,7 @@ package es.juegojava.players;
 
 import es.juegojava.common.ClassType;
 import es.juegojava.common.Raza;
+import es.juegojava.mapa.ItemArma;
 
 /**
  * @author pablo.fernandez
@@ -17,6 +18,7 @@ public class PjWithClass extends Personaje {
 	protected int defense;
 	protected int life;
 	protected int initiative;
+	ItemArma currentWeapon;
 	
 	
 	
@@ -97,8 +99,26 @@ public class PjWithClass extends Personaje {
 	public void setInitiative(int initiative) {
 		this.initiative = initiative;
 	}
+	
+	
+	/**
+	 * @return the currentWeapon
+	 */
+	public ItemArma getCurrentWeapon() {
+		return currentWeapon;
+	}
 
-	public PjWithClass(Integer id, String nombre, Raza raza, ClassType classPj, int attack, int defense, int life, int initiative) {
+	/**
+	 * @param initiative the currentWeapon to set
+	 */
+	public void setCurrentWeapon(ItemArma currentWeapon) {
+		this.currentWeapon = currentWeapon;
+	}
+
+	
+	public PjWithClass(Integer id, String nombre, Raza raza, ClassType classPj, 
+			int attack, int defense, int life, int initiative, ItemArma currentWeapon) {
+		
 		super(id, nombre, raza);
 		
 		this.attack = 20 + attack;
@@ -106,6 +126,37 @@ public class PjWithClass extends Personaje {
 		this.life = 100 + life;
 		this.initiative = initiative;
 		this.classPj = classPj;
+		this.currentWeapon = currentWeapon;
+	}
+	
+	public String classToSring(){
+		String cadenaClase = "";
+		
+		ClassType claseAImprimir = this.classPj;
+		
+		switch (claseAImprimir){
+		case MAGO:
+			cadenaClase = "Mago";
+			break;
+		case GUERRERO:
+			cadenaClase = "Guerrero";
+			break;
+		case NINGUNA:
+			cadenaClase = "Ninguno";
+			break;
+			default:
+				cadenaClase = "Error";
+				break;
+		}
+		return cadenaClase;
+	}
+	
+	public void attack(Player tarjetPj){
+		
+		int realAtk = this.attack + this.currentWeapon.getAtack();
+		int finalLife = (tarjetPj.getLife() - (realAtk - tarjetPj.getDefense()));
+		
+		tarjetPj.setLife(finalLife);
 	}
 
 }
