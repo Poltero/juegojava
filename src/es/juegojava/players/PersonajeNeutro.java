@@ -8,6 +8,7 @@ public class PersonajeNeutro extends Personaje {
 	
 	ArrayList<String> dialogo;
 
+
 	public PersonajeNeutro(Integer id, String nombre, Raza raza) {
 		super(id, nombre, raza);
 		// TODO Auto-generated constructor stub
