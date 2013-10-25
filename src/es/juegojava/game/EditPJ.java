@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.juegojava.ui.UIManager;
+import es.juegojava.common.ClassType;
 import es.juegojava.common.Raza;
 import es.juegojava.players.*;
 
@@ -44,9 +45,36 @@ public class EditPJ
 				ui.imprimirPorPantalla("\t"+(j+1) +"- " + razas[j]);
 			}
 			
-			int option = ui.leerNumeroTeclado();
+			int optionRaza = ui.leerNumeroTeclado();
 			
-			//players.add(new Player(i+1, nombrePJ, razas[option-1]));
+			ui.imprimirPorPantalla("Elige la clase de tu PJ: ");
+			
+			ClassType[] classPjs = ClassType.values();
+			int sizeClassPjs = classPjs.length;
+			
+			for(int j = 0; j < sizeClassPjs; j++) {
+				ui.imprimirPorPantalla("\t"+(j+1) +"- " + classPjs[j]);
+			}
+			
+			int optionClassPj = ui.leerNumeroTeclado();
+			
+			Player p = null;
+			
+			switch (classPjs[optionClassPj-1]) {
+				case MAGO:
+					p = new PjMago(i+1, nombrePJ, razas[optionRaza-1]);
+					break;
+	
+				case GUERRERO:
+					p = new PjGuerrero(i+1, nombrePJ, razas[optionRaza-1]);
+					break;
+				default:
+					break;
+			}
+			
+			if(null != p) {
+				players.add(p);
+			}
 			
 		}
 	}
