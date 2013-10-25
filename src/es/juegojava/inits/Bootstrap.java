@@ -27,6 +27,7 @@ import es.juegojava.common.ClassType;
 import es.juegojava.common.ItemsType;
 import es.juegojava.common.Raza;
 import es.juegojava.common.WeaponsType;
+import es.juegojava.exceptions.EnemiesFromRoomNullException;
 
 
 
@@ -34,7 +35,7 @@ import es.juegojava.common.WeaponsType;
  * @author pablo.fernandez
  *
  */
-public class Bootstrap 
+public class Bootstrap
 {
 	private String jsonSource;
 	private Integer IdRoomFinale;
@@ -52,7 +53,8 @@ public class Bootstrap
 		loadJsonFile("mapa.json");
 	}
 	
-	public HashMap<Integer, Room> loadRooms() {
+	public HashMap<Integer, Room> loadRooms() throws EnemiesFromRoomNullException {
+		
 		try (JsonReader jsonReader = Json.createReader(new FileReader(jsonSource))) {
 			
 			HashMap<Integer, Room> rooms = new HashMap<Integer, Room>();
@@ -70,7 +72,7 @@ public class Bootstrap
 				
 				rooms.put(obj.getInt("id"), room);
 				
-				if(obj.containsValue("finale")) {
+				if(obj.getBoolean("finale")) {
 					IdRoomFinale = room.getId();
 				}
 			}
@@ -153,11 +155,11 @@ public class Bootstrap
 						Enemy enemy = new Enemy(id, name, Raza.values()[razaInt-1], ClassType.values()[classInt-1], attack, defense, life, initiative, weapon, itemToDrop);
 						
 						r.getEnemies().add(enemy);
-						
-						
-						
-						
-						
+					}
+					
+				} else {
+					if(this.IdRoomFinale == r.getId()) {
+						throw new EnemiesFromRoomNullException("No hay enemigos en la habitacion final (Fallo de carga en el juego)");
 					}
 				}
 				

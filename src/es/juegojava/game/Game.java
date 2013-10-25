@@ -3,6 +3,7 @@
  */
 package es.juegojava.game;
 
+import es.juegojava.exceptions.EnemiesFromRoomNullException;
 import es.juegojava.game.EditPJ;
 
 import java.util.HashMap;
@@ -28,7 +29,8 @@ public class Game
 	private List<Player> PJs;
 	private Bootstrap bs;
 	
-	private Enemy enemyFinale;
+	private int enemyFinaleIndex;
+	private Room roomFinale;
 	
 	public Game() {
 		states = "createPJs";
@@ -47,6 +49,11 @@ public class Game
 					this.createPJs();
 					break;
 					
+				case "init":
+					this.calculateEnemyFinale();
+					states = "splashscreen";
+					break;
+					
 				case "splashscreen":
 					ui.imprimirPorPantalla("Bienvenido al juego");
 					this.showPJs();
@@ -58,7 +65,12 @@ public class Game
 	}
 	
 	public void init() {
-		rooms = bs.loadRooms();
+		try {
+			rooms = bs.loadRooms();
+		} catch (EnemiesFromRoomNullException e) {
+			ui.imprimirPorPantalla(e.getMessage());
+			System.exit(0);
+		}
 	}
 	
 	private void createPJs() {
@@ -68,17 +80,15 @@ public class Game
 		
 		PJs = epj.getPlayers();
 		
-		states = "splashscreen";
+		states = "init";
 	}
 	
 	private void calculateEnemyFinale() {
 		Integer idRoomFinale = bs.getIdRoomFinale();
 		
-		Room roomFinale = rooms.get(idRoomFinale);
+		roomFinale = rooms.get(idRoomFinale);
 		
-		int enemyRandom = (int)Math.random()*(roomFinale.getEnemies().size());
-		
-		this.enemyFinale = roomFinale.getEnemies().get(enemyRandom);
+		enemyFinaleIndex = (int)Math.random()*(roomFinale.getEnemies().size());
 	}
 	
 	private void showPJs() {
