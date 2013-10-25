@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import es.juegojava.mapa.*;
+import es.juegojava.players.Enemy;
 import es.juegojava.players.Player;
 import es.juegojava.ui.UIManager;
 import es.juegojava.inits.Bootstrap;
@@ -26,6 +27,8 @@ public class Game
 	private HashMap<Integer, Room> rooms;
 	private List<Player> PJs;
 	private Bootstrap bs;
+	
+	private Enemy enemyFinale;
 	
 	public Game() {
 		states = "createPJs";
@@ -66,6 +69,16 @@ public class Game
 		PJs = epj.getPlayers();
 		
 		states = "splashscreen";
+	}
+	
+	private void calculateEnemyFinale() {
+		Integer idRoomFinale = bs.getIdRoomFinale();
+		
+		Room roomFinale = rooms.get(idRoomFinale);
+		
+		int enemyRandom = (int)Math.random()*(roomFinale.getEnemies().size());
+		
+		this.enemyFinale = roomFinale.getEnemies().get(enemyRandom);
 	}
 	
 	private void showPJs() {

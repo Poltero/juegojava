@@ -99,7 +99,8 @@
         "name": "Habitacion 2",
         "connections": [],
         "items": [],
-        "enemies": []
+        "enemies": [],
+        "finale": 1
     }
 
 ]

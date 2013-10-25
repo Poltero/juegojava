@@ -36,10 +36,18 @@ import es.juegojava.common.WeaponsType;
  */
 public class Bootstrap 
 {
-	String jsonSource;
+	private String jsonSource;
+	private Integer IdRoomFinale;
 	
 	
 	
+	/**
+	 * @return the idRoomFinale
+	 */
+	public Integer getIdRoomFinale() {
+		return IdRoomFinale;
+	}
+
 	public Bootstrap() {
 		loadJsonFile("mapa.json");
 	}
@@ -61,6 +69,10 @@ public class Bootstrap
 				Room room = new Room(obj.getInt("id"), obj.getString("name"));
 				
 				rooms.put(obj.getInt("id"), room);
+				
+				if(obj.containsValue("finale")) {
+					IdRoomFinale = room.getId();
+				}
 			}
 			
 			  									
