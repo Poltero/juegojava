@@ -15,7 +15,7 @@ public class ItemArma extends Item
 	private WeaponsType weaponsType;
 	private ClassType weaponClass;
 	
-	ItemArma(String nombre, int id, WeaponsType wpType, ClassType wpClass, int atackPoints) {
+	public ItemArma(String nombre, int id, WeaponsType wpType, ClassType wpClass, int atackPoints) {
 		super(nombre, id, ItemsType.ARMA);
 		
 		weaponsType = wpType;

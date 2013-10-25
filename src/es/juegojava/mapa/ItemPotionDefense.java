@@ -15,8 +15,8 @@ public class ItemPotionDefense extends Item implements Usable {
 	
 	private int defensePoints;
 	
-	ItemPotionDefense(String nombre, int id, int defensePoints) {
-		super(nombre, id, ItemsType.ARMADURA);
+	public ItemPotionDefense(String nombre, int id, int defensePoints) {
+		super(nombre, id, ItemsType.POCION);
 		
 		this.defensePoints = defensePoints;
 	}

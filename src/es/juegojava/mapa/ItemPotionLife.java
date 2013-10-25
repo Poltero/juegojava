@@ -15,7 +15,7 @@ public class ItemPotionLife extends Item implements Usable {
 
 	private int lifePoints;
 	
-	ItemPotionLife(String nombre, int id, int lifePoints) {
+	public ItemPotionLife(String nombre, int id, int lifePoints) {
 		super(nombre, id, ItemsType.POCION);
 		
 		this.lifePoints = lifePoints;

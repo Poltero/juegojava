@@ -15,9 +15,18 @@ import javax.json.JsonReader;
 import javax.json.JsonValue;
 
 import es.juegojava.mapa.Item;
+import es.juegojava.mapa.ItemArma;
+import es.juegojava.mapa.ItemArmadura;
+import es.juegojava.mapa.ItemPotionAttack;
+import es.juegojava.mapa.ItemPotionDefense;
+import es.juegojava.mapa.ItemPotionInitiative;
+import es.juegojava.mapa.ItemPotionLife;
 import es.juegojava.mapa.Room;
-
+import es.juegojava.players.Enemy;
+import es.juegojava.common.ClassType;
 import es.juegojava.common.ItemsType;
+import es.juegojava.common.Raza;
+import es.juegojava.common.WeaponsType;
 
 
 
@@ -32,7 +41,7 @@ public class Bootstrap
 	
 	
 	public Bootstrap() {
-		loadJsonFile("E:/workspace/GamePracticas/mapa.json");
+		loadJsonFile("mapa.json");
 	}
 	
 	public HashMap<Integer, Room> loadRooms() {
@@ -82,21 +91,15 @@ public class Bootstrap
 					for(int j = 0; j < sizeItems; j++) {
 						Integer id = itemsJson.getJsonObject(j).getInt("id");
 						String name = itemsJson.getJsonObject(j).getString("name");
-						Integer typeInt = itemsJson.getJsonObject(j).getInt("type");
+						String type = itemsJson.getJsonObject(j).getString("type");
 						
-						ItemsType type = ItemsType.NINGUNO;
 						
-						switch(typeInt) {
-							case 1:
-								type = ItemsType.ARMA;
-							case 2:
-								type = ItemsType.ARMADURA;
-							case 3:
-								type = ItemsType.POCION;
+						Item item = loadItemForType(itemsJson.getJsonObject(j), name, id, type);
+						
+						if(null != item)  {
+							r.getItems().add(item);
 						}
 						
-						
-						r.getItems().add(new Item(name, id, type));
 					}
 				}
 				
@@ -117,8 +120,30 @@ public class Bootstrap
 						Integer life = itemsJson.getJsonObject(j).getInt("life");
 						Integer initiative = itemsJson.getJsonObject(j).getInt("initiative");
 						
+						//Weapon Item
+						JsonObject weaponItem = itemsJson.getJsonObject(j).getJsonObject("weapon");
+						Integer idWeaponItem = weaponItem.getInt("id");
+						String nameWeaponItem = weaponItem.getString("name");
+						String typeWeaponItem = weaponItem.getString("type");
+						
+						//Siempre va a ser un arma lo que se le equipe al enemigo
+						ItemArma weapon = (ItemArma)loadItemForType(weaponItem, nameWeaponItem, idWeaponItem, typeWeaponItem);
+						
+						
 						//Drop item
-						JsonObject dropItem = itemsJson.getJsonObject(j).getJsonObject("dropItem");
+						JsonObject dropItem = itemsJson.getJsonObject(j).getJsonObject("itemDrop");
+						Integer idDropItem = dropItem.getInt("id");
+						String nameDropItem = dropItem.getString("name");
+						String typeDropItem = dropItem.getString("type");
+						
+						Item itemToDrop =  loadItemForType(dropItem, nameDropItem, idDropItem, typeDropItem);
+						
+						Enemy enemy = new Enemy(id, name, Raza.values()[razaInt-1], ClassType.values()[classInt-1], attack, defense, life, initiative, weapon, itemToDrop);
+						
+						r.getEnemies().add(enemy);
+						
+						
+						
 						
 						
 					}
@@ -137,6 +162,48 @@ public class Bootstrap
 				
 				return null;
 			}
+	}
+	
+	private Item loadItemForType(JsonObject itemsJson, String name, Integer id, String type) {
+		
+		Item item = null;
+		
+		switch(type) {
+			case "weapon":
+				Integer typeWeaponItem = itemsJson.getInt("weaponType");
+				Integer classItem = itemsJson.getInt("weaponClass");
+				Integer attackPoints = itemsJson.getInt("attack");
+				item = new ItemArma(name, id, WeaponsType.values()[typeWeaponItem-1], ClassType.values()[classItem-1], attackPoints);
+				
+				break;
+			case "armor":
+				Integer defensePoints = itemsJson.getInt("defense");
+				item = new ItemArmadura(name, id, defensePoints);
+				
+				break;
+			case "potionLife":
+				Integer lifePointsFromPotion = itemsJson.getInt("life");
+				item = new ItemPotionLife(name, id, lifePointsFromPotion);
+				
+				break;
+			case "potionAttack":
+				Integer attackPointsFromPotion = itemsJson.getInt("attack");
+				item = new ItemPotionAttack(name, id, attackPointsFromPotion);
+				
+				break;
+			case "potionDefense":
+				Integer defensePointsFromPotion = itemsJson.getInt("defense");
+				item = new ItemPotionDefense(name, id, defensePointsFromPotion);
+				
+				break;
+			case "potionIniiative":
+				Integer initiativePointsFromPotion = itemsJson.getInt("initiative");
+				item = new ItemPotionInitiative(name, id, initiativePointsFromPotion);
+				
+				break;
+		}
+		
+		return item;
 	}
 	
 	private void loadJsonFile(String jsonfile) {
