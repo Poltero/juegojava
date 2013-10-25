@@ -31,6 +31,9 @@ public class Game
 	
 	private int enemyFinaleIndex;
 	private Room roomFinale;
+	private Room currentRoom;
+	
+	private int currentRoomId;
 	
 	public Game() {
 		states = "createPJs";
@@ -47,10 +50,12 @@ public class Game
 			{
 				case "createPJs":
 					this.createPJs();
+					states = "init";
 					break;
 					
 				case "init":
 					this.calculateEnemyFinale();
+					currentRoomId = 1;
 					states = "splashscreen";
 					break;
 					
@@ -58,8 +63,21 @@ public class Game
 					ui.imprimirPorPantalla("Bienvenido al juego");
 					this.showPJs();
 					
-					states = "endgame";
+					states = "gamestart";
 					break;
+				
+				case "gamestart":
+					ui.imprimirPorPantalla("Empiezas el juego y entras en la primera habitacion de muchas..");
+					
+					states = "roomscreen";
+					break;
+				
+				case "roomscreen":
+					currentRoom = rooms.get(currentRoomId);
+					ui.imprimirPorPantalla(currentRoom.toString());
+					
+					break;
+					
 			}
 		}
 	}
@@ -76,11 +94,9 @@ public class Game
 	private void createPJs() {
 		EditPJ epj = new EditPJ(ui);
 		
-		epj.createPJs(3);
+		epj.createPJs(1);
 		
 		PJs = epj.getPlayers();
-		
-		states = "init";
 	}
 	
 	private void calculateEnemyFinale() {

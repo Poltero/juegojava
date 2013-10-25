@@ -29,6 +29,7 @@ public class Room extends Element
 		connections = new ArrayList<Element>();
 		items = new ArrayList<Item>();
 		enemies = new ArrayList<Enemy>();
+		pjns = new ArrayList<PersonajeNeutro>();
 	}
 
 	/**

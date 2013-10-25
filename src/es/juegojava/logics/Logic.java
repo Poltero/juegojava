@@ -36,8 +36,7 @@ public class Logic {
 		
 		if(currentRoom.getEnemies().size() != 0){
 			desc = "1- Atacar\n" +
-					"2- Cambiar de sala\n" + 
-					"3- Pasar turno\n";
+					"2- Cambiar de sala\n";
 			
 		}else{
 			desc = "1- Hablar con el NPC\n" +
@@ -48,7 +47,7 @@ public class Logic {
 					"5- Pasar turno\n";
 		}
 	
-		desc += "Que quieres hacer?\n";
+		desc += "\nQue quieres hacer?\n";
 		ui.imprimirPorPantalla(desc);
 	}
 	
