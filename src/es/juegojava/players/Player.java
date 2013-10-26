@@ -40,8 +40,7 @@ public class Player extends PjWithClass
 		return inventario;
 	}
 	
-	public void equipItem(int index) throws InvalidClassPlayerForEquipItem {
-		Item itemToEquip = inventario.get(index);
+	public void equipItem(Item itemToEquip) throws InvalidClassPlayerForEquipItem {
 		
 		if(itemToEquip instanceof ItemArma) {
 			ItemArma weapon = (ItemArma)itemToEquip;
@@ -54,6 +53,10 @@ public class Player extends PjWithClass
 		} else if(itemToEquip instanceof ItemArmadura) {
 			this.currentArmor = (ItemArmadura)itemToEquip;
 		}
+	}
+	
+	public void dropItem(int index) {
+		inventario.remove(index);
 	}
 
 }
