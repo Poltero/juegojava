@@ -7,6 +7,7 @@ import es.juegojava.common.ClassType;
 import es.juegojava.common.Element;
 import es.juegojava.common.GameStatus;
 import es.juegojava.common.ItemsType;
+import es.juegojava.exceptions.InventarioEmptyException;
 import es.juegojava.exceptions.OptionInvalidException;
 import es.juegojava.mapa.Item;
 import es.juegojava.mapa.Room;
@@ -51,23 +52,27 @@ public class Logic {
 		
 			if(currentRoom.getEnemies().size() != 0){
 				desc = "1- Atacar\n" +
-						"2- Cambiar de sala\n";
+						"2- Cambiar de sala\n" +
+						"3- pasar turno\n";
 				
 				actions.add("attackstate");
 				actions.add("changeroom");
+				actions.add("nextturn");
 				
 			}else{
 				desc = "1- Hablar con el NPC\n" +
 						"2- Ver inventario\n" + 
 						"3- Coger un item\n" +
 						"4- Tirar un item al suelo\n" +
-						"5- Cambiar de sala\n";
+						"5- Cambiar de sala\n" +
+						"6- Pasar turno\n";
 				
 				actions.add("speakscreen");
 				actions.add("inventarioscreen");
 				actions.add("takeitemscreen");
 				actions.add("dropitemscreen");
 				actions.add("changeroom");
+				actions.add("nextturn");
 			}
 		
 		} else if(state == "changeroom") {
@@ -125,7 +130,7 @@ public class Logic {
 		
 	}
 	
-	public void showInventario(Player currentPlayer) {
+	public void showInventario(Player currentPlayer) throws InventarioEmptyException {
 		List<Item> inventario = currentPlayer.getInventario();	
 		actions = new ArrayList<Object>();
 		
@@ -140,7 +145,7 @@ public class Logic {
 			
 			ui.imprimirPorPantalla("\nEquipar/Usar\n");
 		} else {
-			ui.imprimirPorPantalla("El inventario del PJ actual está vacio");
+			throw new InventarioEmptyException("El inventario del PJ actual está vacio");
 		}
 	}
 

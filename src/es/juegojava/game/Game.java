@@ -5,6 +5,7 @@ package es.juegojava.game;
 
 import es.juegojava.exceptions.EnemiesFromRoomNullException;
 import es.juegojava.exceptions.InvalidClassPlayerForEquipItem;
+import es.juegojava.exceptions.InventarioEmptyException;
 import es.juegojava.exceptions.OptionInvalidException;
 import es.juegojava.game.EditPJ;
 
@@ -39,6 +40,7 @@ public class Game
 	private Player currentPlayer;
 	
 	private int currentRoomId;
+	private int currentPlayerIndex;
 	
 	public Game() {
 		states = "createPJs";
@@ -48,6 +50,7 @@ public class Game
 		lg = new Logic(ui);
 		
 		init();
+		
 	}
 	
 	public void run() {
@@ -62,7 +65,7 @@ public class Game
 					this.calculateEnemyFinale();
 					currentRoomId = 1;
 					currentRoom = rooms.get(currentRoomId);
-					currentPlayer = PJs.get(0);
+					currentPlayerIndex = -1;
 					states = "splashscreen";
 					break;
 					
@@ -76,10 +79,12 @@ public class Game
 				case "gamestart":
 					ui.imprimirPorPantalla("Empiezas el juego y entras en la primera habitacion de muchas..");
 					
-					states = "roomscreen";
+					states = "nextturn";
 					break;
 				
-				case "roomscreen":
+				case "roomscreen":		
+					ui.imprimirPorPantalla("Es el turno de: " + currentPlayer.getNombre());
+					ui.imprimirPorPantalla(currentPlayer.toString());
 					ui.imprimirPorPantalla(currentRoom.toString());
 					
 					lg.printActions(currentRoom, "roomscreen");
@@ -99,14 +104,19 @@ public class Game
 				try {
 					currentRoomId = (int)lg.selectActions();
 					currentRoom = rooms.get(currentRoomId);
-					states = "roomscreen";
+					states = "nextturn";
 				} catch (OptionInvalidException e) {
 					ui.imprimirPorPantalla(e.getMessage());
 				}
 					break;
 					
 				case "inventarioscreen":
-					lg.showInventario(currentPlayer);
+					try {
+						lg.showInventario(currentPlayer);
+					} catch (InventarioEmptyException e) {
+						ui.imprimirPorPantalla(e.getMessage());
+						states = "roomscreen";
+					}
 					
 					try {
 						int indexItemInInventario = (int)lg.selectActions();
@@ -129,7 +139,7 @@ public class Game
 						//Saco el item del inventario
 						currentPlayer.getInventario().remove(indexItemInInventario);
 						
-						states = "roomscreen";
+						states = "nextturn";
 							
 						
 						
@@ -158,7 +168,7 @@ public class Game
 					ui.imprimirPorPantalla("Item guardado en el inventario");
 					
 					//Vuelve a la pantalla de room
-					states = "roomscreen";
+					states = "nextturn";
 					
 				} catch (OptionInvalidException e) {
 					ui.imprimirPorPantalla(e.getMessage());
@@ -172,6 +182,11 @@ public class Game
 					states = "endgame";
 					break;
 					
+					
+				case "nextturn":
+					nextTurn();
+					states = "roomscreen";
+					break;
 			}
 		}
 	}
@@ -189,7 +204,7 @@ public class Game
 		EditPJ epj = new EditPJ(ui);
 		
 		try {
-			epj.createPJs(1);
+			epj.createPJs(3);
 			
 			PJs = epj.getPlayers();
 			
@@ -216,6 +231,16 @@ public class Game
 		while(it.hasNext()) {
 			ui.imprimirPorPantalla(it.next().toString());
 		}
+	}
+	
+	private void nextTurn() {
+		if(currentPlayerIndex < PJs.size()-1) {
+			currentPlayerIndex++;
+		} else {
+			currentPlayerIndex = 0;
+		}
+		
+		currentPlayer = PJs.get(currentPlayerIndex);
 	}
 	
 	
