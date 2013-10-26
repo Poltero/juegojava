@@ -23,6 +23,7 @@ public class Logic {
 	UIManager ui;
 	List<Object> actions;
 	String[] doors;
+	CombatEngine ce;
 	
 	
 	public Logic(UIManager ui) {
@@ -34,6 +35,8 @@ public class Logic {
 		doors[1] = "Derecha";
 		doors[2] = "Abajo";
 		doors[3] = "Izquierda";
+		
+		ce = null;
 	}
 
 	public void printRoomDesc(Room roomToDesc){
@@ -147,6 +150,14 @@ public class Logic {
 		} else {
 			throw new InventarioEmptyException("El inventario del PJ actual está vacio");
 		}
+	}
+	
+	public void startCombat(List<Player> players, List<Enemy> enemies) {
+		if(null == ce) {
+			ce = new CombatEngine(players, enemies, ui);
+		}
+		
+		
 	}
 
 	
