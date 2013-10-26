@@ -4,6 +4,7 @@
 package es.juegojava.game;
 
 import es.juegojava.exceptions.EnemiesFromRoomNullException;
+import es.juegojava.exceptions.InvalidClassPlayerForEquipItem;
 import es.juegojava.exceptions.OptionInvalidException;
 import es.juegojava.game.EditPJ;
 
@@ -35,6 +36,7 @@ public class Game
 	private int enemyFinaleIndex;
 	private Room roomFinale;
 	private Room currentRoom;
+	private Player currentPlayer;
 	
 	private int currentRoomId;
 	
@@ -59,6 +61,8 @@ public class Game
 				case "init":
 					this.calculateEnemyFinale();
 					currentRoomId = 1;
+					currentRoom = rooms.get(currentRoomId);
+					currentPlayer = PJs.get(0);
 					states = "splashscreen";
 					break;
 					
@@ -76,7 +80,6 @@ public class Game
 					break;
 				
 				case "roomscreen":
-					currentRoom = rooms.get(currentRoomId);
 					ui.imprimirPorPantalla(currentRoom.toString());
 					
 					lg.printActions(currentRoom, "roomscreen");
@@ -95,12 +98,45 @@ public class Game
 					//El metodo devuelve el id de la nueva room tras aplicar la accion
 				try {
 					currentRoomId = (int)lg.selectActions();
+					currentRoom = rooms.get(currentRoomId);
 					states = "roomscreen";
 				} catch (OptionInvalidException e) {
 					ui.imprimirPorPantalla(e.getMessage());
 				}
 					break;
 					
+				case "inventarioscreen":
+					lg.showInventario(currentPlayer);
+					
+					try {
+						int indexItemInInventario = (int)lg.selectActions();
+						
+						Item itemToEquip = currentPlayer.getInventario().get(indexItemInInventario);
+						
+						
+						if(itemToEquip instanceof ItemArma || itemToEquip instanceof ItemArmadura) {
+							try {
+								currentPlayer.equipItem(itemToEquip);
+							} catch (InvalidClassPlayerForEquipItem e) {
+								ui.imprimirPorPantalla(e.getMessage());
+							}
+						} else {
+							//To use item
+						}
+						
+						states = "roomscreen";
+							
+						
+						
+					} catch (OptionInvalidException e) {
+						ui.imprimirPorPantalla(e.getMessage());
+					} catch(NullPointerException e) {
+						states = "roomscreen";
+					}
+					
+					
+					break;
+				
 				case "attackstate":
 					states = "endgame";
 					break;

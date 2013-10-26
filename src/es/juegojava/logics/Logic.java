@@ -58,11 +58,14 @@ public class Logic {
 				
 			}else{
 				desc = "1- Hablar con el NPC\n" +
-						"2- Explorar la sala\n" +
-						"3- Equipar item\n" + 
-						"4- Tirar un item al suelo\n" +
-						"4- Cambiar de sala\n" + 
-						"5- Pasar turno\n";
+						"2- Ver inventario\n" + 
+						"3- Tirar un item al suelo\n" +
+						"4- Cambiar de sala\n";
+				
+				actions.add("speakscreen");
+				actions.add("inventarioscreen");
+				actions.add("dropitemscreen");
+				actions.add("changeroom");
 			}
 		
 		} else if(state == "changeroom") {
@@ -77,9 +80,8 @@ public class Logic {
 				desc = option + "- " + doors[i];
 				
 				actions.add(connections.get(i));
-			}
-			
-			
+		
+			}	
 		}
 		
 	
@@ -91,15 +93,43 @@ public class Logic {
 		
 		int sizeActions = actions.size();
 		
-		int option = ui.leerNumeroTeclado();
+		if(sizeActions > 0) {
 		
-		if(option > 0 && option <= sizeActions) {
-			return actions.get(option-1);
+			int option = ui.leerNumeroTeclado();
+			
+			if(option > 0 && option <= sizeActions) {
+				return actions.get(option-1);
+			} else {
+				throw new OptionInvalidException("Opcion no valida!");
+			}
 		} else {
-			throw new OptionInvalidException("Opcion no valida!");
+		
+			throw new NullPointerException();
 		}
 		
 	}
+	
+	public void showInventario(Player currentPlayer) {
+		List<Item> inventario = currentPlayer.getInventario();
+		Iterator<Item> it = inventario.iterator();
+		
+		actions = new ArrayList<Object>();
+		
+		if(inventario.size() > 0) {
+		
+			int count = 1;
+			
+			while(it.hasNext()) {
+				ui.imprimirPorPantalla(count + "- " + it.next().getNombre() + "[" + it.next().getTipo() + "]");
+				actions.add(count-1);
+			}
+			
+			ui.imprimirPorPantalla("\nEquipar/Usar\n");
+		} else {
+			ui.imprimirPorPantalla("El inventario del PJ actual está vacio");
+		}
+	}
+	
 	
 	public void imprimirDialogo(PersonajeNeutro npc, int numeroDeFrase){
 		ui.imprimirPorPantalla(npc.toString(numeroDeFrase));

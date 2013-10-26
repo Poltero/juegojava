@@ -33,7 +33,7 @@ public class Player extends PjWithClass
 	
 	@Override
 	public String toString() {
-		return ("Nombre: " + nombre +", raza: " + raza + "\n");
+		return ("Nombre: " + nombre +", Raza: " + raza + ", Clase: " + classPj + "\n");
 	}
 
 	public List<Item> getInventario() {
