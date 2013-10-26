@@ -55,8 +55,11 @@ public class Player extends PjWithClass
 		}
 	}
 	
-	public void dropItem(int index) {
+	public Item dropItem(int index) {
+		Item itemToRoom = inventario.get(index);
 		inventario.remove(index);
+		
+		return itemToRoom;
 	}
 
 }
