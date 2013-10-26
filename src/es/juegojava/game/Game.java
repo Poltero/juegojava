@@ -117,12 +117,17 @@ public class Game
 						if(itemToEquip instanceof ItemArma || itemToEquip instanceof ItemArmadura) {
 							try {
 								currentPlayer.equipItem(itemToEquip);
+								
+								ui.imprimirPorPantalla("Item equipado!");
 							} catch (InvalidClassPlayerForEquipItem e) {
 								ui.imprimirPorPantalla(e.getMessage());
 							}
 						} else {
 							//To use item
 						}
+						
+						//Saco el item del inventario
+						currentPlayer.getInventario().remove(indexItemInInventario);
 						
 						states = "roomscreen";
 							

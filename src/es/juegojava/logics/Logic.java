@@ -79,7 +79,7 @@ public class Logic {
 			
 			for(int i = 0; i < sizeConnections; i++) {
 				int option = i+1;
-				desc = option + "- " + doors[i];
+				desc += option + "- " + doors[i];
 				
 				actions.add(connections.get(i));
 		
@@ -93,7 +93,7 @@ public class Logic {
 			
 			for(int i = 0; i < sizeItems; i++) {
 				int option = i+1;
-				desc = option + "- " + items.get(i).getNombre();
+				desc += option + "- " + items.get(i).getNombre() + "\n";
 				
 				actions.add(i);
 		
@@ -126,18 +126,16 @@ public class Logic {
 	}
 	
 	public void showInventario(Player currentPlayer) {
-		List<Item> inventario = currentPlayer.getInventario();
-		Iterator<Item> it = inventario.iterator();
-		
+		List<Item> inventario = currentPlayer.getInventario();	
 		actions = new ArrayList<Object>();
 		
-		if(inventario.size() > 0) {
+		int sizeInventario = inventario.size();
 		
-			int count = 1;
-			
-			while(it.hasNext()) {
-				ui.imprimirPorPantalla(count + "- " + it.next().getNombre() + "[" + it.next().getTipo() + "]");
-				actions.add(count-1);
+		if(sizeInventario > 0) {	
+			for(int i = 0; i < sizeInventario; i++) {
+				int count = i + 1;
+				ui.imprimirPorPantalla(count + "- " + inventario.get(i).getNombre() + "[" + inventario.get(i).getTipo() + "]");
+				actions.add(i);
 			}
 			
 			ui.imprimirPorPantalla("\nEquipar/Usar\n");
