@@ -136,6 +136,32 @@ public class Game
 					
 					
 					break;
+					
+				case "takeitemscreen":
+					lg.printActions(currentRoom, "takeitemscreen");
+					
+				try {
+					int indexItemFromRoom = (int) lg.selectActions();
+					
+					Item itemFromRoom = currentRoom.getItems().get(indexItemFromRoom);
+					
+					currentPlayer.addItemToInventario(itemFromRoom);
+					
+					//Elimino el item de la room
+					currentRoom.getItems().remove(indexItemFromRoom);
+					
+					ui.imprimirPorPantalla("Item guardado en el inventario");
+					
+					//Vuelve a la pantalla de room
+					states = "roomscreen";
+					
+				} catch (OptionInvalidException e) {
+					ui.imprimirPorPantalla(e.getMessage());
+				} catch(NullPointerException e) {
+					states = "roomscreen";
+				}
+					
+					break;
 				
 				case "attackstate":
 					states = "endgame";

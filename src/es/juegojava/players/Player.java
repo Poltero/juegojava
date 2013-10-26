@@ -61,5 +61,9 @@ public class Player extends PjWithClass
 		
 		return itemToRoom;
 	}
+	
+	public void addItemToInventario(Item item) {
+		inventario.add(item);
+	}
 
 }

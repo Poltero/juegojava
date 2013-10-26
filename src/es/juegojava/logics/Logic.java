@@ -59,11 +59,13 @@ public class Logic {
 			}else{
 				desc = "1- Hablar con el NPC\n" +
 						"2- Ver inventario\n" + 
-						"3- Tirar un item al suelo\n" +
-						"4- Cambiar de sala\n";
+						"3- Coger un item\n" +
+						"4- Tirar un item al suelo\n" +
+						"5- Cambiar de sala\n";
 				
 				actions.add("speakscreen");
 				actions.add("inventarioscreen");
+				actions.add("takeitemscreen");
 				actions.add("dropitemscreen");
 				actions.add("changeroom");
 			}
@@ -80,6 +82,20 @@ public class Logic {
 				desc = option + "- " + doors[i];
 				
 				actions.add(connections.get(i));
+		
+			}	
+		} else if(state == "takeitemscreen") {
+			ui.imprimirPorPantalla("Al explorar la habitacion encuentras los siguientes items: ");
+			
+			List<Item> items = currentRoom.getItems();
+			
+			int	sizeItems = items.size();
+			
+			for(int i = 0; i < sizeItems; i++) {
+				int option = i+1;
+				desc = option + "- " + items.get(i).getNombre();
+				
+				actions.add(i);
 		
 			}	
 		}
@@ -129,6 +145,7 @@ public class Logic {
 			ui.imprimirPorPantalla("El inventario del PJ actual está vacio");
 		}
 	}
+
 	
 	
 	public void imprimirDialogo(PersonajeNeutro npc, int numeroDeFrase){
