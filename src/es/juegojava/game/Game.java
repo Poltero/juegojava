@@ -4,12 +4,14 @@
 package es.juegojava.game;
 
 import es.juegojava.exceptions.EnemiesFromRoomNullException;
+import es.juegojava.exceptions.OptionInvalidException;
 import es.juegojava.game.EditPJ;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import es.juegojava.logics.Logic;
 import es.juegojava.mapa.*;
 import es.juegojava.players.Enemy;
 import es.juegojava.players.Player;
@@ -28,6 +30,7 @@ public class Game
 	private HashMap<Integer, Room> rooms;
 	private List<Player> PJs;
 	private Bootstrap bs;
+	private Logic lg;
 	
 	private int enemyFinaleIndex;
 	private Room roomFinale;
@@ -40,6 +43,7 @@ public class Game
 		
 		ui = new UIManager();
 		bs = new Bootstrap();
+		lg = new Logic(ui);
 		
 		init();
 	}
@@ -76,6 +80,22 @@ public class Game
 					currentRoom = rooms.get(currentRoomId);
 					ui.imprimirPorPantalla(currentRoom.toString());
 					
+					lg.printActions(currentRoom);
+					
+					try {
+						states = lg.selectActions();
+					} catch (OptionInvalidException e) {
+						ui.imprimirPorPantalla(e.getMessage());
+					}
+					
+					break;
+				
+				case "changeroom":
+					states = "endgame";
+					break;
+					
+				case "attackstate":
+					states = "endgame";
 					break;
 					
 			}

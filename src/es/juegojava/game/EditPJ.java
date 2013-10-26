@@ -52,7 +52,7 @@ public class EditPJ
 			ClassType[] classPjs = ClassType.values();
 			int sizeClassPjs = classPjs.length;
 			
-			for(int j = 0; j < sizeClassPjs; j++) {
+			for(int j = 0; j < sizeClassPjs-1; j++) {
 				ui.imprimirPorPantalla("\t"+(j+1) +"- " + classPjs[j]);
 			}
 			

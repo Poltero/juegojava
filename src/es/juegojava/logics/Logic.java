@@ -1,10 +1,12 @@
 package es.juegojava.logics;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import es.juegojava.common.ClassType;
 import es.juegojava.common.GameStatus;
 import es.juegojava.common.ItemsType;
+import es.juegojava.exceptions.OptionInvalidException;
 import es.juegojava.mapa.Item;
 import es.juegojava.mapa.Room;
 import es.juegojava.players.Enemy;
@@ -17,11 +19,14 @@ public class Logic {
 	
 	GameStatus estadoJuego;
 	UIManager ui;
+	List<String> estados;
 	
 	
 	public Logic(UIManager ui) {
 		super();
 		this.ui = ui;
+		
+		estados = new ArrayList<String>();
 	}
 
 	public void printRoomDesc(Room roomToDesc){
@@ -30,13 +35,16 @@ public class Logic {
 		ui.imprimirPorPantalla(desc);
 	}
 	
-	public void imprimirListaAcciones(Room currentRoom){
+	public void printActions(Room currentRoom){
 		
 		String desc = "";
 		
 		if(currentRoom.getEnemies().size() != 0){
 			desc = "1- Atacar\n" +
 					"2- Cambiar de sala\n";
+			
+			estados.add("attackstate");
+			estados.add("changeRoom");
 			
 		}else{
 			desc = "1- Hablar con el NPC\n" +
@@ -49,6 +57,19 @@ public class Logic {
 	
 		desc += "\nQue quieres hacer?\n";
 		ui.imprimirPorPantalla(desc);
+	}
+	
+	public String selectActions() throws OptionInvalidException {
+		int sizeActions = estados.size();
+		
+		int option = ui.leerNumeroTeclado();
+		
+		if(option > 0 && option < sizeActions) {
+			return estados.get(option-1);
+		} else {
+			throw new OptionInvalidException("Opcion no valida!");
+		}
+		
 	}
 	
 	public void imprimirDialogo(PersonajeNeutro npc, int numeroDeFrase){
