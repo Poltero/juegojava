@@ -10,6 +10,7 @@ import es.juegojava.ui.UIManager;
 import es.juegojava.common.ClassType;
 import es.juegojava.common.Raza;
 import es.juegojava.players.*;
+import es.juegojava.exceptions.OptionInvalidException;
 
 /**
  * @author pablo.fernandez
@@ -24,7 +25,7 @@ public class EditPJ
 		this.ui = ui;
 	}
 	
-	public void createPJs(int numPJsToCreate) {
+	public void createPJs(int numPJsToCreate) throws OptionInvalidException {
 		players = new ArrayList<Player>();
 		
 		ui.imprimirPorPantalla("Bienvenido al editor de PJs del juego");
@@ -47,6 +48,11 @@ public class EditPJ
 			
 			int optionRaza = ui.leerNumeroTeclado();
 			
+			if(optionRaza < 0 || optionRaza > sizeRazas) {
+				players = null;
+				throw new OptionInvalidException("No existe la opcion, [reset del editor]");
+			}
+			
 			ui.imprimirPorPantalla("Elige la clase de tu PJ: ");
 			
 			ClassType[] classPjs = ClassType.values();
@@ -57,6 +63,11 @@ public class EditPJ
 			}
 			
 			int optionClassPj = ui.leerNumeroTeclado();
+			
+			if(optionClassPj < 0 || optionClassPj > sizeClassPjs-1) {
+				players = null;
+				throw new OptionInvalidException("No existe la opcion, [reset del editor]");
+			}
 			
 			Player p = null;
 			

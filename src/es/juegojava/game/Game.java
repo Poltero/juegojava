@@ -54,7 +54,6 @@ public class Game
 			{
 				case "createPJs":
 					this.createPJs();
-					states = "init";
 					break;
 					
 				case "init":
@@ -122,9 +121,16 @@ public class Game
 	private void createPJs() {
 		EditPJ epj = new EditPJ(ui);
 		
-		epj.createPJs(1);
-		
-		PJs = epj.getPlayers();
+		try {
+			epj.createPJs(1);
+			
+			PJs = epj.getPlayers();
+			
+			states = "init";
+			
+		} catch (OptionInvalidException e) {
+			ui.imprimirPorPantalla(e.getMessage());
+		}
 	}
 	
 	private void calculateEnemyFinale() {
