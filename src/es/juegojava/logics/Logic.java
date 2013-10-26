@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import es.juegojava.common.ClassType;
+import es.juegojava.common.Element;
 import es.juegojava.common.GameStatus;
 import es.juegojava.common.ItemsType;
 import es.juegojava.exceptions.OptionInvalidException;
@@ -19,14 +20,19 @@ public class Logic {
 	
 	GameStatus estadoJuego;
 	UIManager ui;
-	List<String> estados;
+	List<Object> actions;
+	String[] doors;
 	
 	
 	public Logic(UIManager ui) {
 		super();
 		this.ui = ui;
 		
-		estados = new ArrayList<String>();
+		doors = new String[4];
+		doors[0] = "Arriba";
+		doors[1] = "Derecha";
+		doors[2] = "Abajo";
+		doors[3] = "Izquierda";
 	}
 
 	public void printRoomDesc(Room roomToDesc){
@@ -35,37 +41,60 @@ public class Logic {
 		ui.imprimirPorPantalla(desc);
 	}
 	
-	public void printActions(Room currentRoom){
+	public void printActions(Room currentRoom, String state){
 		
 		String desc = "";
 		
-		if(currentRoom.getEnemies().size() != 0){
-			desc = "1- Atacar\n" +
-					"2- Cambiar de sala\n";
+		actions = new ArrayList<Object>();
+		
+		if(state == "roomscreen") {
+		
+			if(currentRoom.getEnemies().size() != 0){
+				desc = "1- Atacar\n" +
+						"2- Cambiar de sala\n";
+				
+				actions.add("attackstate");
+				actions.add("changeroom");
+				
+			}else{
+				desc = "1- Hablar con el NPC\n" +
+						"2- Explorar la sala\n" +
+						"3- Equipar item\n" + 
+						"4- Tirar un item al suelo\n" +
+						"4- Cambiar de sala\n" + 
+						"5- Pasar turno\n";
+			}
+		
+		} else if(state == "changeroom") {
+			ui.imprimirPorPantalla("Elige una de las siguientes puertas: ");
 			
-			estados.add("attackstate");
-			estados.add("changeRoom");
+			List<Integer> connections = currentRoom.getConnections();
 			
-		}else{
-			desc = "1- Hablar con el NPC\n" +
-					"2- Explorar la sala\n" +
-					"3- Equipar item\n" + 
-					"4- Tirar un item al suelo\n" +
-					"4- Cambiar de sala\n" + 
-					"5- Pasar turno\n";
+			int sizeConnections = connections.size();
+			
+			for(int i = 0; i < sizeConnections; i++) {
+				int option = i+1;
+				desc = option + "- " + doors[i];
+				
+				actions.add(connections.get(i));
+			}
+			
+			
 		}
+		
 	
-		desc += "\nQue quieres hacer?\n";
+		desc += "\nSelecciona una opcion: \n";
 		ui.imprimirPorPantalla(desc);
 	}
 	
-	public String selectActions() throws OptionInvalidException {
-		int sizeActions = estados.size();
+	public Object selectActions() throws OptionInvalidException {
+		
+		int sizeActions = actions.size();
 		
 		int option = ui.leerNumeroTeclado();
 		
-		if(option > 0 && option < sizeActions) {
-			return estados.get(option-1);
+		if(option > 0 && option <= sizeActions) {
+			return actions.get(option-1);
 		} else {
 			throw new OptionInvalidException("Opcion no valida!");
 		}

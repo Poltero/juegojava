@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class Room extends Element
 {
-	List<Element> connections;
+	List<Integer> connections;
 	List<Item> items;
 	List<Enemy> enemies;
 	List<PersonajeNeutro> pjns;
@@ -26,7 +26,7 @@ public class Room extends Element
 	public Room(Integer id, String nombre) {
 		super(id, nombre);
 		
-		connections = new ArrayList<Element>();
+		connections = new ArrayList<Integer>();
 		items = new ArrayList<Item>();
 		enemies = new ArrayList<Enemy>();
 		pjns = new ArrayList<PersonajeNeutro>();
@@ -56,14 +56,14 @@ public class Room extends Element
 	/**
 	 * @return the connections
 	 */
-	public List<Element> getConnections() {
+	public List<Integer> getConnections() {
 		return connections;
 	}
 
 	/**
 	 * @param connections the connections to set
 	 */
-	public void setConnections(List<Element> connections) {
+	public void setConnections(List<Integer> connections) {
 		this.connections = connections;
 	}
 	

@@ -24,6 +24,7 @@ import es.juegojava.mapa.ItemPotionLife;
 import es.juegojava.mapa.Room;
 import es.juegojava.players.Enemy;
 import es.juegojava.common.ClassType;
+import es.juegojava.common.Element;
 import es.juegojava.common.ItemsType;
 import es.juegojava.common.Raza;
 import es.juegojava.common.WeaponsType;
@@ -81,9 +82,9 @@ public class Bootstrap
 			//Crear conexiones entre habitaciones y items
 			
 			for(int i = 0; i < size; i++) {
-				Object[] connections = arrayData.getJsonObject(i).getJsonArray("connections").toArray();
+				JsonArray connections = arrayData.getJsonObject(i).getJsonArray("connections");
 				
-				int sizeConnections = connections.length;
+				int sizeConnections = connections.size();
 				
 				//Current Room
 				Room r = rooms.get(arrayData.getJsonObject(i).getInt("id"));
@@ -92,7 +93,7 @@ public class Bootstrap
 				
 				if(sizeConnections > 0) {
 					for(int j = 0; j < sizeConnections; j++) {
-						r.getConnections().add(rooms.get(connections[j]));
+						r.getConnections().add(connections.getInt(j));
 					}
 				}
 				

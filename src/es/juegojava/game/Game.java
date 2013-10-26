@@ -80,10 +80,10 @@ public class Game
 					currentRoom = rooms.get(currentRoomId);
 					ui.imprimirPorPantalla(currentRoom.toString());
 					
-					lg.printActions(currentRoom);
+					lg.printActions(currentRoom, "roomscreen");
 					
 					try {
-						states = lg.selectActions();
+						states = (String)lg.selectActions();
 					} catch (OptionInvalidException e) {
 						ui.imprimirPorPantalla(e.getMessage());
 					}
@@ -91,7 +91,15 @@ public class Game
 					break;
 				
 				case "changeroom":
-					states = "endgame";
+					lg.printActions(currentRoom, "changeroom");
+					
+					//El metodo devuelve el id de la nueva room tras aplicar la accion
+				try {
+					currentRoomId = (int)lg.selectActions();
+					states = "roomscreen";
+				} catch (OptionInvalidException e) {
+					ui.imprimirPorPantalla(e.getMessage());
+				}
 					break;
 					
 				case "attackstate":
