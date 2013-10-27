@@ -92,7 +92,7 @@ public class Logic {
 			
 			for(int i = 0; i < sizeConnections; i++) {
 				int option = i+1;
-				desc += option + "- " + doors[i];
+				desc += option + "- " + doors[i] + "\n";
 				
 				actions.add(connections.get(i));
 		
@@ -138,8 +138,7 @@ public class Logic {
 		
 	}
 	
-	public void showInventario(Player currentPlayer) throws InventarioEmptyException {
-		List<Item> inventario = currentPlayer.getInventario();	
+	public void showInventario(List<Item> inventario) throws InventarioEmptyException {
 		actions = new ArrayList<Object>();
 		
 		int sizeInventario = inventario.size();
@@ -182,8 +181,8 @@ public class Logic {
 			} else if(dataFromCombat.get("state") == "attackerbyplayer") {
 				ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getAttacker().getNombre() +")\n");
 				
-				ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
 				ui.imprimirPorPantalla("Selecciona un enemigo para atacarle: ");
+				ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
 				
 				try {
 					int enemyNumToAttack = (int) selectActions();
@@ -223,6 +222,8 @@ public class Logic {
 				attackName = "Error al realizar el ataque";
 				break;
 			}
+			
+			ui.imprimirPorPantalla(attackName);
 			
 			ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
 			
@@ -288,21 +289,6 @@ public class Logic {
 			}
 		}else{
 			ui.imprimirPorPantalla("No hay items en la sala\n");
-		}
-	}
-	
-	//Metodo para mostrar los items de la lista cuando selecciones la opcion "equipar item" o "usar pocion"
-	public void imprimirListaItemUsables(Player currentPlayer, ItemsType tipoItem){
-		
-		Item itemAMostrar;
-	
-		for(int i = 0; i < currentPlayer.getInventario().size(); i++){
-			
-			itemAMostrar = currentPlayer.getInventario().get(i);
-			
-			if(tipoItem == itemAMostrar.getTipo()){
-				ui.imprimirPorPantalla(itemAMostrar.toString());
-			}
 		}
 	}
 	

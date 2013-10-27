@@ -121,9 +121,9 @@ public class PjWithClass extends Personaje {
 		
 		super(id, nombre, raza);
 		
-		this.attack = 20 + attack;
-		this.defense = 15 + defense;
-		this.life = 100 + life;
+		this.attack = attack;
+		this.defense = defense;
+		this.life = life;
 		this.initiative = initiative;
 		this.classPj = classPj;
 		this.currentWeapon = currentWeapon;

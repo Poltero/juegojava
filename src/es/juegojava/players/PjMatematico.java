@@ -16,7 +16,7 @@ import es.juegojava.mapa.ItemArmadura;
 public class PjMatematico extends Player {
 
 	public PjMatematico(Integer id, String nombre, Raza raza) {
-		super(id, nombre, raza, ClassType.MATEMATICO, 18, 35, 100, 1,
+		super(id, nombre, raza, ClassType.MATEMATICO, 18, 35, 90, 1,
 				null);
 		
 		String desc = "Reloj Casio con mando a distancia, te otorga el ataque de una marabunta de futboleros enfurecidos cuando le cambias de canal mientras ven el partido en el bar.";

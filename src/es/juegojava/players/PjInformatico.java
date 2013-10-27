@@ -17,7 +17,7 @@ import es.juegojava.mapa.ItemArmadura;
 public class PjInformatico extends Player {
 
 	public PjInformatico(Integer id, String nombre, Raza raza) {		
-		super(id, nombre, raza, ClassType.INFORMATICO, 30, 10, 20, 1,
+		super(id, nombre, raza, ClassType.INFORMATICO, 30, 10, 100, 1,
 				null);
 		
 		String desc = "Arma peligrosa y puntiaguda, puedes matar dependiendo del color con que se escriba.";

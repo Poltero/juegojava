@@ -16,7 +16,7 @@ import es.juegojava.mapa.ItemArmadura;
 public class PjTeleco extends Player {
 
 	public PjTeleco(Integer id, String nombre, Raza raza) {
-		super(id, nombre, raza, ClassType.TELECO, 25, 15, 1, 1,
+		super(id, nombre, raza, ClassType.TELECO, 25, 110, 1, 1,
 				null);
 		
 		String desc = "Taza del desayuno de Lost, nadie sabe de dónde ha salido ni cuales son sus poderes pero esta dura y es grande.";

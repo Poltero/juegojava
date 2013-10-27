@@ -21,23 +21,16 @@ import es.juegojava.mapa.ItemArmadura;
 public class Player extends PjWithClass
 {
 	ItemArmadura currentArmor;
-	List<Item> inventario;
 
 	public Player(Integer id, String nombre, Raza raza, ClassType classPj, int attack, 
 			int defense,  int life, int initiative, ItemArma currentWeapon) {
 		
 		super(id, nombre, raza, classPj, attack, defense, life, initiative, currentWeapon);
-		
-		inventario = new ArrayList<Item>();
 	}
 	
 	@Override
 	public String toString() {
 		return ("Nombre: " + nombre +", Raza: " + raza + ", Clase: " + classPj + "\n");
-	}
-
-	public List<Item> getInventario() {
-		return inventario;
 	}
 	
 	public void equipItem(Item itemToEquip) throws InvalidClassPlayerForEquipItem {
@@ -53,17 +46,6 @@ public class Player extends PjWithClass
 		} else if(itemToEquip instanceof ItemArmadura) {
 			this.currentArmor = (ItemArmadura)itemToEquip;
 		}
-	}
-	
-	public Item dropItem(int index) {
-		Item itemToRoom = inventario.get(index);
-		inventario.remove(index);
-		
-		return itemToRoom;
-	}
-	
-	public void addItemToInventario(Item item) {
-		inventario.add(item);
 	}
 
 }

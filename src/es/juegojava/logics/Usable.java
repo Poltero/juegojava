@@ -5,12 +5,10 @@ package es.juegojava.logics;
 
 import es.juegojava.players.Player;
 
-
-
 /**
- * @author pablo.fernandez
+ * @author pfranco
  *
  */
 public interface Usable {
-	void use(Player player);
+	public void use(Player player);
 }
