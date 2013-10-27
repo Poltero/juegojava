@@ -187,9 +187,17 @@ public class Game
 					break;
 					
 				case "attackingstate":
-					lg.startCombat();
+					states = lg.startCombat();
 					break;
 					
+				case "loseplayer":
+					ui.imprimirPorPantalla("Todos tus personajes han muerto (You lose)");
+					states = "endgame";
+					
+				case "loseenemies":
+					ui.imprimirPorPantalla("Has matado a todos los enemigos de la habitacion");
+					states = "nextturn";
+					break;
 					
 				case "nextturn":
 					nextTurn();

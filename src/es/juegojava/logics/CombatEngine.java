@@ -24,6 +24,7 @@ public class CombatEngine
 	private ListPjWithClassOrdered turns;
 	private int playerNumSelected;
 	private int numberOfPlayers;
+	private int numberOfEnemies;
 	private PjWithClass attacker;
 	private PjWithClass defender;
 	
@@ -31,6 +32,7 @@ public class CombatEngine
 	public CombatEngine(List<Player> players, List<Enemy> enemies) {
 		
 		numberOfPlayers = players.size();
+		numberOfEnemies = enemies.size();
 		
 		turns = new ListPjWithClassOrdered();
 		
@@ -126,6 +128,11 @@ public class CombatEngine
 		
 		if(defender.getLife() == 0) {
 			turns.remove(defender);
+			if(defender instanceof Player) {
+				this.numberOfPlayers--;
+			} else {
+				this.numberOfEnemies--;
+			}
 		
 		} else {
 			//Eliminamos al atacante
@@ -136,6 +143,17 @@ public class CombatEngine
 		}
 		
 		return dataAttack;
+	}
+	
+	
+	public String getStateCombat() {
+		if(this.numberOfPlayers == 0) {
+			return "loseplayer";
+		} else if(this.numberOfEnemies == 0) {
+			return "loseenemies";
+		} else {
+			return "continue";
+		}
 	}
 
 	/**

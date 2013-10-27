@@ -3,8 +3,8 @@
         "id": 100,
         "name": "Zona 0",
         "connections": [101],
-		"descripcion": Estas en una habitación limpia y llena de tecnología, parece un laboratorio en donde se encuentra una máquina rodeada de muchos cables, parece estar destrozada y de ella sale un humo negro…",
-        "items": []
+		"descripcion": "Estas en una habitación limpia y llena de tecnología, parece un laboratorio en donde se encuentra una máquina rodeada de muchos cables, parece estar destrozada y de ella sale un humo negro…",
+        "items": [],
 		"npcs" : [
 			{
 				"id": 120,
@@ -25,7 +25,7 @@
         "id": 101,
         "name": "Sala de Comunicaciones",
         "connections": [100,102],
-		"descripcion": Estas en una habitación atestada de cables, apenas te ves los pies y hace un calor de muerte, el aire acondicionado no funciona y solo se escuchan ruidos eléctricos.",
+		"descripcion": "Estas en una habitación atestada de cables, apenas te ves los pies y hace un calor de muerte, el aire acondicionado no funciona y solo se escuchan ruidos eléctricos.",
         "items": [
             {
                 "id": 55,
@@ -95,7 +95,7 @@
             {
                 "id": 22,
                 "name": "Pocion de Iniciativa",
-				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente." 
+				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente.",
                 "type": "usable",
                 "iniciative": 3
             }
@@ -197,7 +197,7 @@
                 "itemDrop": {
 					"id": 23,
 					"name": "Pocion de Vida",
-					"description": "Poción que restaura la vida de un aliado." 
+					"description": "Poción que restaura la vida de un aliado.",
 					"type": "usable",
 					"life": 30
                 }
@@ -214,14 +214,14 @@
             {
                 "id": 22,
                 "name": "Pocion de Iniciativa",
-				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente." 
+				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente.",
                 "type": "usable",
                 "iniciative": 3
             },
 			{
                 "id": 20,
                 "name": "Pocion de Ataque",
-				"description": " Poción que aumenta el ataque de un aliado de forma permanente." 
+				"description": " Poción que aumenta el ataque de un aliado de forma permanente.",
                 "type": "usable",
                 "attack": 8
             }
