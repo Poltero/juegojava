@@ -23,7 +23,6 @@ public class CombatEngine
 {
 	private ListPjWithClassOrdered turns;
 	private int playerNumSelected;
-	private int enemyNumSelected;
 	private int numberOfPlayers;
 	private PjWithClass attacker;
 	private PjWithClass defender;
@@ -57,26 +56,27 @@ public class CombatEngine
 		int sizeTurns = turns.size();
 		
 		if(attacker instanceof Enemy) {
-			playerNumSelected = (int)Math.random()*numberOfPlayers;
+			playerNumSelected = (int)Math.random()*numberOfPlayers+1;
 			int count = 1;
 			
 			for(int i = 0; i < sizeTurns; i++) {
 				PjWithClass pj = turns.get(i);
 				
 				if(pj instanceof Player) {
-					count++;
-					
+			
 					if(count == playerNumSelected) {
 						//Guardamos el indice del player
-						playerNumSelected = i;
+						defender = pj;
 						data.put("state", "attackerbyenemy");
 						break;
 					}
+					
+					count++;
 				}
 			}
 			
 		} else if(attacker instanceof Player) {
-			int count = 0;
+			int count = 1;
 			String str = "";
 			
 			data.put("state", "attackerbyplayer");
@@ -86,10 +86,11 @@ public class CombatEngine
 				PjWithClass pj = turns.get(i);
 				
 				if(pj instanceof Enemy) {
-					count = i+1;
 					str += count + "- " + pj.getNombre() + "\n";
 					
 					actions.add(count);
+					
+					count++;
 				}
 			}
 			
@@ -100,7 +101,7 @@ public class CombatEngine
 	}
 	
 	
-	public void selectDefender(int numEnemy) {
+	public void selectEnemyToAttack(int numEnemy) {
 		int sizeTurns = turns.size();
 		int count = 1;
 		
@@ -108,18 +109,46 @@ public class CombatEngine
 			PjWithClass pj = turns.get(i);
 			
 			if(pj instanceof Enemy) {
-				count++;
-				
 				if(count == numEnemy) {
 					//Guardamos el indice del player
 					defender = pj;
 					break;
 				}
+				
+				count++;
 			}
 		}
 	}
 	
-	public void start() {
-		attacker.attack(defender);
+	public int[] start() {
+		int[] dataAttack = attacker.attack(defender);
+		
+		
+		if(defender.getLife() == 0) {
+			turns.remove(defender);
+		
+		} else {
+			//Eliminamos al atacante
+			turns.remove(0);
+			
+			//Lo metemos al final
+			turns.add(attacker);
+		}
+		
+		return dataAttack;
+	}
+
+	/**
+	 * @return the attacker
+	 */
+	public PjWithClass getAttacker() {
+		return attacker;
+	}
+
+	/**
+	 * @return the defender
+	 */
+	public PjWithClass getDefender() {
+		return defender;
 	}
 }

@@ -151,12 +151,25 @@ public class PjWithClass extends Personaje {
 		return cadenaClase;
 	}
 	
-	public void attack(PjWithClass tarjetPj){
+	public int[] attack(PjWithClass tarjetPj){
+		
+		int[] dataAtk = new int[3];
 		
 		int realAtk = this.attack + this.currentWeapon.getAtack();
-		int finalLife = (tarjetPj.getLife() - (realAtk - tarjetPj.getDefense()));
+		int mitigateAtk = realAtk - tarjetPj.getDefense();
+		int finalLife = (tarjetPj.getLife() - mitigateAtk);
+		
+		if(finalLife < 0) {
+			finalLife = 0;
+		}
 		
 		tarjetPj.setLife(finalLife);
+		
+		dataAtk[0] = finalLife;
+		dataAtk[1] = realAtk;
+		dataAtk[2] = mitigateAtk;
+		
+		return dataAtk;
 	}
 
 }

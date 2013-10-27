@@ -166,23 +166,36 @@ public class Logic {
 		
 		if(dataFromCombat.get("state") == "attackerbyenemy") {
 			ui.imprimirPorPantalla("El turno es del enemigo");
-			
-			//To combate enemigo
+						
 		
 		} else if(dataFromCombat.get("state") == "attackerbyplayer") {
+			ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getDefender().getNombre() +")\n");
 			
 			ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
-			ui.imprimirPorPantalla("Selecciona una opcion: ");
+			ui.imprimirPorPantalla("Selecciona un enemigo para atacarle: ");
 			
 			try {
 				int enemyNumToAttack = (int) selectActions();
 				
-				ce.selectDefender(enemyNumToAttack);
+				ce.selectEnemyToAttack(enemyNumToAttack);
 				
 			} catch (OptionInvalidException e) {
 				ui.imprimirPorPantalla(e.getMessage());
 			}
-			
+		}
+		
+		ui.imprimirPorPantalla("Se enfrentan en combate: ");
+		
+		ui.imprimirPorPantalla(ce.getAttacker().getNombre() + " vs " + ce.getDefender().getNombre());
+		
+		int[] dataCombat = ce.start();
+		
+		ui.imprimirPorPantalla("El atacante ataca con una fuerza total de " + dataCombat[1] + " puntos sobre el defensor");
+		ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
+		
+		ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
+		
+		if(dataCombat[0] == 0) {
 			
 		}
 		
