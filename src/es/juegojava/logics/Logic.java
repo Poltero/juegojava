@@ -26,6 +26,10 @@ public class Logic {
 	String[] doors;
 	CombatEngine ce;
 	
+	//Listas players and rooms
+	List<Player> players;
+	List<Enemy> enemies;
+	
 	
 	public Logic(UIManager ui) {
 		super();
@@ -155,7 +159,10 @@ public class Logic {
 	
 	public void initCombat(List<Player> players, List<Enemy> enemies) {
 		if(null == ce) {
-			ce = new CombatEngine(players, enemies);
+			this.players = players;
+			this.enemies = enemies;
+			
+			ce = new CombatEngine(this.players, this.enemies);
 		}
 	}
 	
@@ -196,7 +203,12 @@ public class Logic {
 		ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
 		
 		if(dataCombat[0] == 0) {
-			
+			ui.imprimirPorPantalla("El defensor ha caido");
+			if(ce.getDefender() instanceof Player) {
+				players.remove(ce.getDefender());
+			} else {
+				enemies.remove(ce.getDefender());
+			}
 		}
 		
 		

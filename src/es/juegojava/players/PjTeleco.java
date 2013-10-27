@@ -14,7 +14,7 @@ import es.juegojava.mapa.ItemArma;
 public class PjTeleco extends Player {
 
 	public PjTeleco(Integer id, String nombre, Raza raza) {
-		super(id, nombre, raza, ClassType.TELECO, 25, 15, 100, 1,
+		super(id, nombre, raza, ClassType.TELECO, 25, 15, 1, 1,
 				null);
 		// TODO Auto-generated constructor stub
 	}
