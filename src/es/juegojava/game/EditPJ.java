@@ -76,13 +76,13 @@ public class EditPJ
 			ClassType[] classPjs = ClassType.values();
 			int sizeClassPjs = classPjs.length;
 			
-			for(int j = 0; j < sizeClassPjs-1; j++) {
+			for(int j = 0; j < sizeClassPjs; j++) {
 				ui.imprimirPorPantalla("\t"+(j+1) +"- " + classPjs[j]);
 			}
 			
 			int optionClassPj = ui.leerNumeroTeclado();
 			
-			if(optionClassPj < 0 || optionClassPj > sizeClassPjs-1) {
+			if(optionClassPj < 0 || optionClassPj > sizeClassPjs) {
 				players = null;
 				throw new OptionInvalidException("No existe la opcion, [reset del editor]");
 			}

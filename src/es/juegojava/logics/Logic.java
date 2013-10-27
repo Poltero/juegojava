@@ -258,58 +258,68 @@ public class Logic {
 				try {
 					int enemyNumToAttack = (int) selectActions();
 					
-					ce.selectEnemyToAttack(enemyNumToAttack);
+					if(enemyNumToAttack == 10) {
+						stateCombat = "changeroom";
+					} else {
+					
+						ce.selectEnemyToAttack(enemyNumToAttack);
+					}
 					
 				} catch (OptionInvalidException e) {
 					ui.imprimirPorPantalla(e.getMessage());
 				}
 			}
 			
-			ui.imprimirPorPantalla("Se enfrentan en combate: ");
+			if(stateCombat != "changeroom") {
 			
-			ui.imprimirPorPantalla(ce.getAttacker().getNombre() + " vs " + ce.getDefender().getNombre());
-			
-			int[] dataCombat = ce.start();
-			
-			
-			String weaponName = ce.getAttacker().getCurrentWeapon().getNombre();
-			String attackName = "";
-			ClassType claseAttacker = ce.getAttacker().getClassPj();
-			
-			switch (claseAttacker){
-			case TELECO:
-				attackName = "El " + ce.getAttacker().classToSring() + " lanza el " + weaponName + 
-					" con una fuerza de " + dataCombat[1] + " julios sobre el enemigo.";
-				break;
-			case INFORMATICO:
-				attackName = "El " + ce.getAttacker().classToSring() + " se acerca y golpea con el " + weaponName + 
-				" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
-				break;
-			case MATEMATICO:
-				attackName = "El " + ce.getAttacker().classToSring() + " dispara con el " + weaponName + 
-				" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
-				break;
-				default:
-				attackName = "Error al realizar el ataque";
-				break;
-			}
-			
-			ui.imprimirPorPantalla(attackName);
-			
-			ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
-			
-			ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
-			
-			if(dataCombat[0] == 0) {
-				ui.imprimirPorPantalla("El defensor ha caido");
-				if(ce.getDefender() instanceof Player) {
-					players.remove(ce.getDefender());
-				} else {
-					enemies.remove(ce.getDefender());
+				ui.imprimirPorPantalla("Se enfrentan en combate: ");
+				
+				ui.imprimirPorPantalla(ce.getAttacker().getNombre() + " vs " + ce.getDefender().getNombre());
+				
+				int[] dataCombat = ce.start();
+				
+				
+				String weaponName = ce.getAttacker().getCurrentWeapon().getNombre();
+				String attackName = "";
+				ClassType claseAttacker = ce.getAttacker().getClassPj();
+				
+				switch (claseAttacker){
+				case TELECO:
+					attackName = "El " + ce.getAttacker().classToSring() + " lanza el " + weaponName + 
+						" con una fuerza de " + dataCombat[1] + " julios sobre el enemigo.";
+					break;
+				case INFORMATICO:
+					attackName = "El " + ce.getAttacker().classToSring() + " se acerca y golpea con el " + weaponName + 
+					" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
+					break;
+				case MATEMATICO:
+					attackName = "El " + ce.getAttacker().classToSring() + " dispara con el " + weaponName + 
+					" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
+					break;
+					default:
+					attackName = "Error al realizar el ataque";
+					break;
 				}
+				
+				ui.imprimirPorPantalla(attackName);
+				
+				ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
+				
+				ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
+				
+				if(dataCombat[0] == 0) {
+					ui.imprimirPorPantalla("El defensor ha caido");
+					if(ce.getDefender() instanceof Player) {
+						players.remove(ce.getDefender());
+					} else {
+						enemies.remove(ce.getDefender());
+					}
+				}
+				
+				return "attackingstate";
 			}
 			
-			return "attackingstate";
+			return "changeroom";
 		
 		} else if(stateCombat == "loseplayer") {
 			return "loseplayer";

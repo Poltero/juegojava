@@ -112,18 +112,25 @@ public class CombatEngine
 			
 			data.put("state", "attackerbyplayer");
 			
+			//Condiccion para cambiar de habitacion
+			
+			//str += "9- Cambiar de sala\n";
+			
 			//Mostrar atacantes a los que atacar
 			for(int i = 0; i < sizeTurns; i++) {
 				PjWithClass pj = turns.get(i);
 				
 				if(pj instanceof Enemy) {
-					str += count + "- " + pj.getNombre() + "\n";
+					str += count + "- Atacar a " + pj.getNombre() + "\n";
 					
 					actions.add(count);
 					
 					count++;
-				}
+				}	
+				
 			}
+			
+			//actions.add(9);
 			
 			data.put("actionsToPrint", str);
 		}
@@ -132,6 +139,34 @@ public class CombatEngine
 	}
 	
 	
+	/**
+	 * @return the numberOfPlayers
+	 */
+	public int getNumberOfPlayers() {
+		return numberOfPlayers;
+	}
+
+	/**
+	 * @param numberOfPlayers the numberOfPlayers to set
+	 */
+	public void setNumberOfPlayers(int numberOfPlayers) {
+		this.numberOfPlayers = numberOfPlayers;
+	}
+
+	/**
+	 * @return the numberOfEnemies
+	 */
+	public int getNumberOfEnemies() {
+		return numberOfEnemies;
+	}
+
+	/**
+	 * @param numberOfEnemies the numberOfEnemies to set
+	 */
+	public void setNumberOfEnemies(int numberOfEnemies) {
+		this.numberOfEnemies = numberOfEnemies;
+	}
+
 	/**
 	 * Select enemy to attack.
 	 *
@@ -217,4 +252,5 @@ public class CombatEngine
 	public PjWithClass getDefender() {
 		return defender;
 	}
+
 }
