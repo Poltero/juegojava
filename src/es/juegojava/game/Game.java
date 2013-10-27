@@ -63,7 +63,7 @@ public class Game
 					
 				case "init":
 					this.calculateEnemyFinale();
-					currentRoomId = 1;
+					currentRoomId = 100;
 					currentRoom = rooms.get(currentRoomId);
 					currentPlayerIndex = -1;
 					states = "splashscreen";

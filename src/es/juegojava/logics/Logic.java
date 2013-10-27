@@ -180,7 +180,7 @@ public class Logic {
 							
 			
 			} else if(dataFromCombat.get("state") == "attackerbyplayer") {
-				ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getDefender().getNombre() +")\n");
+				ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getAttacker().getNombre() +")\n");
 				
 				ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
 				ui.imprimirPorPantalla("Selecciona un enemigo para atacarle: ");
