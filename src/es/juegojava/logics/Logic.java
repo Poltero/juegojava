@@ -166,53 +166,62 @@ public class Logic {
 		}
 	}
 	
-	public void startCombat() {
+	public String startCombat() {
 		actions = new ArrayList<Object>();
-			
-		HashMap<String, String> dataFromCombat = ce.selectCandidates(actions);
 		
-		if(dataFromCombat.get("state") == "attackerbyenemy") {
-			ui.imprimirPorPantalla("El turno es del enemigo");
-						
+		String stateCombat = ce.getStateCombat();
 		
-		} else if(dataFromCombat.get("state") == "attackerbyplayer") {
-			ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getDefender().getNombre() +")\n");
+		if(stateCombat == "continue") {
 			
-			ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
-			ui.imprimirPorPantalla("Selecciona un enemigo para atacarle: ");
+			HashMap<String, String> dataFromCombat = ce.selectCandidates(actions);
 			
-			try {
-				int enemyNumToAttack = (int) selectActions();
+			if(dataFromCombat.get("state") == "attackerbyenemy") {
+				ui.imprimirPorPantalla("El turno es del enemigo");
+							
+			
+			} else if(dataFromCombat.get("state") == "attackerbyplayer") {
+				ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getDefender().getNombre() +")\n");
 				
-				ce.selectEnemyToAttack(enemyNumToAttack);
+				ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
+				ui.imprimirPorPantalla("Selecciona un enemigo para atacarle: ");
 				
-			} catch (OptionInvalidException e) {
-				ui.imprimirPorPantalla(e.getMessage());
+				try {
+					int enemyNumToAttack = (int) selectActions();
+					
+					ce.selectEnemyToAttack(enemyNumToAttack);
+					
+				} catch (OptionInvalidException e) {
+					ui.imprimirPorPantalla(e.getMessage());
+				}
 			}
-		}
-		
-		ui.imprimirPorPantalla("Se enfrentan en combate: ");
-		
-		ui.imprimirPorPantalla(ce.getAttacker().getNombre() + " vs " + ce.getDefender().getNombre());
-		
-		int[] dataCombat = ce.start();
-		
-		ui.imprimirPorPantalla("El atacante ataca con una fuerza total de " + dataCombat[1] + " puntos sobre el defensor");
-		ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
-		
-		ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
-		
-		if(dataCombat[0] == 0) {
-			ui.imprimirPorPantalla("El defensor ha caido");
-			if(ce.getDefender() instanceof Player) {
-				players.remove(ce.getDefender());
-			} else {
-				enemies.remove(ce.getDefender());
+			
+			ui.imprimirPorPantalla("Se enfrentan en combate: ");
+			
+			ui.imprimirPorPantalla(ce.getAttacker().getNombre() + " vs " + ce.getDefender().getNombre());
+			
+			int[] dataCombat = ce.start();
+			
+			ui.imprimirPorPantalla("El atacante ataca con una fuerza total de " + dataCombat[1] + " puntos sobre el defensor");
+			ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
+			
+			ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
+			
+			if(dataCombat[0] == 0) {
+				ui.imprimirPorPantalla("El defensor ha caido");
+				if(ce.getDefender() instanceof Player) {
+					players.remove(ce.getDefender());
+				} else {
+					enemies.remove(ce.getDefender());
+				}
 			}
+			
+			return "attackingstate";
+		
+		} else if(stateCombat == "loseplayer") {
+			return "loseplayer";
+		} else {
+			return "loseenemies";
 		}
-		
-		
-		
 		
 	}
 
