@@ -224,6 +224,8 @@ public class Logic {
 				break;
 			}
 			
+			ui.imprimirPorPantalla(attackName);
+			
 			ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
 			
 			ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
