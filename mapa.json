@@ -16,7 +16,8 @@
 				]
 			}	
 		],
-		"enemies": []
+		"enemies": [],
+        "finale": false
     },
 
 	
@@ -40,7 +41,7 @@
                 "id": 21,
                 "name": "Pocion de Defensa",
 				"description": "Poción que aumenta la defensa de un aliado de forma permanente.", 
-                "type": "usable",
+                "type": "potionDefense",
                 "defense": 8
             }
         ],
@@ -74,7 +75,8 @@
                     "attack": 22
                 }
             }
-		]
+		],
+        "finale": false
     },
 
     {
@@ -96,7 +98,7 @@
                 "id": 22,
                 "name": "Pocion de Iniciativa",
 				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente.",
-                "type": "usable",
+                "type": "potionIniiative",
                 "iniciative": 3
             }
         ],
@@ -128,7 +130,8 @@
                     "defense": 18
                 }
             }
-		]
+		],
+        "finale": false
     },
 
     {
@@ -198,11 +201,12 @@
 					"id": 23,
 					"name": "Pocion de Vida",
 					"description": "Poción que restaura la vida de un aliado.",
-					"type": "usable",
+					"type": "potionLife",
 					"life": 30
                 }
             }
-		]
+		],
+        "finale": false
     },
 	
 	{
@@ -215,14 +219,14 @@
                 "id": 22,
                 "name": "Pocion de Iniciativa",
 				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente.",
-                "type": "usable",
+                "type": "potionIniiative",
                 "iniciative": 3
             },
 			{
                 "id": 20,
                 "name": "Pocion de Ataque",
 				"description": " Poción que aumenta el ataque de un aliado de forma permanente.",
-                "type": "usable",
+                "type": "potionAttack",
                 "attack": 8
             }
         ],
@@ -254,7 +258,8 @@
                     "defense": 14
                 }
             }
-		]
+		],
+        "finale": false
     },
 	
 	{
@@ -288,61 +293,7 @@
 					"description": "Pieza imprescindible para viajar entre las dimensiones y el tiempo, si ella nuestros personajes no podrán volver a su realidad."
                 }
             }
-		]
-		
-    },
-	
-	{
-	"id": 50,
-    "name": "Boligrafo Multicolor",
-	"description": "Arma peligrosa y puntiaguda, puedes matar dependiendo del color con que se escriba.",
-    "type": "weapon",
-    "weaponType": 1,
-    "weaponClass": 1,
-    "attack": 15
-    },
-	
-	{
-	"id": 51,
-    "name": "Taza de Lost",
-	"description": "Taza del desayuno de Lost, nadie sabe de dónde ha salido ni cuales son sus poderes pero esta dura y es grande.",
-    "type": "weapon",
-    "weaponType": 2,
-    "weaponClass": 2,
-    "attack": 15
-    },
-	
-	{
-	"id": 52,
-    "name": "Reloj Casio CMD-40",
-	"description": "Reloj Casio con mando a distancia, te otorga el ataque de una marabunta de futboleros enfurecidos cuando le cambias de canal mientras ven el partido en el bar.",
-    "type": "weapon",
-    "weaponType": 3,
-    "weaponClass": 3,
-    "attack": 15
-    },
-	
-	{
-	"id": 30,
-    "name": "Camiseta Star Wars",
-	"description": "Camiseta con bonitos motivos de Star Wars, si la llevas te acompaña la fuerza.",
-    "type": "armor",
-    "defense": 10
-    },
-	
-	{
-	"id": 31,
-    "name": "Capa de Superman",
-	"description": "Capa de un color rojo brillante, tejida en seda y muy ligera, se dice que el que la lleve puesta obtendrá los poderes de superman",
-    "type": "armor",
-    "defense": 10
-    },
-	
-	{
-	"id": 32,
-    "name": "Sudadera e = mc2",
-	"description": "Sudadera con la fórmula de la relatividad bordada en el pecho, aporta tanta energía como materia posea el cuerpo.",
-	"type": "armor",
-    "defense": 10
+		],
+        "finale": true
     }
 ]
