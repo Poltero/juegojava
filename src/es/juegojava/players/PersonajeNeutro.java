@@ -9,9 +9,11 @@ public class PersonajeNeutro extends Personaje {
 	ArrayList<String> dialogo;
 
 
-	public PersonajeNeutro(Integer id, String nombre, Raza raza) {
+	public PersonajeNeutro(Integer id, String nombre, Raza raza, ArrayList<String> dialog) {
 		super(id, nombre, raza);
-		// TODO Auto-generated constructor stub
+		
+		this.dialogo = dialog;
+		
 	}
 	
 	public String toString(int numeroDialogo){

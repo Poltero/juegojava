@@ -21,6 +21,20 @@ public class Room extends Element
 	List<Enemy> enemies;
 	List<PersonajeNeutro> pjns;
 
+	/**
+	 * @return the pjns
+	 */
+	public List<PersonajeNeutro> getPjns() {
+		return pjns;
+	}
+
+	/**
+	 * @param pjns the pjns to set
+	 */
+	public void setPjns(List<PersonajeNeutro> pjns) {
+		this.pjns = pjns;
+	}
+
 	String descripcion;
 	
 	public Room(Integer id, String nombre) {

@@ -5,6 +5,7 @@ package es.juegojava.inits;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import es.juegojava.mapa.ItemPotionInitiative;
 import es.juegojava.mapa.ItemPotionLife;
 import es.juegojava.mapa.Room;
 import es.juegojava.players.Enemy;
+import es.juegojava.players.PersonajeNeutro;
 import es.juegojava.common.ClassType;
 import es.juegojava.common.Element;
 import es.juegojava.common.ItemsType;
@@ -162,6 +164,38 @@ public class Bootstrap
 					if(this.IdRoomFinale == r.getId()) {
 						throw new EnemiesFromRoomNullException("No hay enemigos en la habitacion final (Fallo de carga en el juego)");
 					}
+				}
+				
+				//NPC's
+				itemsJson = arrayData.getJsonObject(i).getJsonArray("npcs");
+				
+				int sizeNpcs = itemsJson.size();
+				
+				if(sizeNpcs > 0) {
+					for(int j = 0; j < sizeEnemies; j++) {
+						Integer id = itemsJson.getJsonObject(j).getInt("id");
+						String name = itemsJson.getJsonObject(j).getString("name");
+						JsonArray dialog = itemsJson.getJsonObject(j).getJsonArray("dialogo");
+						
+						Raza raza;
+						int numberRandom;
+						
+						numberRandom = (int)(Math.random()*4);
+						
+						raza = Raza.values()[numberRandom];
+						
+						ArrayList<String> dialogs = new ArrayList<String>();
+						
+						int sizeDialogArray = dialog.size();
+						
+						for(int k = 0; k < sizeDialogArray; k++) {
+							dialogs.add(dialog.getString(k));
+						}
+						
+						r.getPjns().add(new PersonajeNeutro(id, name, raza, dialogs));
+					}
+				
+				
 				}
 				
 				
