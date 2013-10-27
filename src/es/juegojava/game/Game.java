@@ -135,6 +135,10 @@ public class Game
 					}
 					
 					break;
+					
+				case "speakscreen":
+					ui.imprimirPorPantalla("Vamos a iniciar una conversacion");
+					break;
 				
 				case "changeroom":
 					lg.printActions(currentRoom, "changeroom");

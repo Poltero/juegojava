@@ -190,7 +190,7 @@ public class Bootstrap
 				int sizeNpcs = itemsJson.size();
 				
 				if(sizeNpcs > 0) {
-					for(int j = 0; j < sizeEnemies; j++) {
+					for(int j = 0; j < sizeNpcs; j++) {
 						Integer id = itemsJson.getJsonObject(j).getInt("id");
 						String name = itemsJson.getJsonObject(j).getString("name");
 						JsonArray dialog = itemsJson.getJsonObject(j).getJsonArray("dialogo");
