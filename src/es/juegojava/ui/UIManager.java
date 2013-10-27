@@ -16,35 +16,64 @@ import es.juegojava.common.Element;
 import es.juegojava.mapa.Item;
 import es.juegojava.mapa.Room;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pablo.fernandez
+ * The Class UIManager.
  *
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 
 public class UIManager {
 	
+	/** The pw. */
 	static PrintWriter pw = null;
+	
+	/** The sc. */
 	static Scanner sc = null;	
+	
+	/** The archivo. */
 	static File archivo = null;
+    
+    /** The fr. */
     static FileReader fr = null;
+    
+    /** The br. */
     static BufferedReader br = null;
 
+	/**
+	 * Instantiates a new uI manager.
+	 */
 	public UIManager() {
 		super();
 		pw = new PrintWriter(System.out, true);
 		
 	}
 	
+	/**
+	 * Destruir ui.
+	 */
 	public static void destruirUI(){
 		pw.flush();
 		pw.close();
 		sc.close();
 	}
 	
+	/**
+	 * Imprimir por pantalla.
+	 *
+	 * @param salida the salida
+	 */
 	public void imprimirPorPantalla(String salida){
 		pw.println(salida);	
 	}
 	
+	/**
+	 * Imprimir por pantalla.
+	 *
+	 * @param salida the salida
+	 */
 	public void imprimirPorPantalla(int salida){
 		PrintWriter pw = new PrintWriter(System.out, true);
 		String cadena = "";
@@ -52,6 +81,11 @@ public class UIManager {
 		pw.println(cadena);
 	}
 	
+	/**
+	 * Leer numero teclado.
+	 *
+	 * @return the int
+	 */
 	public int leerNumeroTeclado(){
 		int salida = -1;
 		try{
@@ -63,6 +97,11 @@ public class UIManager {
 		return salida;
 	}
 	
+	/**
+	 * Leer cadena teclado.
+	 *
+	 * @return the string
+	 */
 	public String leerCadenaTeclado(){
 		sc = new Scanner(System.in);
 		String salida = "";
@@ -76,6 +115,12 @@ public class UIManager {
 		return salida;
 	}
 	
+	/**
+	 * Leer fichero.
+	 *
+	 * @param path the path
+	 * @return the array list
+	 */
 	public static ArrayList<String> leerFichero(String path){
 		ArrayList<String> salida = new ArrayList<String>();
 		
@@ -107,6 +152,11 @@ public class UIManager {
 
 		
 	
+	/**
+	 * Describir habitacion.
+	 *
+	 * @param habitacionADescribir the habitacion a describir
+	 */
 	public void describirHabitacion(Room habitacionADescribir){
 		//To-do
 		

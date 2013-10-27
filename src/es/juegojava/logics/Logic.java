@@ -18,19 +18,42 @@ import es.juegojava.players.PjWithClass;
 import es.juegojava.players.Player;
 import es.juegojava.ui.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Logic.
+ * 
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ */
 public class Logic {
 	
+	/** The estado juego. */
 	GameStatus estadoJuego;
-	UIManager ui;
-	List<Object> actions;
-	String[] doors;
-	CombatEngine ce;
 	
-	//Listas players and rooms
+	/** The ui. */
+	UIManager ui;
+	
+	/** The actions. */
+	List<Object> actions;
+	
+	/** The doors. */
+	String[] doors;
+	
+	/** The ce. */
+	CombatEngine ce;
+
+	/** The players. */
 	List<Player> players;
+	
+	/** The enemies. */
 	List<Enemy> enemies;
 	
 	
+	/**
+	 * Instantiates a new logic.
+	 *
+	 * @param ui the ui
+	 */
 	public Logic(UIManager ui) {
 		super();
 		this.ui = ui;
@@ -44,12 +67,23 @@ public class Logic {
 		ce = null;
 	}
 
+	/**
+	 * Prints the room desc.
+	 *
+	 * @param roomToDesc the room to desc
+	 */
 	public void printRoomDesc(Room roomToDesc){
 		String desc = "";
 		desc = roomToDesc.toString();
 		ui.imprimirPorPantalla(desc);
 	}
 	
+	/**
+	 * Prints the actions.
+	 *
+	 * @param currentRoom the current room
+	 * @param state the state
+	 */
 	public void printActions(Room currentRoom, String state){
 		
 		String desc = "";
@@ -118,6 +152,12 @@ public class Logic {
 		ui.imprimirPorPantalla(desc);
 	}
 	
+	/**
+	 * Select actions.
+	 *
+	 * @return the object
+	 * @throws OptionInvalidException the option invalid exception
+	 */
 	public Object selectActions() throws OptionInvalidException {
 		
 		int sizeActions = actions.size();
@@ -138,7 +178,15 @@ public class Logic {
 		
 	}
 	
+	/**
+	 * Show inventario.
+	 *
+	 * @param currentPlayer the current player
+	 * @throws InventarioEmptyException the inventario empty exception
+	 */
+
 	public void showInventario(List<Item> inventario) throws InventarioEmptyException {
+
 		actions = new ArrayList<Object>();
 		
 		int sizeInventario = inventario.size();
@@ -156,6 +204,12 @@ public class Logic {
 		}
 	}
 	
+	/**
+	 * Inits the combat.
+	 *
+	 * @param players the players
+	 * @param enemies the enemies
+	 */
 	public void initCombat(List<Player> players, List<Enemy> enemies) {
 		if(null == ce) {
 			this.players = players;
@@ -165,6 +219,11 @@ public class Logic {
 		}
 	}
 	
+	/**
+	 * Start combat.
+	 *
+	 * @return the string
+	 */
 	public String startCombat() {
 		actions = new ArrayList<Object>();
 		
@@ -250,10 +309,21 @@ public class Logic {
 
 	
 	
+	/**
+	 * Imprimir dialogo.
+	 *
+	 * @param npc the npc
+	 * @param numeroDeFrase the numero de frase
+	 */
 	public void imprimirDialogo(PersonajeNeutro npc, int numeroDeFrase){
 		ui.imprimirPorPantalla(npc.toString(numeroDeFrase));
 	}
 	
+	/**
+	 * Show items from room.
+	 *
+	 * @param items the items
+	 */
 	public void showItemsFromRoom(List<Item> items) {
 		Iterator<Item> it = items.iterator();
 		
@@ -266,6 +336,11 @@ public class Logic {
 		}
 	}
 	
+	/**
+	 * Show enemies from room.
+	 *
+	 * @param enemies the enemies
+	 */
 	public void showEnemiesFromRoom(List<Enemy> enemies) {
 		Iterator<Enemy> it = enemies.iterator();
 		
@@ -278,6 +353,11 @@ public class Logic {
 		}
 	}
 	
+	/**
+	 * Explorar habitacion.
+	 *
+	 * @param habitacionAExplorar the habitacion a explorar
+	 */
 	public void explorarHabitacion(Room habitacionAExplorar){
 		
 		int nItems = habitacionAExplorar.getItems().size();
@@ -291,19 +371,5 @@ public class Logic {
 			ui.imprimirPorPantalla("No hay items en la sala\n");
 		}
 	}
-	
-	
-	
-	
-	public void imprimirMuertePj(PjWithClass pjToDie){
-		
-		String dialogoMuerte = "";
-				
-		dialogoMuerte = "El " + pjToDie.classToSring() + " " + pjToDie.getNombre() + 
-				" ha muerto.";
-		
-		ui.imprimirPorPantalla(dialogoMuerte);
-	}
-
 	
 }

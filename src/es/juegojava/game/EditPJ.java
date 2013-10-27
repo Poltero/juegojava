@@ -12,19 +12,37 @@ import es.juegojava.common.Raza;
 import es.juegojava.players.*;
 import es.juegojava.exceptions.OptionInvalidException;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class EditPJ.
+ * 
  * @author pablo.fernandez
- *
+ * @author Carlos.Belmonte
  */
 public class EditPJ 
 {
+	
+	/** The players. */
 	List<Player> players;
+	
+	/** The ui. */
 	UIManager ui;
 	
+	/**
+	 * Instantiates a new edits the pj.
+	 *
+	 * @param ui the ui
+	 */
 	EditPJ(UIManager ui) {
 		this.ui = ui;
 	}
 	
+	/**
+	 * Creates the p js.
+	 *
+	 * @param numPJsToCreate the num p js to create
+	 * @throws OptionInvalidException the option invalid exception
+	 */
 	public void createPJs(int numPJsToCreate) throws OptionInvalidException {
 		players = new ArrayList<Player>();
 		
@@ -94,6 +112,8 @@ public class EditPJ
 	}
 
 	/**
+	 * Gets the players.
+	 *
 	 * @return the players
 	 */
 	public List<Player> getPlayers() {

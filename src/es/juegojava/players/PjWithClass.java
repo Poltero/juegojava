@@ -7,17 +7,32 @@ import es.juegojava.common.ClassType;
 import es.juegojava.common.Raza;
 import es.juegojava.mapa.ItemArma;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pablo.fernandez
+ * The Class PjWithClass.
  *
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class PjWithClass extends Personaje {
 
+	/** The class pj. */
 	protected ClassType classPj;
+	
+	/** The attack. */
 	protected int attack;
+	
+	/** The defense. */
 	protected int defense;
+	
+	/** The life. */
 	protected int life;
+	
+	/** The initiative. */
 	protected int initiative;
+	
+	/** The current weapon. */
 	ItemArma currentWeapon;
 	
 	
@@ -31,6 +46,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Gets the defense.
+	 *
 	 * @return the defense
 	 */
 	public int getDefense() {
@@ -38,6 +55,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Sets the defense.
+	 *
 	 * @param defense the defense to set
 	 */
 	public void setDefense(int defense) {
@@ -45,6 +64,8 @@ public class PjWithClass extends Personaje {
 	}
 	
 	/**
+	 * Gets the class pj.
+	 *
 	 * @return the classPj
 	 */
 	public ClassType getClassPj() {
@@ -52,6 +73,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Sets the class pj.
+	 *
 	 * @param classPj the classPj to set
 	 */
 	public void setClassPj(ClassType classPj) {
@@ -59,6 +82,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Gets the attack.
+	 *
 	 * @return the attack
 	 */
 	public int getAttack() {
@@ -66,6 +91,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Sets the attack.
+	 *
 	 * @param attack the attack to set
 	 */
 	public void setAttack(int attack) {
@@ -73,6 +100,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Gets the life.
+	 *
 	 * @return the life
 	 */
 	public int getLife() {
@@ -80,6 +109,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Sets the life.
+	 *
 	 * @param life the life to set
 	 */
 	public void setLife(int life) {
@@ -87,6 +118,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Gets the initiative.
+	 *
 	 * @return the initiative
 	 */
 	public int getInitiative() {
@@ -94,6 +127,8 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
+	 * Sets the initiative.
+	 *
 	 * @param initiative the initiative to set
 	 */
 	public void setInitiative(int initiative) {
@@ -102,6 +137,8 @@ public class PjWithClass extends Personaje {
 	
 	
 	/**
+	 * Gets the current weapon.
+	 *
 	 * @return the currentWeapon
 	 */
 	public ItemArma getCurrentWeapon() {
@@ -109,13 +146,28 @@ public class PjWithClass extends Personaje {
 	}
 
 	/**
-	 * @param initiative the currentWeapon to set
+	 * Sets the current weapon.
+	 *
+	 * @param currentWeapon the new current weapon
 	 */
 	public void setCurrentWeapon(ItemArma currentWeapon) {
 		this.currentWeapon = currentWeapon;
 	}
 
 	
+	/**
+	 * Instantiates a new pj with class.
+	 *
+	 * @param id the id
+	 * @param nombre the nombre
+	 * @param raza the raza
+	 * @param classPj the class pj
+	 * @param attack the attack
+	 * @param defense the defense
+	 * @param life the life
+	 * @param initiative the initiative
+	 * @param currentWeapon the current weapon
+	 */
 	public PjWithClass(Integer id, String nombre, Raza raza, ClassType classPj, 
 			int attack, int defense, int life, int initiative, ItemArma currentWeapon) {
 		
@@ -129,6 +181,11 @@ public class PjWithClass extends Personaje {
 		this.currentWeapon = currentWeapon;
 	}
 	
+	/**
+	 * Class to sring.
+	 *
+	 * @return the string
+	 */
 	public String classToSring(){
 		String cadenaClase = "";
 		
@@ -151,6 +208,12 @@ public class PjWithClass extends Personaje {
 		return cadenaClase;
 	}
 	
+	/**
+	 * Attack.
+	 *
+	 * @param tarjetPj the tarjet pj
+	 * @return the int[]
+	 */
 	public int[] attack(PjWithClass tarjetPj){
 		
 		int[] dataAtk = new int[3];

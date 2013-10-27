@@ -15,21 +15,43 @@ import es.juegojava.players.PjWithClass;
 import es.juegojava.players.Player;
 import es.juegojava.ui.UIManager;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pfranco
+ * The Class CombatEngine.
  *
- *Clase encargada de manejar las batallas entre los PjWithClass
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
+ * Clase encargada de manejar las batallas entre los PjWithClass
  */
 public class CombatEngine 
 {
+	
+	/** The turns. */
 	private ListPjWithClassOrdered turns;
+	
+	/** The player num selected. */
 	private int playerNumSelected;
+	
+	/** The number of players. */
 	private int numberOfPlayers;
+	
+	/** The number of enemies. */
 	private int numberOfEnemies;
+	
+	/** The attacker. */
 	private PjWithClass attacker;
+	
+	/** The defender. */
 	private PjWithClass defender;
 	
 	
+	/**
+	 * Instantiates a new combat engine.
+	 *
+	 * @param players the players
+	 * @param enemies the enemies
+	 */
 	public CombatEngine(List<Player> players, List<Enemy> enemies) {
 		
 		numberOfPlayers = players.size();
@@ -52,6 +74,12 @@ public class CombatEngine
 		}
 	}
 	
+	/**
+	 * Select candidates.
+	 *
+	 * @param actions the actions
+	 * @return the hash map
+	 */
 	public HashMap<String, String> selectCandidates(List<Object> actions) {
 		attacker = turns.get(0);
 		HashMap<String, String> data = new HashMap<String, String>();
@@ -104,6 +132,11 @@ public class CombatEngine
 	}
 	
 	
+	/**
+	 * Select enemy to attack.
+	 *
+	 * @param numEnemy the num enemy
+	 */
 	public void selectEnemyToAttack(int numEnemy) {
 		int sizeTurns = turns.size();
 		int count = 1;
@@ -123,6 +156,11 @@ public class CombatEngine
 		}
 	}
 	
+	/**
+	 * Start.
+	 *
+	 * @return the int[]
+	 */
 	public int[] start() {
 		int[] dataAttack = attacker.attack(defender);
 		
@@ -147,6 +185,11 @@ public class CombatEngine
 	}
 	
 	
+	/**
+	 * Gets the state combat.
+	 *
+	 * @return the state combat
+	 */
 	public String getStateCombat() {
 		if(this.numberOfPlayers == 0) {
 			return "loseplayer";
@@ -158,6 +201,8 @@ public class CombatEngine
 	}
 
 	/**
+	 * Gets the attacker.
+	 *
 	 * @return the attacker
 	 */
 	public PjWithClass getAttacker() {
@@ -165,6 +210,8 @@ public class CombatEngine
 	}
 
 	/**
+	 * Gets the defender.
+	 *
 	 * @return the defender
 	 */
 	public PjWithClass getDefender() {

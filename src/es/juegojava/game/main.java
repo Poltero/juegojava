@@ -4,14 +4,19 @@
 package es.juegojava.game;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pfranco
+ * The Class main.
  *
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
  */
 public class main {
 
 	/**
-	 * @param args
+	 * The main method.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -20,9 +25,6 @@ public class main {
 		
 		game.run();
 		
-		
-		
-
 	}
 
 }
