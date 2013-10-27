@@ -16,6 +16,7 @@ import es.juegojava.mapa.ItemArmadura;
 
 /**
  * @author pablo.fernandez
+ * @author Carlos.Belmonte
  *
  */
 public class Player extends PjWithClass
