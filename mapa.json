@@ -1,176 +1,348 @@
 [
     {
-        "id": 1,
-        "name": "Habitacion 1",
-        "connections": [2],
+        "id": 100,
+        "name": "Zona 0",
+        "connections": [101],
+		"descripcion": Estas en una habitación limpia y llena de tecnología, parece un laboratorio en donde se encuentra una máquina rodeada de muchos cables, parece estar destrozada y de ella sale un humo negro…",
+        "items": []
+		"npcs" : [
+			{
+				"id": 120,
+				"name" : "Encargado de Laboratorio",
+				"dialogo" : [
+					"Hola? Estáis bien? la explosión se oyó desde la última sala.",
+					"Entrasteis diciendo nosequé de un condensador de fluzo y de volver a vuestra realidad cuando el tonto de tu compañero metió la 10/12 en la máquina de Internet y puum, aquí estamos.",
+					"Tras la explosión un Troll lo cogió y salió corriendo, se fue por aquella puerta."
+				]
+			}	
+		],
+		"enemies": []
+    },
+
+	
+	
+    {
+        "id": 101,
+        "name": "Sala de Comunicaciones",
+        "connections": [100,102],
+		"descripcion": Estas en una habitación atestada de cables, apenas te ves los pies y hace un calor de muerte, el aire acondicionado no funciona y solo se escuchan ruidos eléctricos.",
         "items": [
             {
-                "id": 1,
-                "name": "Espada corta",
+                "id": 55,
+                "name": "Router Cisco",
+				"description": "Necesitas conectarte a internet? Manda a los malos directos a la Deep Web con el Router Cisco.",
                 "type": "weapon",
                 "weaponType": 1,
                 "weaponClass": 1,
-                "attack": 10
+                "attack": 24
             },
             {
-                "id": 2,
-                "name": "Campo de fuerza",
-                "type": "armor",
-                "defense": 30
-            },
-
-            {
-                "id": 3,
-                "name": "Elixir",
-                "type": "potionLife",
-                "life": 25
-            },
-
-            {
-                "id": 4,
-                "name": "Brutalidad",
-                "type": "potionAttack",
-                "attack": 50
-            },
-
-            {
-                "id": 5,
-                "name": "Proteccion",
-                "type": "potionDefense",
-                "defense": 60
-            },
-
-            {
-                "id": 6,
-                "name": "Aplicado",
-                "type": "potionIniiative",
-                "initiative": 2
+                "id": 21,
+                "name": "Pocion de Defensa",
+				"description": "Poción que aumenta la defensa de un aliado de forma permanente.", 
+                "type": "usable",
+                "defense": 8
             }
         ],
-
-        "enemies": [
+		"npcs" : [
+			{
+				"id": 121,
+				"name" : "BOFH de Cisco",
+				"dialogo" : [
+					"Hola, estoy buscando al troll que se ha llevado nuestro condensador de fluzo, sabes donde esta?",
+					"Nidea pero he escuchado mucho ruido por la derecha"
+				]
+			}	
+		],
+		"enemies": [
             {
-                "id": 1,
-                "name": "Bruto primero",
-                "raza": 1,
+                "id": 150,
+                "name": "HOYGAN Perdido",
+                "raza": 4,
                 "class": 2,
-                "attack": 23,
-                "defense": 14,
-                "life": 100,
-                "initiative": 5,
-                "weapon": {
-                    "id": 7,
-                    "name": "Espada corta",
-                    "type": "weapon",
-                    "weaponType": 1,
-                    "weaponClass": 1,
-                    "attack": 10
-                },
+                "attack": 10,
+                "defense": 30,
+                "life": 150,
+                "initiative": 1,
                 "itemDrop": {
-                    "id": 100,
-                    "name": "Espada larga",
+                    "id": 53,
+                    "name": "Calculadora Cientifica HP",
+					"description": "No hay mejor calculadora que ésta, es capaz de dividir entre cero y de hacer integrales quíntuples, y de dibujar el infinito.",
                     "type": "weapon",
-                    "weaponType": 1,
+                    "weaponType": 2,
                     "weaponClass": 1,
-                    "attack": 13
+                    "attack": 22
                 }
             }
-        ],
-        "finale": false
+		]
     },
 
     {
-        "id": 2,
-        "name": "Habitacion 2",
-        "connections": [1,3],
+        "id": 102,
+        "name": "Despacho de Sistemas",
+        "connections": [101,103,104],
+		"descripcion": "Estas en una habitación amplia y espaciosa, con una gran mesa en medio donde los operarios discuten sobre cómo hacer las cosas, todo parece algo desordenado y hay un par de sillas tiradas en el suelo..",
         "items": [
             {
-                "id": 1,
-                "name": "Espada corta",
+                "id": 54,
+                "name": "Cubo de Rubik",
+				"description": "Cubo mágico capaz de romper cualquier cabeza, con sus colores confunde. El que lo resuelva tendrá un poder infinito.",
                 "type": "weapon",
                 "weaponType": 1,
-                "weaponClass": 1,
-                "attack": 10
+                "weaponClass": 3,
+                "attack": 20
             },
             {
-                "id": 2,
-                "name": "Campo de fuerza",
-                "type": "armor",
-                "defense": 30
+                "id": 22,
+                "name": "Pocion de Iniciativa",
+				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente." 
+                "type": "usable",
+                "iniciative": 3
             }
         ],
-        "enemies": [],
-        "finale": false
-    },
-
-    {
-        "id": 3,
-        "name": "Habitacion 3",
-        "connections": [3,4,2],
-        "items": [],
-        "enemies": [],
-        "finale": false
-    },
-
-    {
-        "id": 4,
-        "name": "Habitacion 4",
-        "connections": [],
-        "items": [],
-        "enemies": [
+		"npcs" : [
+			{
+				"id": 122,
+				"name" : "$Boss",
+				"dialogo" : [
+					"Sí, gracias, me habeis salvado de las manos de ese luser, vosotros sois los nuevos no? Cuidado con los hoygan, tienen mucha defensa pero poco ataque, los lusers al contrario tiene bastante ataque y poca defensa. Hagáis lo que hagáis nunca luchéis contra un troll, tiene mucha defensa y ataque.",
+					"Poneros a trabajar ya! Tenemos que entregar el proyecto mañana y vamos tarde!! VAMOS, NO OS PAGARÉ LAS HORAS EXTRA!!!"
+				]
+			}	
+		],
+		"enemies": [
             {
-                "id": 2,
-                "name": "Bruto primero",
+                "id": 151,
+                "name": "Luser Desorientado",
                 "raza": 1,
                 "class": 2,
-                "attack": 23,
-                "defense": 14,
-                "life": 100,
-                "initiative": 1,
-                "weapon": {
-                    "id": 7,
-                    "name": "Espada corta",
-                    "type": "weapon",
-                    "weaponType": 1,
-                    "weaponClass": 1,
-                    "attack": 10
-                },
+                "attack": 25,
+                "defense": 15,
+                "life": 165,
+                "initiative": 2,
                 "itemDrop": {
-                    "id": 101,
-                    "name": "Espada larga",
-                    "type": "weapon",
-                    "weaponType": 1,
-                    "weaponClass": 1,
-                    "attack": 13
-                }
-            },
-
-            {
-                "id": 3,
-                "name": "Bruto Segundo",
-                "raza": 1,
-                "class": 2,
-                "attack": 23,
-                "defense": 14,
-                "life": 100,
-                "initiative": 1,
-                "weapon": {
-                    "id": 7,
-                    "name": "Espada corta",
-                    "type": "weapon",
-                    "weaponType": 1,
-                    "weaponClass": 1,
-                    "attack": 10
-                },
-                "itemDrop": {
-                    "id": 102,
-                    "name": "Espada larga",
+                    "id": 33,
+                    "name": "LaBatamanta",
+					"description": "Abra cadabra tapate guarra!, LaBatamanta, creada genéticamente por científicos del ejército de Huesca solo para tu confort y bienestar supremo.",
                     "type": "armor",
-                    "defense": 20
+                    "defense": 18
                 }
             }
-        ],
-        "finale": true
-    }
+		]
+    },
 
+    {
+        "id": 103,
+        "name": "Sala de Plataformado",
+        "connections": [102,104],
+		"descripcion": "Estas en una sala llena cacharros rotos, circuitos, ventiladores, cajas, discos duros… sí esto es el almacén.",
+        "items": [
+            {
+                "id": 56,
+                "name": "iPhone 5s",
+				"description": "El teléfono más exclusivo, convierte a quien lo toca en un fanboy de la manzana, algunos dicen que produce cancer de pancreas. Carisma +20.",
+                "type": "weapon",
+                "weaponType": 1,
+                "weaponClass": 1,
+                "attack": -15
+            }
+        ],
+		"npcs" : [],
+		"enemies": [
+            {
+                "id": 152,
+                "name": "Luser Cabreado",
+                "raza": 3,
+                "class": 2,
+                "attack": 25,
+                "defense": 15,
+                "life": 165,
+                "initiative": 1,
+                "itemDrop": {
+                    "id": 34,
+                    "name": "Valkyrian Armor",
+					"description": "Una armadura brillante y blanca usado por Valquirias, las doncellas de batalla que sirven al dios Odín.",
+                    "type": "armor",
+                    "defense": 16
+                }
+            },
+			{
+                "id": 153,
+                "name": "Luser Geek",
+                "raza": 2,
+                "class": 2,
+                "attack": 25,
+                "defense": 15,
+                "life": 165,
+                "initiative": 1,
+                "itemDrop": {
+                    "id": 57,
+                    "name": "Sable Laser",
+					"description": "Sable normal, pero en vez de metal, está hecho con kriptonita, así que puede matar a Superman. Su poder procede de la fuerza y de un acelerador de partículas nanoscópico en su empuñadura",
+					"type": "weapon",
+					"weaponType": 2,
+					"weaponClass": 1,
+					"attack": 28
+                }
+            },
+			{
+                "id": 154,
+                "name": "HOYGAN Panchito",
+                "raza": 4,
+                "class": 3,
+                "attack": 10,
+                "defense": 30,
+                "life": 150,
+                "initiative": 1,
+                "itemDrop": {
+					"id": 23,
+					"name": "Pocion de Vida",
+					"description": "Poción que restaura la vida de un aliado." 
+					"type": "usable",
+					"life": 30
+                }
+            }
+		]
+    },
+	
+	{
+        "id": 104,
+        "name": "Sala de Energía",
+        "connections": [102,103,105],
+		"descripcion": "Estas en una sala muy ruidosa, miras a ambos lados y solo ves grandes motores y generadores eléctricos, la luz parpadea y hay cables mordidos por el suelo.",
+        "items": [
+            {
+                "id": 22,
+                "name": "Pocion de Iniciativa",
+				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente." 
+                "type": "usable",
+                "iniciative": 3
+            },
+			{
+                "id": 20,
+                "name": "Pocion de Ataque",
+				"description": " Poción que aumenta el ataque de un aliado de forma permanente." 
+                "type": "usable",
+                "attack": 8
+            }
+        ],
+		"npcs" : [
+			{
+				"id": 123,
+				"name" : "BOFH Electricista",
+				"dialogo" : [
+					"No, no entreis ahí, hay un troll muy peligroso salido de /b! es muy arriesgado!!",
+					"Oh dios, tened cuidado por favor, confiamos en vosotros!!"
+				]
+			}	
+		],
+		"enemies": [
+            {
+                "id": 155,
+                "name": "HOYGAN Forero",
+                "raza": 3,
+                "class": 1,
+                "attack": 10,
+                "defense": 30,
+                "life": 150,
+                "initiative": 3,
+                "itemDrop": {
+                    "id": 35,
+                    "name": "Pulsera Antiestatica",
+					"description": "Una pulsera que le otorgara el poder de repeler la electricidad a quien la posea.",
+                    "type": "armor",
+                    "defense": 14
+                }
+            }
+		]
+    },
+	
+	{
+        "id": 105,
+        "name": "CPD",
+        "connections": [104],
+		"descripcion": "Estas en el CPD, una sala llena de armarios altos con pantallas y leds brillantes, como si de la nave Enterprise se tratara , hace frio y ves como algo a lo lejos se mueve.",
+        "items": [],
+		"npcs" : [
+			{
+				"id": 124,
+				"name" : "DBA Rehén",
+				"dialogo" : [
+					"Gracias chicos! lo habeis conseguido! Es hora de volver a casa."
+				]
+			}	
+		],
+		"enemies": [
+            {
+                "id": 156,
+                "name": "Troll Forochchero",
+                "raza": 1,
+                "class": 1,
+                "attack": 35,
+                "defense": 40,
+                "life": 180,
+                "initiative": 3,
+                "itemDrop": {
+                    "id": 99,
+                    "name": "Condensador de Fluzo",
+					"description": "Pieza imprescindible para viajar entre las dimensiones y el tiempo, si ella nuestros personajes no podrán volver a su realidad."
+                }
+            }
+		]
+		
+    },
+	
+	{
+	"id": 50,
+    "name": "Boligrafo Multicolor",
+	"description": "Arma peligrosa y puntiaguda, puedes matar dependiendo del color con que se escriba.",
+    "type": "weapon",
+    "weaponType": 1,
+    "weaponClass": 1,
+    "attack": 15
+    },
+	
+	{
+	"id": 51,
+    "name": "Taza de Lost",
+	"description": "Taza del desayuno de Lost, nadie sabe de dónde ha salido ni cuales son sus poderes pero esta dura y es grande.",
+    "type": "weapon",
+    "weaponType": 2,
+    "weaponClass": 2,
+    "attack": 15
+    },
+	
+	{
+	"id": 52,
+    "name": "Reloj Casio CMD-40",
+	"description": "Reloj Casio con mando a distancia, te otorga el ataque de una marabunta de futboleros enfurecidos cuando le cambias de canal mientras ven el partido en el bar.",
+    "type": "weapon",
+    "weaponType": 3,
+    "weaponClass": 3,
+    "attack": 15
+    },
+	
+	{
+	"id": 30,
+    "name": "Camiseta Star Wars",
+	"description": "Camiseta con bonitos motivos de Star Wars, si la llevas te acompaña la fuerza.",
+    "type": "armor",
+    "defense": 10
+    },
+	
+	{
+	"id": 31,
+    "name": "Capa de Superman",
+	"description": "Capa de un color rojo brillante, tejida en seda y muy ligera, se dice que el que la lleve puesta obtendrá los poderes de superman",
+    "type": "armor",
+    "defense": 10
+    },
+	
+	{
+	"id": 32,
+    "name": "Sudadera e = mc2",
+	"description": "Sudadera con la fórmula de la relatividad bordada en el pecho, aporta tanta energía como materia posea el cuerpo.",
+	"type": "armor",
+    "defense": 10
+    }
 ]
