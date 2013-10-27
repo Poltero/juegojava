@@ -194,13 +194,14 @@ public class Logic {
 		if(sizeInventario > 0) {	
 			for(int i = 0; i < sizeInventario; i++) {
 				int count = i + 1;
-				ui.imprimirPorPantalla(count + "- " + inventario.get(i).getNombre() + "[" + inventario.get(i).getTipo() + "]");
+				ui.imprimirPorPantalla(count + "- " + inventario.get(i).getNombre() + "[" + inventario.get(i).getTipo() + "] " + "\nDesc:\n"+ inventario.get(i).getDesc() + "\n");
 				actions.add(i);
 			}
 			
 			ui.imprimirPorPantalla("\nEquipar/Usar\n");
 		} else {
-			throw new InventarioEmptyException("El inventario del PJ actual está vacio");
+			ui.imprimirPorPantalla("El invetario esta vacio");
+			throw new InventarioEmptyException("El inventario está vacio");
 		}
 	}
 	
@@ -240,7 +241,7 @@ public class Logic {
 			} else if(dataFromCombat.get("state") == "attackerbyplayer") {
 				ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getAttacker().getNombre() +")\n");
 				
-				ui.imprimirPorPantalla("Selecciona un enemigo para atacarle: ");
+				ui.imprimirPorPantalla("Selecciona un objetivo: ");
 				ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
 				
 				try {
@@ -253,28 +254,34 @@ public class Logic {
 				}
 			}
 			
-			ui.imprimirPorPantalla("Se enfrentan en combate: ");
+			ui.imprimirPorPantalla("Un " + ce.getDefender().getNombre() + " salvaje apareció");
 			
 			ui.imprimirPorPantalla(ce.getAttacker().getNombre() + " vs " + ce.getDefender().getNombre());
+			
 			
 			int[] dataCombat = ce.start();
 			
 			
 			String weaponName = ce.getAttacker().getCurrentWeapon().getNombre();
 			String attackName = "";
-			ClassType claseAttacker = ce.getAttacker().getClassPj();
+			String nombrAttacker = ce.getAttacker().getNombre();
+			String lifeStat = "Vida de " + nombrAttacker + " el " + ce.getAttacker().classToSring() + ": " + ce.getAttacker().getLife() + " ptos - Vida del objetivo: " + ce.getDefender().getLife() + " ptos";
 			
+			ui.imprimirPorPantalla(lifeStat);
+			
+			ClassType claseAttacker = ce.getAttacker().getClassPj();
+		
 			switch (claseAttacker){
 			case TELECO:
-				attackName = "El " + ce.getAttacker().classToSring() + " lanza el " + weaponName + 
+				attackName = nombrAttacker + " el " + ce.getAttacker().classToSring() + " lanza el " + weaponName + 
 					" con una fuerza de " + dataCombat[1] + " julios sobre el enemigo.";
 				break;
 			case INFORMATICO:
-				attackName = "El " + ce.getAttacker().classToSring() + " se acerca y golpea con el " + weaponName + 
+				attackName = nombrAttacker + " el " + ce.getAttacker().classToSring() + " se acerca y golpea con el " + weaponName + 
 				" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
 				break;
 			case MATEMATICO:
-				attackName = "El " + ce.getAttacker().classToSring() + " dispara con el " + weaponName + 
+				attackName = nombrAttacker + " el " + ce.getAttacker().classToSring() + " dispara con el " + weaponName + 
 				" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
 				break;
 				default:
@@ -284,12 +291,12 @@ public class Logic {
 			
 			ui.imprimirPorPantalla(attackName);
 			
-			ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
+			ui.imprimirPorPantalla("El objetivo se defiende de " + dataCombat[2] + " puntos de daño");
 			
-			ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
+			ui.imprimirPorPantalla("Vida restante: " + dataCombat[0]);
 			
 			if(dataCombat[0] == 0) {
-				ui.imprimirPorPantalla("El defensor ha caido");
+				ui.imprimirPorPantalla("El objetivo ha caido");
 				if(ce.getDefender() instanceof Player) {
 					players.remove(ce.getDefender());
 				} else {
