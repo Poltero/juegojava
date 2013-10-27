@@ -43,4 +43,14 @@ public class PersonajeNeutro extends Personaje {
 		return dialogo.get(numeroDialogo);
 	}
 
+	public ArrayList<String> getDialogo() {
+		return dialogo;
+	}
+
+	public void setDialogo(ArrayList<String> dialogo) {
+		this.dialogo = dialogo;
+	}
+	
+	
+
 }

@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import es.juegojava.logics.CombatEngine;
+import es.juegojava.logics.ConversationEngine;
 import es.juegojava.logics.Logic;
 import es.juegojava.mapa.*;
 import es.juegojava.players.Enemy;
@@ -67,6 +69,8 @@ public class Game
 	/** The current player index. */
 	private int currentPlayerIndex;
 	
+	private ConversationEngine converEn;
+	
 	/**
 	 * Instantiates a new game.
 	 */
@@ -80,6 +84,7 @@ public class Game
 		ui = new UIManager();
 		bs = new Bootstrap();
 		lg = new Logic(ui);
+		converEn = new ConversationEngine(ui);
 		inventario = new ArrayList<Item>();
 		
 		init();
@@ -137,7 +142,9 @@ public class Game
 					break;
 					
 				case "speakscreen":
-					ui.imprimirPorPantalla("Vamos a iniciar una conversacion");
+					
+					converEn.imprimirDialogos(currentRoom.getPjns().get(0));
+					//ui.imprimirPorPantalla("Vamos a iniciar una conversacion");
 					break;
 				
 				case "changeroom":
