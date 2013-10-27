@@ -9,12 +9,21 @@ import es.juegojava.common.WeaponsType;
 import es.juegojava.mapa.ItemArma;
 import es.juegojava.mapa.ItemArmadura;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pfranco
+ * The Class PjMatematico.
  *
+ * @author pfranco
  */
 public class PjMatematico extends Player {
 
+	/**
+	 * Instantiates a new pj matematico.
+	 *
+	 * @param id the id
+	 * @param nombre the nombre
+	 * @param raza the raza
+	 */
 	public PjMatematico(Integer id, String nombre, Raza raza) {
 		super(id, nombre, raza, ClassType.MATEMATICO, 18, 35, 100, 1,
 				null);

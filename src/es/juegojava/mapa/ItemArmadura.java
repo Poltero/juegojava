@@ -5,14 +5,25 @@ package es.juegojava.mapa;
 
 import es.juegojava.common.ItemsType;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pablo.fernandez
+ * The Class ItemArmadura.
  *
+ * @author pablo.fernandez
  */
 public class ItemArmadura extends Item {
 
+	/** The defense. */
 	private int defense;
 	
+	/**
+	 * Instantiates a new item armadura.
+	 *
+	 * @param nombre the nombre
+	 * @param id the id
+	 * @param defense the defense
+	 * @param desc the desc
+	 */
 	public ItemArmadura(String nombre, int id, int defense, String desc) {
 		super(nombre, id, ItemsType.ARMADURA, desc);
 		

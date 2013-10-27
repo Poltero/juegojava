@@ -6,14 +6,25 @@ package es.juegojava.players;
 import es.juegojava.common.Element;
 import es.juegojava.common.Raza;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pfranco
+ * The Class Personaje.
  *
+ * @author pfranco
  */
 public class Personaje extends Element
 {
+	
+	/** The raza. */
 	Raza raza;
 	
+	/**
+	 * Instantiates a new personaje.
+	 *
+	 * @param id the id
+	 * @param nombre the nombre
+	 * @param raza the raza
+	 */
 	public Personaje(Integer id, String nombre, Raza raza) {
 		super(id, nombre);
 		
@@ -21,6 +32,8 @@ public class Personaje extends Element
 	}
 
 	/**
+	 * Gets the raza.
+	 *
 	 * @return the raza
 	 */
 	public Raza getRaza() {
@@ -28,6 +41,8 @@ public class Personaje extends Element
 	}
 
 	/**
+	 * Sets the raza.
+	 *
 	 * @param raza the raza to set
 	 */
 	public void setRaza(Raza raza) {

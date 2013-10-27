@@ -7,10 +7,18 @@ import es.juegojava.players.Player;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pablo.fernandez
+ * The Interface Usable.
  *
+ * @author pablo.fernandez
  */
 public interface Usable {
+	
+	/**
+	 * Use.
+	 *
+	 * @param player the player
+	 */
 	void use(Player player);
 }

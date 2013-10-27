@@ -9,12 +9,21 @@ import es.juegojava.common.WeaponsType;
 import es.juegojava.mapa.ItemArma;
 import es.juegojava.mapa.ItemArmadura;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pfranco
+ * The Class PjTeleco.
  *
+ * @author pfranco
  */
 public class PjTeleco extends Player {
 
+	/**
+	 * Instantiates a new pj teleco.
+	 *
+	 * @param id the id
+	 * @param nombre the nombre
+	 * @param raza the raza
+	 */
 	public PjTeleco(Integer id, String nombre, Raza raza) {
 		super(id, nombre, raza, ClassType.TELECO, 25, 15, 1, 1,
 				null);

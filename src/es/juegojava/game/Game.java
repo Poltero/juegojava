@@ -20,28 +20,54 @@ import es.juegojava.players.Player;
 import es.juegojava.ui.UIManager;
 import es.juegojava.inits.Bootstrap;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pablo.fernandez
+ * The Class Game.
  *
+ * @author pablo.fernandez
  */
 public class Game 
 {
+	
+	/** The ui. */
 	private UIManager ui;
 	
+	/** The states. */
 	private String states;
+	
+	/** The rooms. */
 	private HashMap<Integer, Room> rooms;
+	
+	/** The P js. */
 	private List<Player> PJs;
+	
+	/** The bs. */
 	private Bootstrap bs;
+	
+	/** The lg. */
 	private Logic lg;
 	
+	/** The enemy finale index. */
 	private int enemyFinaleIndex;
+	
+	/** The room finale. */
 	private Room roomFinale;
+	
+	/** The current room. */
 	private Room currentRoom;
+	
+	/** The current player. */
 	private Player currentPlayer;
 	
+	/** The current room id. */
 	private int currentRoomId;
+	
+	/** The current player index. */
 	private int currentPlayerIndex;
 	
+	/**
+	 * Instantiates a new game.
+	 */
 	public Game() {
 		states = "createPJs";
 		
@@ -53,6 +79,9 @@ public class Game
 		
 	}
 	
+	/**
+	 * Run.
+	 */
 	public void run() {
 		while(states != "endgame") {
 			switch(states)
@@ -207,6 +236,9 @@ public class Game
 		}
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	public void init() {
 		try {
 			rooms = bs.loadRooms();
@@ -216,6 +248,9 @@ public class Game
 		}
 	}
 	
+	/**
+	 * Creates the p js.
+	 */
 	private void createPJs() {
 		EditPJ epj = new EditPJ(ui);
 		
@@ -231,6 +266,9 @@ public class Game
 		}
 	}
 	
+	/**
+	 * Calculate enemy finale.
+	 */
 	private void calculateEnemyFinale() {
 		Integer idRoomFinale = bs.getIdRoomFinale();
 		
@@ -239,6 +277,9 @@ public class Game
 		enemyFinaleIndex = (int)Math.random()*(roomFinale.getEnemies().size());
 	}
 	
+	/**
+	 * Show p js.
+	 */
 	private void showPJs() {
 		Iterator<Player> it = PJs.iterator();
 		
@@ -249,6 +290,9 @@ public class Game
 		}
 	}
 	
+	/**
+	 * Next turn.
+	 */
 	private void nextTurn() {
 		if(currentPlayerIndex < PJs.size()-1) {
 			currentPlayerIndex++;

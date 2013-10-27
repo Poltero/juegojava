@@ -10,12 +10,21 @@ import es.juegojava.mapa.Item;
 import es.juegojava.mapa.ItemArma;
 import es.juegojava.mapa.ItemArmadura;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pfranco
+ * The Class PjInformatico.
  *
+ * @author pfranco
  */
 public class PjInformatico extends Player {
 
+	/**
+	 * Instantiates a new pj informatico.
+	 *
+	 * @param id the id
+	 * @param nombre the nombre
+	 * @param raza the raza
+	 */
 	public PjInformatico(Integer id, String nombre, Raza raza) {		
 		super(id, nombre, raza, ClassType.INFORMATICO, 30, 10, 20, 1,
 				null);

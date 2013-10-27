@@ -32,28 +32,45 @@ import es.juegojava.exceptions.EnemiesFromRoomNullException;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * @author pablo.fernandez
+ * The Class Bootstrap.
  *
+ * @author pablo.fernandez
  */
 public class Bootstrap
 {
+	
+	/** The json source. */
 	private String jsonSource;
+	
+	/** The Id room finale. */
 	private Integer IdRoomFinale;
 	
 	
 	
 	/**
+	 * Gets the id room finale.
+	 *
 	 * @return the idRoomFinale
 	 */
 	public Integer getIdRoomFinale() {
 		return IdRoomFinale;
 	}
 
+	/**
+	 * Instantiates a new bootstrap.
+	 */
 	public Bootstrap() {
 		loadJsonFile("mapa.json");
 	}
 	
+	/**
+	 * Load rooms.
+	 *
+	 * @return the hash map
+	 * @throws EnemiesFromRoomNullException the enemies from room null exception
+	 */
 	public HashMap<Integer, Room> loadRooms() throws EnemiesFromRoomNullException {
 		
 		try (JsonReader jsonReader = Json.createReader(new FileReader(jsonSource))) {
@@ -179,6 +196,15 @@ public class Bootstrap
 			}
 	}
 	
+	/**
+	 * Load item for type.
+	 *
+	 * @param itemsJson the items json
+	 * @param name the name
+	 * @param id the id
+	 * @param type the type
+	 * @return the item
+	 */
 	private Item loadItemForType(JsonObject itemsJson, String name, Integer id, String type) {
 		
 		Item item = null;
@@ -222,6 +248,11 @@ public class Bootstrap
 		return item;
 	}
 	
+	/**
+	 * Load json file.
+	 *
+	 * @param jsonfile the jsonfile
+	 */
 	private void loadJsonFile(String jsonfile) {
 		this.jsonSource = jsonfile;
 	}

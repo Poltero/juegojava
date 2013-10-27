@@ -4,7 +4,11 @@
 package es.juegojava.common;
 
 /**
- * @author pfranco
+ * 
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
+ * The Enum Raza son los diferentes tipos de razas
  *
  */
 public enum Raza 
