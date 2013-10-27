@@ -18,6 +18,7 @@ import es.juegojava.ui.UIManager;
 /**
  * @author pfranco
  *
+ *Clase encargada de manejar las batallas entre los PjWithClass
  */
 public class CombatEngine 
 {

@@ -108,7 +108,7 @@
                 "name": "Pocion de Iniciativa",
 				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente.",
                 "type": "potionIniiative",
-                "iniciative": 3
+                "initiative": 3
             }
         ],
 		"npcs" : [
@@ -182,7 +182,7 @@
 				"weapon": {
                     "id": 58,
                     "name": "Puntero Laser",
-					"description" : "Diseñados para ayudar en las presentaciones de trabajo, su mal uso puede producir ceguera.";
+					"description" : "Diseñados para ayudar en las presentaciones de trabajo, su mal uso puede producir ceguera.",
                     "type": "weapon",
                     "weaponType": 1,
                     "weaponClass": 1,
@@ -265,7 +265,7 @@
                 "name": "Pocion de Iniciativa",
 				"description": "Poción que aumenta la Iniciativa de un aliado de forma permanente.",
                 "type": "potionIniiative",
-                "iniciative": 3
+                "initiative": 3
             },
 			{
                 "id": 20,
@@ -298,7 +298,7 @@
 				"weapon": {
                     "id": 58,
                     "name": "Puntero Laser",
-					"description" : "Diseñados para ayudar en las presentaciones de trabajo, su mal uso puede producir ceguera.";
+					"description" : "Diseñados para ayudar en las presentaciones de trabajo, su mal uso puede producir ceguera.",
                     "type": "weapon",
                     "weaponType": 1,
                     "weaponClass": 1,
@@ -353,7 +353,11 @@
                 "itemDrop": {
                     "id": 99,
                     "name": "Condensador de Fluzo",
-					"description": "Pieza imprescindible para viajar entre las dimensiones y el tiempo, si ella nuestros personajes no podrán volver a su realidad."
+					"description": "Pieza imprescindible para viajar entre las dimensiones y el tiempo, si ella nuestros personajes no podrán volver a su realidad.",
+                    "type": "weapon",
+                    "weaponType": 2,
+                    "weaponClass": 1,
+                    "attack": 22
                 }
             }
 		],
