@@ -6,6 +6,10 @@ import es.juegojava.common.*;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Item.
+ * 
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class Item extends Element
 {

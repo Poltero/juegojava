@@ -7,6 +7,10 @@ import es.juegojava.common.Raza;
 // TODO: Auto-generated Javadoc
 /**
  * The Class PersonajeNeutro.
+ * 
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class PersonajeNeutro extends Personaje {
 	

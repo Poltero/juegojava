@@ -37,6 +37,7 @@ import es.juegojava.exceptions.EnemiesFromRoomNullException;
  * The Class Bootstrap.
  *
  * @author pablo.fernandez
+ * @author Carlos.Belmonte
  */
 public class Bootstrap
 {

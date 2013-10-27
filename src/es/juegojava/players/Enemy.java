@@ -13,6 +13,8 @@ import es.juegojava.mapa.ItemArma;
  * The Class Enemy.
  *
  * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class Enemy extends PjWithClass {
 

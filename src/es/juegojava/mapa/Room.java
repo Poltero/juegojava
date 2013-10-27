@@ -14,7 +14,9 @@ import java.util.*;
 /**
  * The Class Room.
  *
- * @author pfranco
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class Room extends Element
 {

@@ -10,7 +10,9 @@ import java.util.ArrayList;
 /**
  * The Class ListPjWithClassOrdered.
  *
- * @author pfranco
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class ListPjWithClassOrdered extends ArrayList<PjWithClass> {
 	

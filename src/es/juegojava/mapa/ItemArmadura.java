@@ -10,6 +10,9 @@ import es.juegojava.common.ItemsType;
  * The Class ItemArmadura.
  *
  * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
+ * 
  */
 public class ItemArmadura extends Item {
 

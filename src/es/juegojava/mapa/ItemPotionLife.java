@@ -12,6 +12,8 @@ import es.juegojava.players.Player;
  * The Class ItemPotionLife.
  *
  * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class ItemPotionLife extends Item implements Usable {
 

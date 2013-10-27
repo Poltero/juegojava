@@ -9,6 +9,7 @@ import es.juegojava.exceptions.InventarioEmptyException;
 import es.juegojava.exceptions.OptionInvalidException;
 import es.juegojava.game.EditPJ;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -25,6 +26,7 @@ import es.juegojava.inits.Bootstrap;
  * The Class Game.
  *
  * @author pablo.fernandez
+ * @author Carlos.Belmonte
  */
 public class Game 
 {
@@ -65,15 +67,21 @@ public class Game
 	/** The current player index. */
 	private int currentPlayerIndex;
 	
+<<<<<<< HEAD
 	/**
 	 * Instantiates a new game.
 	 */
+=======
+	private List<Item> inventario;
+	
+>>>>>>> 8e0239592d12c683e3873acb30102badb9e0308c
 	public Game() {
 		states = "createPJs";
 		
 		ui = new UIManager();
 		bs = new Bootstrap();
 		lg = new Logic(ui);
+		inventario = new ArrayList<Item>();
 		
 		init();
 		
@@ -144,7 +152,7 @@ public class Game
 					
 				case "inventarioscreen":
 					try {
-						lg.showInventario(currentPlayer);
+						lg.showInventario(inventario);
 					} catch (InventarioEmptyException e) {
 						ui.imprimirPorPantalla(e.getMessage());
 						states = "roomscreen";
@@ -153,7 +161,7 @@ public class Game
 					try {
 						int indexItemInInventario = (int)lg.selectActions();
 						
-						Item itemToEquip = currentPlayer.getInventario().get(indexItemInInventario);
+						Item itemToEquip = inventario.get(indexItemInInventario);
 						
 						
 						if(itemToEquip instanceof ItemArma || itemToEquip instanceof ItemArmadura) {
@@ -165,11 +173,27 @@ public class Game
 								ui.imprimirPorPantalla(e.getMessage());
 							}
 						} else {
-							//To use item
+							if(itemToEquip instanceof ItemPotionAttack) {
+								ItemPotionAttack item = (ItemPotionAttack)itemToEquip;
+								
+								item.use(currentPlayer);
+							} else if(itemToEquip instanceof ItemPotionDefense) {
+								ItemPotionDefense item = (ItemPotionDefense)itemToEquip;
+								
+								item.use(currentPlayer);
+							} else if(itemToEquip instanceof ItemPotionInitiative) {
+								ItemPotionInitiative item = (ItemPotionInitiative)itemToEquip;
+								
+								item.use(currentPlayer);
+							} else if(itemToEquip instanceof ItemPotionLife) {
+								ItemPotionLife item = (ItemPotionLife)itemToEquip;
+								
+								item.use(currentPlayer);
+							}
 						}
 						
 						//Saco el item del inventario
-						currentPlayer.getInventario().remove(indexItemInInventario);
+						inventario.remove(indexItemInInventario);
 						
 						states = "nextturn";
 							
@@ -192,7 +216,7 @@ public class Game
 					
 					Item itemFromRoom = currentRoom.getItems().get(indexItemFromRoom);
 					
-					currentPlayer.addItemToInventario(itemFromRoom);
+					inventario.add(itemFromRoom);
 					
 					//Elimino el item de la room
 					currentRoom.getItems().remove(indexItemFromRoom);
@@ -301,6 +325,13 @@ public class Game
 		}
 		
 		currentPlayer = PJs.get(currentPlayerIndex);
+	}
+	
+	private Item dropItem(int index) {
+		Item itemToRoom = inventario.get(index);
+		inventario.remove(index);
+		
+		return itemToRoom;
 	}
 	
 	

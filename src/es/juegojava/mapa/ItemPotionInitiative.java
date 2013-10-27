@@ -11,6 +11,11 @@ import es.juegojava.players.Player;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemPotionInitiative.
+ * 
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
+ * 
  */
 public class ItemPotionInitiative extends Item implements Usable {
 	

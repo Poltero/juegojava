@@ -8,7 +8,8 @@ package es.juegojava.game;
 /**
  * The Class main.
  *
- * @author pfranco
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
  */
 public class main {
 

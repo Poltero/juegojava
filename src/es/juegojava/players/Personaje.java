@@ -10,7 +10,9 @@ import es.juegojava.common.Raza;
 /**
  * The Class Personaje.
  *
- * @author pfranco
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 public class Personaje extends Element
 {

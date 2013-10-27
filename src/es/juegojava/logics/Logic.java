@@ -21,6 +21,9 @@ import es.juegojava.ui.*;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Logic.
+ * 
+ * @author pablo.fernandez
+ * @author Carlos.Belmonte
  */
 public class Logic {
 	
@@ -123,7 +126,7 @@ public class Logic {
 			
 			for(int i = 0; i < sizeConnections; i++) {
 				int option = i+1;
-				desc += option + "- " + doors[i];
+				desc += option + "- " + doors[i] + "\n";
 				
 				actions.add(connections.get(i));
 		
@@ -175,6 +178,7 @@ public class Logic {
 		
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Show inventario.
 	 *
@@ -183,6 +187,9 @@ public class Logic {
 	 */
 	public void showInventario(Player currentPlayer) throws InventarioEmptyException {
 		List<Item> inventario = currentPlayer.getInventario();	
+=======
+	public void showInventario(List<Item> inventario) throws InventarioEmptyException {
+>>>>>>> 8e0239592d12c683e3873acb30102badb9e0308c
 		actions = new ArrayList<Object>();
 		
 		int sizeInventario = inventario.size();
@@ -236,8 +243,8 @@ public class Logic {
 			} else if(dataFromCombat.get("state") == "attackerbyplayer") {
 				ui.imprimirPorPantalla("Tu turno (Pj: "+ ce.getAttacker().getNombre() +")\n");
 				
-				ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
 				ui.imprimirPorPantalla("Selecciona un enemigo para atacarle: ");
+				ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
 				
 				try {
 					int enemyNumToAttack = (int) selectActions();
@@ -368,6 +375,7 @@ public class Logic {
 		}
 	}
 	
+<<<<<<< HEAD
 	//Metodo para mostrar los items de la lista cuando selecciones la opcion "equipar item" o "usar pocion"
 	/**
 	 * Imprimir lista item usables.
@@ -389,6 +397,8 @@ public class Logic {
 		}
 	}
 	
+=======
+>>>>>>> 8e0239592d12c683e3873acb30102badb9e0308c
 	
 	
 	

@@ -21,6 +21,8 @@ import es.juegojava.mapa.Room;
  * The Class UIManager.
  *
  * @author pablo.fernandez
+ * @author Carlos.Belmonte
+ * 
  */
 
 public class UIManager {
