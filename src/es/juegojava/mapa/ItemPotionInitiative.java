@@ -12,8 +12,8 @@ public class ItemPotionInitiative extends Item implements Usable {
 	
 	private int initiativePoints;
 	
-	public ItemPotionInitiative(String nombre, int id, int initiativePoints) {
-		super(nombre, id, ItemsType.POCION);
+	public ItemPotionInitiative(String nombre, int id, int initiativePoints, String desc) {
+		super(nombre, id, ItemsType.POCION, desc);
 		this.initiativePoints = initiativePoints;
 	}
 

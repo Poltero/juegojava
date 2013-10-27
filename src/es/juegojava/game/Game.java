@@ -77,7 +77,10 @@ public class Game
 					break;
 				
 				case "gamestart":
-					ui.imprimirPorPantalla("Empiezas el juego y entras en la primera habitacion de muchas..");
+					ui.imprimirPorPantalla("Nuestro grupo de 3 amigos (un informático, un teleco y un matemático) " +
+							"han aparecido en una sala y apenas recuerdan lo sucedido, lo último que hacían era " +
+							"desarrollar una máquina que les permitía adentrarse en el juego como si de Tron " +
+							"hablasemos pero algo salió mal… ");
 					
 					states = "nextturn";
 					break;

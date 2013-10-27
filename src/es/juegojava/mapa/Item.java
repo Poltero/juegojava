@@ -6,6 +6,7 @@ import es.juegojava.common.*;
 public class Item extends Element
 {
 	private ItemsType tipo;
+	public String desc;
 	
 	
 	/**
@@ -21,8 +22,9 @@ public class Item extends Element
 	 * @param id
 	 * @param tipo
 	 */
-	public Item(String nombre, int id, ItemsType tipo) {
+	public Item(String nombre, int id, ItemsType tipo, String desc) {
 		super(id, nombre);
+		this.desc = desc;
 		this.tipo = tipo;
 	}
 	
@@ -31,7 +33,7 @@ public class Item extends Element
 	 */
 	@Override
 	public String toString() {
-		return (nombre + " tipo: " + tipo);
+		return (nombre + " tipo: " + tipo + "\n" + desc);
 	}
 	
 	
@@ -41,13 +43,28 @@ public class Item extends Element
 	public ItemsType getTipo() {
 		return tipo;
 	}
+	
 	/**
 	 * @param tipo the tipo to set
 	 */
 	public void setTipo(ItemsType tipo) {
 		this.tipo = tipo;
 	}
-	
+
+	/**
+	 * @return the desc
+	 */	
+	public String getDesc() {
+		return desc;
+	}
+
+	/**
+	 * @param tipo the desc to set
+	 */
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
 	
 	
 	
