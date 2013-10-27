@@ -201,7 +201,29 @@ public class Logic {
 			
 			int[] dataCombat = ce.start();
 			
-			ui.imprimirPorPantalla("El atacante ataca con una fuerza total de " + dataCombat[1] + " puntos sobre el defensor");
+			
+			String weaponName = ce.getAttacker().getCurrentWeapon().getNombre();
+			String attackName = "";
+			ClassType claseAttacker = ce.getAttacker().getClassPj();
+			
+			switch (claseAttacker){
+			case TELECO:
+				attackName = "El " + ce.getAttacker().classToSring() + " lanza el " + weaponName + 
+					" con una fuerza de " + dataCombat[1] + " julios sobre el enemigo.";
+				break;
+			case INFORMATICO:
+				attackName = "El " + ce.getAttacker().classToSring() + " se acerca y golpea con el " + weaponName + 
+				" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
+				break;
+			case MATEMATICO:
+				attackName = "El " + ce.getAttacker().classToSring() + " dispara con el " + weaponName + 
+				" con una fuerza de " + dataCombat[1] + " julios al enemigo.";
+				break;
+				default:
+				attackName = "Error al realizar el ataque";
+				break;
+			}
+			
 			ui.imprimirPorPantalla("Su armadura abasorbe " + dataCombat[2] + " puntos de daño");
 			
 			ui.imprimirPorPantalla("La vida del defensor tras el combate es: " + dataCombat[0]);
