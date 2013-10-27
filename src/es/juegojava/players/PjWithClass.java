@@ -219,7 +219,14 @@ public class PjWithClass extends Personaje {
 		int[] dataAtk = new int[3];
 		
 		int realAtk = this.attack + this.currentWeapon.getAtack();
+		
+		
 		int mitigateAtk = realAtk - tarjetPj.getDefense();
+		
+		if(mitigateAtk <= 0){
+			mitigateAtk = 0;
+		}
+			
 		int finalLife = (tarjetPj.getLife() - mitigateAtk);
 		
 		if(finalLife < 0) {
