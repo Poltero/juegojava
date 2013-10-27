@@ -9,5 +9,5 @@ package es.juegojava.common;
  */
 public enum Raza 
 {
-	HUMANO, ELFO, ORCO, ENANO
+	FANBOY, GEEK, FRIKI, NERD
 }

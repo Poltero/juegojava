@@ -72,12 +72,15 @@ public class EditPJ
 			Player p = null;
 			
 			switch (classPjs[optionClassPj-1]) {
-				case MAGO:
-					p = new PjMago(i+1, nombrePJ, razas[optionRaza-1]);
+				case INFORMATICO:
+					p = new PjTeleco(i+1, nombrePJ, razas[optionRaza-1]);
 					break;
 	
-				case GUERRERO:
-					p = new PjGuerrero(i+1, nombrePJ, razas[optionRaza-1]);
+				case TELECO:
+					p = new PjInformatico(i+1, nombrePJ, razas[optionRaza-1]);
+					break;
+				case MATEMATICO:
+					p = new PjMatematico(i+1, nombrePJ, razas[optionRaza-1]);
 					break;
 				default:
 					break;

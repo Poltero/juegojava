@@ -135,14 +135,14 @@ public class PjWithClass extends Personaje {
 		ClassType claseAImprimir = this.classPj;
 		
 		switch (claseAImprimir){
-		case MAGO:
-			cadenaClase = "Mago";
+		case TELECO:
+			cadenaClase = "Teleco";
 			break;
-		case GUERRERO:
-			cadenaClase = "Guerrero";
+		case INFORMATICO:
+			cadenaClase = "Informatico";
 			break;
-		case NINGUNA:
-			cadenaClase = "Ninguno";
+		case MATEMATICO:
+			cadenaClase = "Matematico";
 			break;
 			default:
 				cadenaClase = "Error";

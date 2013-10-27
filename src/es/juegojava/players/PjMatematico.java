@@ -11,12 +11,12 @@ import es.juegojava.mapa.ItemArma;
  * @author pfranco
  *
  */
-public class PjGuerrero extends Player {
+public class PjMatematico extends Player {
 
-	public PjGuerrero(Integer id, String nombre, Raza raza) {
-		super(id, nombre, raza, ClassType.GUERRERO, 32, 10, 20, 1,
+	public PjMatematico(Integer id, String nombre, Raza raza) {
+		super(id, nombre, raza, ClassType.MATEMATICO, 18, 35, 100, 1,
 				null);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 }

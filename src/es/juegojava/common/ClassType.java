@@ -8,5 +8,5 @@ package es.juegojava.common;
  *
  */
 public enum ClassType {
-	MAGO, GUERRERO, NINGUNA
+	INFORMATICO, TELECO, MATEMATICO
 }
