@@ -1,15 +1,15 @@
 package es.juegojava.logics;
 
-import java.sql.Array;
-import java.util.ArrayList;
+//import java.sql.Array;
+/*import java.util.ArrayList;
 
 import es.juegojava.players.PjWithClass;
 import es.juegojava.players.Player;
-import es.juegojava.ui.UIManager;
+import es.juegojava.ui.UIManager;*/
 
 public class ConversationEngine {
 
-	UIManager ui;
+	/*UIManager ui;
 	ArrayList<ArrayList<String>> dialogoPersonaje;
 	
 	ArrayList<String> dialogoNpc;
