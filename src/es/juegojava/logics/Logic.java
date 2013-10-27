@@ -101,7 +101,7 @@ public class Logic {
 				actions.add("changeroom");
 				actions.add("nextturn");
 				
-			}else{
+			}else if(currentRoom.getPjns().size() != 0){
 				desc = "1- Hablar con el NPC\n" +
 						"2- Ver inventario\n" + 
 						"3- Coger un item\n" +
@@ -110,6 +110,18 @@ public class Logic {
 						"6- Pasar turno\n";
 				
 				actions.add("speakscreen");
+				actions.add("inventarioscreen");
+				actions.add("takeitemscreen");
+				actions.add("dropitemscreen");
+				actions.add("changeroom");
+				actions.add("nextturn");
+			} else {
+					desc += "1- Ver inventario\n" + 
+						"2- Coger un item\n" +
+						"3- Tirar un item al suelo\n" +
+						"4- Cambiar de sala\n" +
+						"5- Pasar turno\n";
+				
 				actions.add("inventarioscreen");
 				actions.add("takeitemscreen");
 				actions.add("dropitemscreen");
