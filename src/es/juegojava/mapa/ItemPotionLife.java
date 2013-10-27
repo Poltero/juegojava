@@ -19,6 +19,7 @@ public class ItemPotionLife extends Item implements Usable {
 		super(nombre, id, ItemsType.POCION, desc);
 		
 		this.lifePoints = lifePoints;
+		super.desc = desc;
 		
 	}
 

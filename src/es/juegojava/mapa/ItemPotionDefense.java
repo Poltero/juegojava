@@ -19,6 +19,7 @@ public class ItemPotionDefense extends Item implements Usable {
 		super(nombre, id, ItemsType.POCION, desc);
 		
 		this.defensePoints = defensePoints;
+		super.desc = desc;
 	}
 
 	@Override

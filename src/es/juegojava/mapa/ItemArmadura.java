@@ -17,6 +17,7 @@ public class ItemArmadura extends Item {
 		super(nombre, id, ItemsType.ARMADURA, desc);
 		
 		this.defense = defense;
+		super.desc = desc;
 	}
 	
 }

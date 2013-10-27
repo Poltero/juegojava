@@ -21,6 +21,7 @@ public class ItemArma extends Item
 		weaponsType = wpType;
 		weaponClass = wpClass;
 		atack = atackPoints;
+		super.desc = desc;
 	}
 
 	public int getAtack() {

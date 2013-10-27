@@ -182,38 +182,39 @@ public class Bootstrap
 	private Item loadItemForType(JsonObject itemsJson, String name, Integer id, String type) {
 		
 		Item item = null;
+		String description = itemsJson.getString("descrition");
 		
 		switch(type) {
 			case "weapon":
 				Integer typeWeaponItem = itemsJson.getInt("weaponType");
 				Integer classItem = itemsJson.getInt("weaponClass");
 				Integer attackPoints = itemsJson.getInt("attack");
-				item = new ItemArma(name, id, WeaponsType.values()[typeWeaponItem-1], ClassType.values()[classItem-1], attackPoints);
+				item = new ItemArma(name, id, WeaponsType.values()[typeWeaponItem-1], ClassType.values()[classItem-1], attackPoints, description);
 				
 				break;
 			case "armor":
 				Integer defensePoints = itemsJson.getInt("defense");
-				item = new ItemArmadura(name, id, defensePoints);
+				item = new ItemArmadura(name, id, defensePoints, description);
 				
 				break;
 			case "potionLife":
 				Integer lifePointsFromPotion = itemsJson.getInt("life");
-				item = new ItemPotionLife(name, id, lifePointsFromPotion);
+				item = new ItemPotionLife(name, id, lifePointsFromPotion, description);
 				
 				break;
 			case "potionAttack":
 				Integer attackPointsFromPotion = itemsJson.getInt("attack");
-				item = new ItemPotionAttack(name, id, attackPointsFromPotion);
+				item = new ItemPotionAttack(name, id, attackPointsFromPotion, description);
 				
 				break;
 			case "potionDefense":
 				Integer defensePointsFromPotion = itemsJson.getInt("defense");
-				item = new ItemPotionDefense(name, id, defensePointsFromPotion);
+				item = new ItemPotionDefense(name, id, defensePointsFromPotion, description);
 				
 				break;
 			case "potionIniiative":
 				Integer initiativePointsFromPotion = itemsJson.getInt("initiative");
-				item = new ItemPotionInitiative(name, id, initiativePointsFromPotion);
+				item = new ItemPotionInitiative(name, id, initiativePointsFromPotion, description);
 				
 				break;
 		}

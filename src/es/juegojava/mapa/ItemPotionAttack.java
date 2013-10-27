@@ -17,7 +17,9 @@ public class ItemPotionAttack extends Item implements Usable {
 	
 	public ItemPotionAttack(String nombre, int id, int attackPoints, String desc) {
 		super(nombre, id, ItemsType.POCION, desc);
+		
 		this.attackPoints = attackPoints;
+		super.desc = desc;
 	}
 
 	@Override
