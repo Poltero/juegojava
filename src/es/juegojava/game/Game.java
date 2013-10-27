@@ -179,7 +179,12 @@ public class Game
 					break;
 				
 				case "attackstate":
-					states = "endgame";
+					lg.initCombat(PJs, currentRoom.getEnemies());
+					states = "attackingstate";
+					break;
+					
+				case "attackingstate":
+					lg.startCombat();
 					break;
 					
 					

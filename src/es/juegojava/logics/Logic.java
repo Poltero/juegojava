@@ -1,5 +1,6 @@
 package es.juegojava.logics;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Logic {
 	UIManager ui;
 	List<Object> actions;
 	String[] doors;
+	CombatEngine ce;
 	
 	
 	public Logic(UIManager ui) {
@@ -34,6 +36,8 @@ public class Logic {
 		doors[1] = "Derecha";
 		doors[2] = "Abajo";
 		doors[3] = "Izquierda";
+		
+		ce = null;
 	}
 
 	public void printRoomDesc(Room roomToDesc){
@@ -147,6 +151,44 @@ public class Logic {
 		} else {
 			throw new InventarioEmptyException("El inventario del PJ actual está vacio");
 		}
+	}
+	
+	public void initCombat(List<Player> players, List<Enemy> enemies) {
+		if(null == ce) {
+			ce = new CombatEngine(players, enemies);
+		}
+	}
+	
+	public void startCombat() {
+		actions = new ArrayList<Object>();
+			
+		HashMap<String, String> dataFromCombat = ce.selectCandidates(actions);
+		
+		if(dataFromCombat.get("state") == "attackerbyenemy") {
+			ui.imprimirPorPantalla("El turno es del enemigo");
+			
+			//To combate enemigo
+		
+		} else if(dataFromCombat.get("state") == "attackerbyplayer") {
+			
+			ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
+			ui.imprimirPorPantalla("Selecciona una opcion: ");
+			
+			try {
+				int enemyNumToAttack = (int) selectActions();
+				
+				ce.selectDefender(enemyNumToAttack);
+				
+			} catch (OptionInvalidException e) {
+				ui.imprimirPorPantalla(e.getMessage());
+			}
+			
+			
+		}
+		
+		
+		
+		
 	}
 
 	
