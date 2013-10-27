@@ -23,6 +23,4 @@ public class Enemy extends PjWithClass {
 		
 		this.drop = drop;
 	}
-		
-	
 }

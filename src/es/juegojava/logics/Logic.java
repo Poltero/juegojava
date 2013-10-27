@@ -1,5 +1,6 @@
 package es.juegojava.logics;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -152,10 +153,40 @@ public class Logic {
 		}
 	}
 	
-	public void startCombat(List<Player> players, List<Enemy> enemies) {
+	public void initCombat(List<Player> players, List<Enemy> enemies) {
 		if(null == ce) {
-			ce = new CombatEngine(players, enemies, ui);
+			ce = new CombatEngine(players, enemies);
 		}
+	}
+	
+	public void startCombat() {
+		actions = new ArrayList<Object>();
+			
+		HashMap<String, String> dataFromCombat = ce.selectCandidates(actions);
+		
+		if(dataFromCombat.get("state") == "attackerbyenemy") {
+			ui.imprimirPorPantalla("El turno es del enemigo");
+			
+			//To combate enemigo
+		
+		} else if(dataFromCombat.get("state") == "attackerbyplayer") {
+			
+			ui.imprimirPorPantalla(dataFromCombat.get("actionsToPrint"));
+			ui.imprimirPorPantalla("Selecciona una opcion: ");
+			
+			try {
+				int enemyNumToAttack = (int) selectActions();
+				
+				ce.selectDefender(enemyNumToAttack);
+				
+			} catch (OptionInvalidException e) {
+				ui.imprimirPorPantalla(e.getMessage());
+			}
+			
+			
+		}
+		
+		
 		
 		
 	}

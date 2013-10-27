@@ -151,7 +151,7 @@ public class PjWithClass extends Personaje {
 		return cadenaClase;
 	}
 	
-	public void attack(Player tarjetPj){
+	public void attack(PjWithClass tarjetPj){
 		
 		int realAtk = this.attack + this.currentWeapon.getAtack();
 		int finalLife = (tarjetPj.getLife() - (realAtk - tarjetPj.getDefense()));
