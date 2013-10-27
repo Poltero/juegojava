@@ -182,7 +182,7 @@ public class Bootstrap
 	private Item loadItemForType(JsonObject itemsJson, String name, Integer id, String type) {
 		
 		Item item = null;
-		String description = itemsJson.getString("descrition");
+		String description = itemsJson.getString("description");
 		
 		switch(type) {
 			case "weapon":
