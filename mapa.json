@@ -61,10 +61,19 @@
                 "name": "HOYGAN Perdido",
                 "raza": 4,
                 "class": 2,
-                "attack": 10,
+                "attack": 8,
                 "defense": 30,
                 "life": 150,
                 "initiative": 1,
+				"weapon": {
+                    "id": 60,
+                    "name": "Maquina Tetris",
+					"description" : "Máquina diabólica de entretenimiento, si empiezas a jugar nunca podras parar, a quien golpees con el lo convertirás en fichas",
+                    "type": "weapon",
+                    "weaponType": 2,
+                    "weaponClass": 1,
+                    "attack": 16
+                },
                 "itemDrop": {
                     "id": 53,
                     "name": "Calculadora Cientifica HP",
@@ -118,10 +127,19 @@
                 "name": "Luser Desorientado",
                 "raza": 1,
                 "class": 2,
-                "attack": 25,
+                "attack": 15,
                 "defense": 15,
                 "life": 165,
                 "initiative": 2,
+				"weapon": {
+                    "id": 59,
+                    "name": "Gafas de Pasta",
+					"description" : "Lo ultimo en moda hipster, con ellas parecerás un poco mas inteligente... JAJAJAJ No.",
+                    "type": "weapon",
+                    "weaponType": 3,
+                    "weaponClass": 2,
+                    "attack": 15
+                },
                 "itemDrop": {
                     "id": 33,
                     "name": "LaBatamanta",
@@ -157,10 +175,19 @@
                 "name": "Luser Cabreado",
                 "raza": 3,
                 "class": 2,
-                "attack": 25,
+                "attack": 15,
                 "defense": 15,
                 "life": 165,
                 "initiative": 1,
+				"weapon": {
+                    "id": 58,
+                    "name": "Puntero Laser",
+					"description" : "Diseñados para ayudar en las presentaciones de trabajo, su mal uso puede producir ceguera.";
+                    "type": "weapon",
+                    "weaponType": 1,
+                    "weaponClass": 1,
+                    "attack": 15
+                },
                 "itemDrop": {
                     "id": 34,
                     "name": "Valkyrian Armor",
@@ -174,10 +201,19 @@
                 "name": "Luser Geek",
                 "raza": 2,
                 "class": 2,
-                "attack": 25,
+                "attack": 15,
                 "defense": 15,
                 "life": 165,
                 "initiative": 1,
+				"weapon": {
+					"id": 54,
+					"name": "Cubo de Rubik",
+					"description": "Cubo mágico capaz de romper cualquier cabeza, con sus colores confunde. El que lo resuelva tendrá un poder infinito.",
+					"type": "weapon",
+					"weaponType": 1,
+					"weaponClass": 3,
+					"attack": 20
+				},
                 "itemDrop": {
                     "id": 57,
                     "name": "Sable Laser",
@@ -193,10 +229,19 @@
                 "name": "HOYGAN Panchito",
                 "raza": 4,
                 "class": 3,
-                "attack": 10,
+                "attack": 8,
                 "defense": 30,
                 "life": 150,
                 "initiative": 1,
+				"weapon": {
+                    "id": 60,
+                    "name": "Maquina Tetris",
+					"description" : "Máquina diabólica de entretenimiento, si empiezas a jugar nunca podras parar, a quien golpees con el lo convertirás en fichas",
+                    "type": "weapon",
+                    "weaponType": 2,
+                    "weaponClass": 1,
+                    "attack": 16
+                },
                 "itemDrop": {
 					"id": 23,
 					"name": "Pocion de Vida",
@@ -246,10 +291,19 @@
                 "name": "HOYGAN Forero",
                 "raza": 3,
                 "class": 1,
-                "attack": 10,
+                "attack": 8,
                 "defense": 30,
                 "life": 150,
                 "initiative": 3,
+				"weapon": {
+                    "id": 58,
+                    "name": "Puntero Laser",
+					"description" : "Diseñados para ayudar en las presentaciones de trabajo, su mal uso puede producir ceguera.";
+                    "type": "weapon",
+                    "weaponType": 1,
+                    "weaponClass": 1,
+                    "attack": 15
+                },
                 "itemDrop": {
                     "id": 35,
                     "name": "Pulsera Antiestatica",
@@ -283,10 +337,19 @@
                 "name": "Troll Forochchero",
                 "raza": 1,
                 "class": 1,
-                "attack": 35,
+                "attack": 22,
                 "defense": 40,
                 "life": 180,
                 "initiative": 3,
+				"weapon": {
+                    "id": 59,
+                    "name": "Gafas de Pasta",
+					"description" : "Lo ultimo en moda hipster, con ellas parecerás un poco mas inteligente... JAJAJAJ No.",
+                    "type": "weapon",
+                    "weaponType": 3,
+                    "weaponClass": 2,
+                    "attack": 15
+                },
                 "itemDrop": {
                     "id": 99,
                     "name": "Condensador de Fluzo",
