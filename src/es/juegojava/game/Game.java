@@ -3,6 +3,7 @@
  */
 package es.juegojava.game;
 
+import es.juegojava.common.GameStatus;
 import es.juegojava.exceptions.EnemiesFromRoomNullException;
 import es.juegojava.exceptions.InvalidClassPlayerForEquipItem;
 import es.juegojava.exceptions.InventarioEmptyException;
@@ -37,7 +38,7 @@ public class Game
 	private UIManager ui;
 	
 	/** The states. */
-	private String states;
+	private GameStatus states;
 	
 	/** The rooms. */
 	private HashMap<Integer, Room> rooms;
@@ -79,7 +80,7 @@ public class Game
 	
 
 	public Game() {
-		states = "createPJs";
+		states = GameStatus.CREATEPJ;
 		
 		ui = new UIManager();
 		bs = new Bootstrap();
@@ -95,38 +96,38 @@ public class Game
 	 * Run.
 	 */
 	public void run() {
-		while(states != "endgame") {
+		while(states != GameStatus.ENDGAME) {
 			switch(states)
 			{
-				case "createPJs":
+				case CREATEPJ:
 					this.createPJs();
 					break;
 					
-				case "init":
+				case INIT:
 					this.calculateEnemyFinale();
 					currentRoomId = 100;
 					currentRoom = rooms.get(currentRoomId);
 					currentPlayerIndex = -1;
-					states = "splashscreen";
+					states = GameStatus.SPLASHSCREEN;
 					break;
 					
-				case "splashscreen":
+				case SPLASHSCREEN:
 					ui.imprimirPorPantalla("Bienvenido al juego");
 					this.showPJs();
 					
-					states = "gamestart";
+					states = GameStatus.GAMESTART;
 					break;
 				
-				case "gamestart":
+				case GAMESTART:
 					ui.imprimirPorPantalla("Nuestro grupo de 3 amigos (un informático, un teleco y un matemático) " +
 							"han aparecido en una sala y apenas recuerdan lo sucedido, lo último que hacían era " +
 							"desarrollar una máquina que les permitía adentrarse en el juego como si de Tron " +
 							"hablasemos pero algo salió mal… ");
 					
-					states = "nextturn";
+					states = GameStatus.NEXTTURN;
 					break;
 				
-				case "roomscreen":		
+				case ROOMSCREEN:		
 					ui.imprimirPorPantalla("Es el turno de: " + currentPlayer.getNombre());
 					ui.imprimirPorPantalla(currentPlayer.toString());
 					ui.imprimirPorPantalla(currentRoom.toString());
@@ -141,31 +142,31 @@ public class Game
 					
 					break;
 					
-				case "speakscreen":
+				case SPEAKSCREEN:
 					
 					converEn.imprimirDialogos(currentRoom.getPjns().get(0));
 					//ui.imprimirPorPantalla("Vamos a iniciar una conversacion");
 					break;
 				
-				case "changeroom":
+				case CHANGEROOM:
 					lg.printActions(currentRoom, "changeroom");
 					
 					//El metodo devuelve el id de la nueva room tras aplicar la accion
 				try {
 					currentRoomId = (int)lg.selectActions();
 					currentRoom = rooms.get(currentRoomId);
-					states = "nextturn";
+					states = GameStatus.NEXTTURN;
 				} catch (OptionInvalidException e) {
 					ui.imprimirPorPantalla(e.getMessage());
 				}
 					break;
 					
-				case "inventarioscreen":
+				case INVENTARIOSCREEN:
 					try {
 						lg.showInventario(inventario);
 					} catch (InventarioEmptyException e) {
 						ui.imprimirPorPantalla(e.getMessage());
-						states = "roomscreen";
+						states = GameStatus.ROOMSCREEN;
 					}
 					
 					try {
@@ -205,20 +206,20 @@ public class Game
 						//Saco el item del inventario
 						inventario.remove(indexItemInInventario);
 						
-						states = "nextturn";
+						states = GameStatus.NEXTTURN;
 							
 						
 						
 					} catch (OptionInvalidException e) {
 						ui.imprimirPorPantalla(e.getMessage());
 					} catch(NullPointerException e) {
-						states = "roomscreen";
+						states = GameStatus.ROOMSCREEN;
 					}
 					
 					
 					break;
 					
-				case "takeitemscreen":
+				case TAKEITEMSCREEN:
 					lg.printActions(currentRoom, "takeitemscreen");
 					
 				try {
@@ -234,37 +235,37 @@ public class Game
 					ui.imprimirPorPantalla("Item guardado en el inventario");
 					
 					//Vuelve a la pantalla de room
-					states = "nextturn";
+					states = GameStatus.NEXTTURN;
 					
 				} catch (OptionInvalidException e) {
 					ui.imprimirPorPantalla(e.getMessage());
 				} catch(NullPointerException e) {
-					states = "roomscreen";
+					states = GameStatus.ROOMSCREEN;
 				}
 					
 					break;
 				
-				case "attackstate":
+				case ATTACKSCREEN:
 					lg.initCombat(PJs, currentRoom.getEnemies());
-					states = "attackingstate";
+					states = GameStatus.ATTAKING;
 					break;
 					
-				case "attackingstate":
+				case ATTAKING:
 					states = lg.startCombat();
 					break;
 					
-				case "loseplayer":
+				case LOSEPLAYER:
 					ui.imprimirPorPantalla("Todos tus personajes han muerto (You lose)");
-					states = "endgame";
+					states = GameStatus.ENDGAME;
 					
-				case "loseenemies":
+				case LOSEENEMIES:
 					ui.imprimirPorPantalla("Has matado a todos los enemigos de la habitacion");
-					states = "nextturn";
+					states = GameStatus.NEXTTURN;
 					break;
 					
-				case "nextturn":
+				case NEXTTURN:
 					nextTurn();
-					states = "roomscreen";
+					states = GameStatus.ROOMSCREEN;
 					break;
 			}
 		}

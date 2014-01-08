@@ -190,6 +190,50 @@ public class Logic {
              
      }
      
+     //Nuevos metodos nueva version
+     
+ 	public int getMenuOptions(String[] options) {
+		int numOptions = options.length, option = 0;
+
+		ui.imprimirPorPantalla("Menu");
+		for (int i = 0; i < numOptions; i++) {
+			option = i + 1;
+			ui.imprimirPorPantalla(option + "- " + options[i]);
+		}
+
+		ui.imprimirPorPantalla("Selecciona una opcion: ");
+		int optionSelected = ui.leerNumeroTeclado();
+
+		return optionSelected;
+	}
+ 	
+ 	public void runActions(Room currentRoom, String action) { 		
+ 		if(action == "roomscreen") {
+            
+            if(currentRoom.getEnemies().size() != 0){
+            	String[] options = { "Atacar",
+                                    "Cambiar de sala",
+                                    "Pasar turno" };
+            	
+            	int optionSelected = getMenuOptions(options);
+                    
+                    
+            }else if(currentRoom.getPjns().size() != 0){
+                    desc = "1- Hablar con el NPC\n" +
+                                    "2- Ver inventario\n" + 
+                                    "3- Coger un item\n" +
+                                    "4- Tirar un item al suelo\n" +
+                                    "5- Cambiar de sala\n" +
+                                    "6- Pasar turno\n";
+                    
+                    actions.add("speakscreen");
+                    actions.add("inventarioscreen");
+                    actions.add("takeitemscreen");
+                    actions.add("dropitemscreen");
+                    actions.add("changeroom");
+                    actions.add("nextturn");
+ 	}
+     
      /**
       * Show inventario.
       *
