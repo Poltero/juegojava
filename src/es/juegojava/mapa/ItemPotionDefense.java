@@ -35,6 +35,13 @@ public class ItemPotionDefense extends Item implements Usable {
 		super.desc = desc;
 	}
 
+	/**
+	 * @return the defensePoints
+	 */
+	public int getDefensePoints() {
+		return defensePoints;
+	}
+
 	/* (non-Javadoc)
 	 * @see es.juegojava.logics.Usable#use(es.juegojava.players.Player)
 	 */

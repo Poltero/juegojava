@@ -17,6 +17,13 @@ import es.juegojava.players.Player;
  */
 public class ItemPotionAttack extends Item implements Usable {
 	
+	/**
+	 * @return the attackPoints
+	 */
+	public int getAttackPoints() {
+		return attackPoints;
+	}
+
 	/** The attack points. */
 	private int attackPoints;
 	

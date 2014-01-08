@@ -23,6 +23,13 @@ public class ItemPotionInitiative extends Item implements Usable {
 	private int initiativePoints;
 	
 	/**
+	 * @return the initiativePoints
+	 */
+	public int getInitiativePoints() {
+		return initiativePoints;
+	}
+
+	/**
 	 * Instantiates a new item potion initiative.
 	 *
 	 * @param nombre the nombre

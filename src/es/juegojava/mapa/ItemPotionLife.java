@@ -17,6 +17,13 @@ import es.juegojava.players.Player;
  */
 public class ItemPotionLife extends Item implements Usable {
 
+	/**
+	 * @return the lifePoints
+	 */
+	public int getLifePoints() {
+		return lifePoints;
+	}
+
 	/** The life points. */
 	private int lifePoints;
 	

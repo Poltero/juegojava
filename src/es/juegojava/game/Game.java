@@ -128,8 +128,10 @@ public class Game
 					break;
 				
 				case ROOMSCREEN:		
-					ui.imprimirPorPantalla("Es el turno de: " + currentPlayer.getNombre());
+					ui.imprimirPorPantalla("Es el turno de: ");
 					ui.imprimirPorPantalla(currentPlayer.toString());
+					ui.imprimirPorPantalla("\n");
+					ui.imprimirPorPantalla("Te encuentras en: ");
 					ui.imprimirPorPantalla(currentRoom.toString());
 					
 					states = lg.runActions(currentRoom, "roomscreen");
@@ -173,7 +175,7 @@ public class Game
 							try {
 								currentPlayer.equipItem(itemToEquip);
 								
-								ui.imprimirPorPantalla("Item equipado!");
+								ui.imprimirPorPantalla("Item ["+ itemToEquip.getNombre() +"] equipado!");
 							} catch (InvalidClassPlayerForEquipItem e) {
 								ui.imprimirPorPantalla(e.getMessage());
 							}
@@ -181,19 +183,27 @@ public class Game
 							if(itemToEquip instanceof ItemPotionAttack) {
 								ItemPotionAttack item = (ItemPotionAttack)itemToEquip;
 								
+								ui.imprimirPorPantalla("Item ["+ itemToEquip.getNombre() +"] usado!");
 								item.use(currentPlayer);
+								ui.imprimirPorPantalla("+" + item.getAttackPoints() + " de ataque");
 							} else if(itemToEquip instanceof ItemPotionDefense) {
 								ItemPotionDefense item = (ItemPotionDefense)itemToEquip;
 								
+								ui.imprimirPorPantalla("Item ["+ itemToEquip.getNombre() +"] usado!");
 								item.use(currentPlayer);
+								ui.imprimirPorPantalla("+" + item.getDefensePoints() + " de defensa");
 							} else if(itemToEquip instanceof ItemPotionInitiative) {
 								ItemPotionInitiative item = (ItemPotionInitiative)itemToEquip;
 								
+								ui.imprimirPorPantalla("Item ["+ itemToEquip.getNombre() +"] usado!");
 								item.use(currentPlayer);
+								ui.imprimirPorPantalla("+" + item.getInitiativePoints() + " iniciativa");
 							} else if(itemToEquip instanceof ItemPotionLife) {
 								ItemPotionLife item = (ItemPotionLife)itemToEquip;
 								
+								ui.imprimirPorPantalla("Item ["+ itemToEquip.getNombre() +"] usado!");
 								item.use(currentPlayer);
+								ui.imprimirPorPantalla("+" + item.getLifePoints() + " de vida");
 							}
 						}
 						

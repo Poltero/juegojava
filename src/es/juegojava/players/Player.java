@@ -31,7 +31,7 @@ public class Player extends PjWithClass
 	
 	@Override
 	public String toString() {
-		return ("Nombre: " + nombre +", Raza: " + raza + ", Clase: " + classPj + "\n");
+		return (this.nombre + " ("+ raza + ")[" + classPj + "] --> Life: " + this.life + " | Defense: " + this.defense + " | Attack: " + this.attack + " | Initiative: " + this.initiative);
 	}
 	
 	public void equipItem(Item itemToEquip) throws InvalidClassPlayerForEquipItem {

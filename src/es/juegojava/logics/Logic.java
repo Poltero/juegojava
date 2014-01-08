@@ -287,12 +287,12 @@ public class Logic {
                 	ui.imprimirPorPantalla("..Y encuentras los siguientes items: ");
                 	String[] options = new String[sizeItems];
 	                for(int i = 0; i < sizeItems; i++) {
-	                        options[i] = items.get(i).getNombre();
+	                        options[i] = items.get(i).getNombre() + " [" + items.get(i).getTipo() + "]";
 	                }
 	                
 	                int opctionSelected = getMenuOptions(options);
 	                 
-	                 this.optionSelected = opctionSelected-1;
+	                this.optionSelected = opctionSelected-1;
                 
                 } else {
                 	ui.imprimirPorPantalla("...Y no encuentras nada");

@@ -6,13 +6,11 @@
 		"descripcion": "Estas en una habitación limpia y llena de tecnología, parece un laboratorio en donde se encuentra una máquina rodeada de muchos cables, parece estar destrozada y de ella sale un humo negro…",
         "items": [
         	{
-                "id": 78,
-                "name": "Carta de suicidio",
-				"description": "Al parecer el crear una historia bonita era mas importante que programar..",
-                "type": "weapon",
-                "weaponType": 1,
-                "weaponClass": 1,
-                "attack": 24
+                "id": 21,
+                "name": "Pocion de Defensa",
+				"description": "Poción que aumenta la defensa de un aliado de forma permanente.", 
+                "type": "potionDefense",
+                "defense": 8
             }
         ],
 		"npcs" : [
