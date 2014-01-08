@@ -57,8 +57,9 @@ public class Room extends Element
 	 * @param id the id
 	 * @param nombre the nombre
 	 */
-	public Room(Integer id, String nombre) {
+	public Room(Integer id, String nombre, String descripcion) {
 		super(id, nombre);
+		this.descripcion = descripcion;
 		
 		connections = new ArrayList<Integer>();
 		items = new ArrayList<Item>();

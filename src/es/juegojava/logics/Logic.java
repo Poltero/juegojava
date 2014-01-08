@@ -48,6 +48,8 @@ public class Logic {
      /** The enemies. */
      List<Enemy> enemies;
      
+     Object optionSelected;
+     
      
      /**
       * Instantiates a new logic.
@@ -59,12 +61,19 @@ public class Logic {
              this.ui = ui;
              
              doors = new String[4];
-             doors[0] = "Arriba";
-             doors[1] = "Derecha";
-             doors[2] = "Abajo";
-             doors[3] = "Izquierda";
+             doors[0] = "A";
+             doors[1] = "B";
+             doors[2] = "C";
+             doors[3] = "D";
              
              ce = null;
+             optionSelected = -1;
+     }
+     
+     public Object getOptionSelected() {
+    	 Object aux = optionSelected;
+    	 optionSelected = null;
+    	 return aux;
      }
 
      /**
@@ -207,31 +216,95 @@ public class Logic {
 		return optionSelected;
 	}
  	
- 	public void runActions(Room currentRoom, String action) { 		
- 		if(action == "roomscreen") {
-            
-            if(currentRoom.getEnemies().size() != 0){
-            	String[] options = { "Atacar",
-                                    "Cambiar de sala",
-                                    "Pasar turno" };
-            	
-            	int optionSelected = getMenuOptions(options);
-                    
-                    
-            }else if(currentRoom.getPjns().size() != 0){
-                    desc = "1- Hablar con el NPC\n" +
-                                    "2- Ver inventario\n" + 
-                                    "3- Coger un item\n" +
-                                    "4- Tirar un item al suelo\n" +
-                                    "5- Cambiar de sala\n" +
-                                    "6- Pasar turno\n";
-                    
-                    actions.add("speakscreen");
-                    actions.add("inventarioscreen");
-                    actions.add("takeitemscreen");
-                    actions.add("dropitemscreen");
-                    actions.add("changeroom");
-                    actions.add("nextturn");
+ 	public GameStatus runActions(Room currentRoom, String action) { 		
+ 		try {
+ 			if(action == "roomscreen") {
+ 	            if(currentRoom.getEnemies().size() != 0){
+ 	            	String[] options = { "Atacar",
+ 	                                    "Cambiar de sala",
+ 	                                    "Pasar turno" };
+ 	            	
+ 	            	GameStatus[] selectebalesStates = {
+ 	            			GameStatus.ATTACKSCREEN,
+ 	            			GameStatus.CHANGEROOM,
+ 	            			GameStatus.NEXTTURN
+ 	            	};
+ 	            	
+ 	            	int optionSelected = getMenuOptions(options);
+ 	            	
+ 	                return selectebalesStates[optionSelected-1];   
+ 	                    
+ 	            }else if(currentRoom.getPjns().size() != 0){
+ 	            	String[] options = { "Hablar con el NPC",
+ 	                                    "Ver inventario\n", 
+ 	                                    "Coger un item\n",
+ 	                                    "Tirar un item al suelo\n",
+ 	                                    "Cambiar de sala\n",
+ 	                                    "Pasar turno"};
+ 	            	
+ 	            	GameStatus[] selectebalesStates = {
+ 	            			GameStatus.SPEAKSCREEN,
+ 	            			GameStatus.INVENTARIOSCREEN,
+ 	            			GameStatus.TAKEITEMSCREEN,
+ 	            			GameStatus.DROPITEMSCREEN,
+ 	            			GameStatus.CHANGEROOM,
+ 	            			GameStatus.NEXTTURN
+ 	            	};
+ 	            	
+ 	            	
+ 	            	int optionSelected = getMenuOptions(options);
+ 	            	
+ 	            	return selectebalesStates[optionSelected-1];
+ 	            	
+ 	            }
+ 	 		
+ 			} else if(action == "changeroom") {
+ 				 ui.imprimirPorPantalla("Elige una de las siguientes puertas: ");
+                 
+                 List<Integer> connections = currentRoom.getConnections();
+                 
+                 int sizeConnections = connections.size();
+                 String[] options = new String[sizeConnections];
+                 
+                 for(int i = 0; i < sizeConnections; i++) {
+                         options[i] = "Puerta " + doors[i];
+                 }
+                 
+                 int opctionSelected = getMenuOptions(options);
+                 
+                 this.optionSelected = connections.get(opctionSelected-1);
+                 
+                 return GameStatus.NEXTTURN;
+ 			
+ 			} else if(action == "takeitemscreen") {
+                ui.imprimirPorPantalla("Exploras la habitacion..");
+                
+                List<Item> items = currentRoom.getItems();
+                
+                int sizeItems = items.size();
+                if(sizeItems > 0) {
+                	ui.imprimirPorPantalla("..Y encuentras los siguientes items: ");
+                	String[] options = new String[sizeItems];
+	                for(int i = 0; i < sizeItems; i++) {
+	                        options[i] = items.get(i).getNombre();
+	                }
+	                
+	                int opctionSelected = getMenuOptions(options);
+	                 
+	                 this.optionSelected = opctionSelected-1;
+                
+                } else {
+                	ui.imprimirPorPantalla("...Y no encuentras nada");
+                }
+        }
+ 		
+ 		}catch(IndexOutOfBoundsException ex) {
+ 			ui.imprimirPorPantalla("Opcion no valida!");
+ 			
+ 			return GameStatus.ROOMSCREEN;
+ 		}
+ 		
+ 		return GameStatus.ROOMSCREEN;
  	}
      
      /**
@@ -281,7 +354,7 @@ public class Logic {
       *
       * @return the string
       */
-     public String startCombat() {
+     public GameStatus startCombat() {
              actions = new ArrayList<Object>();
              
              String stateCombat = ce.getStateCombat();
@@ -360,12 +433,12 @@ public class Logic {
                              }
                      }
                      
-                     return "attackingstate";
+                     return GameStatus.ATTAKING;
              
              } else if(stateCombat == "loseplayer") {
-                     return "loseplayer";
+                     return GameStatus.LOSEPLAYER;
              } else {
-                     return "loseenemies";
+                     return GameStatus.LOSEENEMIES;
              }
              
      }

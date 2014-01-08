@@ -132,13 +132,7 @@ public class Game
 					ui.imprimirPorPantalla(currentPlayer.toString());
 					ui.imprimirPorPantalla(currentRoom.toString());
 					
-					lg.printActions(currentRoom, "roomscreen");
-					
-					try {
-						states = (String)lg.selectActions();
-					} catch (OptionInvalidException e) {
-						ui.imprimirPorPantalla(e.getMessage());
-					}
+					states = lg.runActions(currentRoom, "roomscreen");
 					
 					break;
 					
@@ -149,16 +143,16 @@ public class Game
 					break;
 				
 				case CHANGEROOM:
-					lg.printActions(currentRoom, "changeroom");
+					GameStatus proxStateToChangeRoom = lg.runActions(currentRoom, "changeroom");
 					
 					//El metodo devuelve el id de la nueva room tras aplicar la accion
-				try {
-					currentRoomId = (int)lg.selectActions();
-					currentRoom = rooms.get(currentRoomId);
-					states = GameStatus.NEXTTURN;
-				} catch (OptionInvalidException e) {
-					ui.imprimirPorPantalla(e.getMessage());
-				}
+					
+					if(proxStateToChangeRoom != null) {
+						currentRoomId = Integer.parseInt(lg.getOptionSelected().toString());
+						currentRoom = rooms.get(currentRoomId);
+						states = proxStateToChangeRoom;
+					}
+				
 					break;
 					
 				case INVENTARIOSCREEN:
@@ -220,28 +214,24 @@ public class Game
 					break;
 					
 				case TAKEITEMSCREEN:
-					lg.printActions(currentRoom, "takeitemscreen");
+					GameStatus proxStateToTakeItemScreen = lg.runActions(currentRoom, "takeitemscreen");
 					
-				try {
-					int indexItemFromRoom = (int) lg.selectActions();
+				
+					if(proxStateToTakeItemScreen != null) {
+						int indexItemFromRoom = Integer.parseInt(lg.getOptionSelected().toString());
+						
+						Item itemFromRoom = currentRoom.getItems().get(indexItemFromRoom);
+						
+						//Agrego el item al inventario
+						inventario.add(itemFromRoom);
+						
+						//Elimino el item de la room
+						currentRoom.getItems().remove(indexItemFromRoom);
+						
+						ui.imprimirPorPantalla("Item guardado en el inventario");
+					}
 					
-					Item itemFromRoom = currentRoom.getItems().get(indexItemFromRoom);
-					
-					inventario.add(itemFromRoom);
-					
-					//Elimino el item de la room
-					currentRoom.getItems().remove(indexItemFromRoom);
-					
-					ui.imprimirPorPantalla("Item guardado en el inventario");
-					
-					//Vuelve a la pantalla de room
-					states = GameStatus.NEXTTURN;
-					
-				} catch (OptionInvalidException e) {
-					ui.imprimirPorPantalla(e.getMessage());
-				} catch(NullPointerException e) {
-					states = GameStatus.ROOMSCREEN;
-				}
+					states = proxStateToTakeItemScreen;
 					
 					break;
 				
@@ -294,7 +284,7 @@ public class Game
 			
 			PJs = epj.getPlayers();
 			
-			states = "init";
+			states = GameStatus.INIT;
 			
 		} catch (OptionInvalidException e) {
 			ui.imprimirPorPantalla(e.getMessage());

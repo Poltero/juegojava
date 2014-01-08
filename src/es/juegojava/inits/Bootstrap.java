@@ -89,7 +89,7 @@ public class Bootstrap
 			for(int i = 0; i < size; i++) {
 				JsonObject obj = arrayData.getJsonObject(i);
 				
-				Room room = new Room(obj.getInt("id"), obj.getString("name"));
+				Room room = new Room(obj.getInt("id"), obj.getString("name"), obj.getString("descripcion"));
 				
 				rooms.put(obj.getInt("id"), room);
 				
