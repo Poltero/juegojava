@@ -203,8 +203,7 @@ public class Logic {
      
  	public int getMenuOptions(String[] options) {
 		int numOptions = options.length, option = 0;
-
-		ui.imprimirPorPantalla("Menu");
+		
 		for (int i = 0; i < numOptions; i++) {
 			option = i + 1;
 			ui.imprimirPorPantalla(option + "- " + options[i]);
@@ -230,16 +229,17 @@ public class Logic {
  	            			GameStatus.NEXTTURN
  	            	};
  	            	
+ 	            	ui.imprimirPorPantalla("Menu");
  	            	int optionSelected = getMenuOptions(options);
  	            	
  	                return selectebalesStates[optionSelected-1];   
  	                    
  	            }else if(currentRoom.getPjns().size() != 0){
  	            	String[] options = { "Hablar con el NPC",
- 	                                    "Ver inventario\n", 
- 	                                    "Coger un item\n",
- 	                                    "Tirar un item al suelo\n",
- 	                                    "Cambiar de sala\n",
+ 	                                    "Ver inventario", 
+ 	                                    "Coger un item",
+ 	                                    "Tirar un item al suelo",
+ 	                                    "Cambiar de sala",
  	                                    "Pasar turno"};
  	            	
  	            	GameStatus[] selectebalesStates = {
@@ -252,6 +252,7 @@ public class Logic {
  	            	};
  	            	
  	            	
+ 	            	ui.imprimirPorPantalla("Menu");
  	            	int optionSelected = getMenuOptions(options);
  	            	
  	            	return selectebalesStates[optionSelected-1];
@@ -327,9 +328,8 @@ public class Logic {
                              actions.add(i);
                      }
                      
-                     ui.imprimirPorPantalla("\nEquipar/Usar\n");
+                     ui.imprimirPorPantalla("\nEquipar/Usar:");
              } else {
-                     ui.imprimirPorPantalla("El invetario esta vacio");
                      throw new InventarioEmptyException("El inventario está vacio");
              }
      }

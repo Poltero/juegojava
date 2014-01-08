@@ -220,15 +220,17 @@ public class Game
 					if(proxStateToTakeItemScreen != null) {
 						int indexItemFromRoom = Integer.parseInt(lg.getOptionSelected().toString());
 						
-						Item itemFromRoom = currentRoom.getItems().get(indexItemFromRoom);
-						
-						//Agrego el item al inventario
-						inventario.add(itemFromRoom);
-						
-						//Elimino el item de la room
-						currentRoom.getItems().remove(indexItemFromRoom);
-						
-						ui.imprimirPorPantalla("Item guardado en el inventario");
+						if(indexItemFromRoom != -1) {
+							Item itemFromRoom = currentRoom.getItems().get(indexItemFromRoom);
+							
+							//Agrego el item al inventario
+							inventario.add(itemFromRoom);
+							
+							//Elimino el item de la room
+							currentRoom.getItems().remove(indexItemFromRoom);
+							
+							ui.imprimirPorPantalla("Item guardado en el inventario");
+						}
 					}
 					
 					states = proxStateToTakeItemScreen;

@@ -4,7 +4,17 @@
         "name": "Zona 0",
         "connections": [101],
 		"descripcion": "Estas en una habitación limpia y llena de tecnología, parece un laboratorio en donde se encuentra una máquina rodeada de muchos cables, parece estar destrozada y de ella sale un humo negro…",
-        "items": [],
+        "items": [
+        	{
+                "id": 78,
+                "name": "Carta de suicidio",
+				"description": "Al parecer el crear una historia bonita era mas importante que programar..",
+                "type": "weapon",
+                "weaponType": 1,
+                "weaponClass": 1,
+                "attack": 24
+            }
+        ],
 		"npcs" : [
 			{
 				"id": 120,
